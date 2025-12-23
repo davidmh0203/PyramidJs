@@ -1,0 +1,715 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[소프트웨어공학][설계패턴적용][이민형] (1)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2cac520c-c0ba-80c4-a7a6-d2b1fa4d4a40" class="page sans"><header><h1 class="page-title" dir="auto">[소프트웨어공학][설계패턴적용][이민형] (1)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><nav id="2cac520c-c0ba-81f2-9a57-cfe14bee70bf" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8104-a912-da07c2aa33a5"><strong>1. 클래스 다이어그램의 모든 클래스에 대한 의미와 기능 정리</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81f2-ae54-c992bc5f0b2b"><strong>2. 생성 패턴 적용 가능성 평가 및 적용</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8165-860e-c90c505c7717"><strong>3. 구조 패턴 적용 가능성 평가 및 적용</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81ff-85e3-cb62ef4bc28b"><strong>4. 행위 패턴 적용 가능성 평가 및 적용</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8107-bb84-e6da9df38333"><strong>5. 패턴 적용 후 변경된 클래스 다이어그램에 대해 Role-Playing</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8149-ae93-c676af578c03">Factory Method 패턴 Role-Playing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8195-a591-dce97d0aa613">Adapter 패턴 Role-Playing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-81a3-aeb0-f9ff36294e97">Strategy 패턴 Role-Playing</a></div></nav></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81e4-a897-fed919232e0a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8142-a906-da7c37ca27da" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8104-a912-da07c2aa33a5" class=""><strong>1. 클래스 다이어그램의 모든 클래스에 대한 의미와 기능 정리</strong></h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8190-a6ca-f8e095eddb28" class="">본 프로젝트는 음악 플랫폼 간 재생목록을 자동으로 이전하는 웹 기반 시스템으로, 시스템 분석 단계에서 기능 요구사항(FR), 비기능 요구사항(NFR), 인터페이스 요구사항(IF)을 토대로 초기 클래스 다이어그램을 구성하였다. 해당 클래스 다이어그램은  요구사항 분석 결과 도출된 구조를 기반으로 작성되었다. 따라서 본 절에서는 패턴 적용 전의 클래스들이 어떤 역할과 책임을 갖고 있었는지를 정리함으로써, 이후 단계에서 설계패턴을 적용할 수 있는 근거를 확인하였다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8156-b990-da115ff1e662" class="">우선 <strong>AuthManager</strong>는 Google OAuth 기반 인증 절차를 처리하며, 액세스 토큰 및 리프레시 토큰의 발급과 검증을 담당한다. <strong>GenieParser</strong>는 지니뮤직에서 제공하는 재생목록 페이지의 HTML 구조를 파싱하여 곡명과 아티스트 정보를 추출하는 역할을 수행하고, <strong>YouTubeAPIClient</strong>는 YouTube Data API를 통해 재생목록 생성 및 곡 추가 작업을 담당한다. 또한 <strong>MatchingEngine</strong>은 지니뮤직에서 추출된 곡 데이터와 YouTube 검색 결과 간의 유사도를 판별하는 기능을 가지고 있으며, <strong>PlaylistConverter</strong>는 전체 변환 흐름을 조정하여 파싱 → 매칭 → 업로드 과정을 순차적으로 수행하는 시스템의 중심에서 조정하는 역할을 한다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-815a-a4c0-f414041904de" class="">변환 기록 관리는 <strong>UserHistoryRepository</strong>가 담당하며, 변환 성공 여부, 오류 발생 지점, API 요청 로그 등을 저장하여 사용자가 이전 변환 기록을 조회할 수 있도록 한다. 마지막으로 <strong>Logger</strong>는 시스템 전반에서 발생하는 오류나 이벤트를 기록하여 디버깅 및 유지보수 과정에서 필요한 정보를 제공한다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8171-9c92-ccafc2e6df21" class="">이와 같이 초기 클래스 다이어그램은 기능 단위로 분리하여 구성되었지만, 플랫폼 확장성이나 모듈 간 결합도 측면에서 개선할 수 있는 부분들이 존재한다. 특히 플랫폼별 파서 생성, 외부 API 규격 차이, 다양한 매칭 알고리즘 적용 등의 요구가 증가함에 따라, 패턴을 적용하지 않은 기존 구조는 변경에 취약한 부분이 발견된다. 따라서 2~5번 단계에서 이 클래스들을 기반으로 설계패턴 적용 가능성을 식별하고, 구조적 완성도를 높이기 위해 적절한 패턴을 도입하는 설계 개선이 필요하다.</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-81f2-ae54-c992bc5f0b2b" class=""><strong>2. 생성 패턴 적용 가능성 평가 및 적용</strong></h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8115-a2db-c366b7957cec" class="">프로젝트는 지니뮤직 → 유튜브, 유튜브 → 스포티파이로 확장되며 다양한 입력 파싱 로직이 필요하다. 플랫폼에 따라 HTML 구조·API 구조·데이터 구조가 달라지는 특성상 객체 생성 로직을 코드 전반에 분산시키면 유지보수가 어려워진다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-815f-9bb4-dddc9ba93720" class="">이를 해결하기 위해 <strong>Factory Method 패턴</strong>을 적용하였다.</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f7-9bfd-db8c286fadb5" class="bulleted-list"><li style="list-style-type:disc"><strong>Creator</strong>: ParserFactory</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8110-b95e-f4ca2ff86d5d" class="bulleted-list"><li style="list-style-type:disc"><strong>Product</strong>: PlaylistParser (인터페이스)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81bb-ba02-d8010f62b870" class="bulleted-list"><li style="list-style-type:disc"><strong>ConcreteProduct</strong>: GenieParser, YouTubePlaylistReader 등</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81e6-9f99-c13d0386510e" class=""><strong>PlaylistConverter</strong>는 단순히 플랫폼 타입만 전달하면 <code>ParserFactory.createParser()</code>를 통해 적절한 파서 객체를 반환받는다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81a7-bda4-dd1cb2513f60" class="">이로써 신규 플랫폼(예: 멜론, FLO, Vibe)이 추가되더라도 기존 변환 로직은 수정되지 않고, 새로운 Parser 클래스만 추가하면 되므로 높은 확장성을 확보할 수 있다.</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8167-be42-e29495af029a" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%84%A4%EA%B3%84%ED%8C%A8%ED%84%B4%EC%A0%81%EC%9A%A9%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image.png"><img style="width:525.9801025390625px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%84%A4%EA%B3%84%ED%8C%A8%ED%84%B4%EC%A0%81%EC%9A%A9%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8165-860e-c90c505c7717" class=""><strong>3. 구조 패턴 적용 가능성 평가 및 적용</strong></h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-812b-8ad8-f63123c51d00" class="">외부 플랫폼 API의 구조는 서비스마다 크게 다르다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8149-aac5-fe8c4fa704f8" class="">예:</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81b0-9c6a-cc1a811ee680" class="bulleted-list"><li style="list-style-type:disc">YouTube → playlistItems.insert</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-815f-b842-f7d97829c0bb" class="bulleted-list"><li style="list-style-type:disc">Spotify → /tracks endpoint 기반 검색 후 playlist replaceItems 구조</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-818b-80ec-f3a38944fd68" class="bulleted-list"><li style="list-style-type:disc">Apple Music → MusicKit 기반 토큰 인증</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8173-addf-e330bb4f9a30" class="">이러한 차이에도 불구하고 시스템 내부에서는 “재생목록 생성”과 “곡 추가”라는 동일한 의미의 기능만 필요하다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-814b-b8b2-f0d8eaddc37e" class="">따라서 <strong>Adapter 패턴</strong>을 적용하여 다음의 구조를 설계했다.</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81c5-a6ec-e93e6874d200" class="bulleted-list"><li style="list-style-type:disc"><strong>Target 인터페이스</strong>: IPlaylistTargetAPI</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ee-87f6-e659624af7ac" class="bulleted-list"><li style="list-style-type:disc"><strong>Adapter</strong>: YouTubeAdapter, SpotifyAdapter</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f6-9ccd-f56e78b7f943" class="bulleted-list"><li style="list-style-type:disc"><strong>Adaptee</strong>: YouTubeAPIClient, SpotifyAPIClient</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81fc-b126-f9be41a659b4" class="">이 방식은 외부 API의 구조적 차이를 내부 로직에서 완전히 감추기 때문에,</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ac-9f02-d2617126adb4" class="">PlaylistConverter는 플랫폼 종류와 관계없이 하나의 통일된 방식으로 재생목록을 업로드할 수 있게 된다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8108-b11c-fa4aa2f6cf7e" class="">또한 Spotify 확장(유튜브 → 스포티파이 이전)을 시스템에 자연스럽게 통합할 수 있다.</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8133-9c85-e0898162bc22" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%84%A4%EA%B3%84%ED%8C%A8%ED%84%B4%EC%A0%81%EC%9A%A9%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image%201.png"><img style="width:477.99005126953125px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%84%A4%EA%B3%84%ED%8C%A8%ED%84%B4%EC%A0%81%EC%9A%A9%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-81ff-85e3-cb62ef4bc28b" class=""><strong>4. 행위 패턴 적용 가능성 평가 및 적용</strong></h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8103-9ee9-f13c63b58ef0" class="">매칭 알고리즘은 플랫폼 특성과 데이터 구조에 따라 지속적으로 변할 가능성이 높다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-814c-8743-cd108a21df40" class="">특히 한글 기반 파싱(지니뮤직)과 영문 기반 파싱(유튜브/스포티파이)을 함께 지원하려면 다양한 매칭 전략을 유연하게 선택할 수 있어야 한다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8101-ab83-c86fb494397c" class="">이 문제를 해결하기 위해 <strong>Strategy 패턴</strong>을 적용하였다.</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ac-87f4-d35f619b4765" class="bulleted-list"><li style="list-style-type:disc"><strong>Strategy 인터페이스</strong>: MatchStrategy</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8108-a0be-d576496e74ca" class="bulleted-list"><li style="list-style-type:disc"><strong>Concrete Strategies</strong>:<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-811b-bb24-e971a0fa49cb" class="bulleted-list"><li style="list-style-type:circle">TitleExactMatch</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8152-a7cc-e7ea34295f24" class="bulleted-list"><li style="list-style-type:circle">FuzzyMatch (철자가 조금 달라도 얼마나 비슷한지 유사도 확인)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-817f-816b-f484c80b3ce5" class="bulleted-list"><li style="list-style-type:circle">KoreanNormalizeMatch (자음과 모음 단위로 쪼개서 더 정확히 비교하는 방식)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-819c-bad5-f06c940c5e5b" class="bulleted-list"><li style="list-style-type:disc"><strong>Context</strong>: MatchingEngine</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8195-93a7-e235599ec438" class="">MatchingEngine은 상황에 따라 적절한 전략을 선택하여 실행할 수 있으며,</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8125-8c94-ff909dc78c63" class="">새로운 매칭 방식이 필요할 때 기존 클래스를 수정할 필요 없이 새로운 Strategy만 추가하면 되므로 유지보수성과 확장성이 크게 향상된다.</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-815f-96f6-cba053a6cdfe" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%84%A4%EA%B3%84%ED%8C%A8%ED%84%B4%EC%A0%81%EC%9A%A9%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image%202.png"><img style="width:709.9928588867188px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%84%A4%EA%B3%84%ED%8C%A8%ED%84%B4%EC%A0%81%EC%9A%A9%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image%202.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8107-bb84-e6da9df38333" class=""><strong>5. 패턴 적용 후 변경된 클래스 다이어그램에 대해 Role-Playing</strong></h2></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8102-b388-d5a31ee99579" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%84%A4%EA%B3%84%ED%8C%A8%ED%84%B4%EC%A0%81%EC%9A%A9%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image%203.png"><img style="width:709.9786376953125px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%84%A4%EA%B3%84%ED%8C%A8%ED%84%B4%EC%A0%81%EC%9A%A9%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image%203.png"/></a><figcaption>최종적으로  전체 설계패턴 적용된 클래스</figcaption></figure></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ca-92bf-c2dfc5699067" class="">위와 같은 패턴이 적용 된다면, 시스템 속 객체들은 다음과 같은 역할을 수행하게된다.</p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8149-ae93-c676af578c03" class="">Factory Method 패턴 Role-Playing</h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8133-b284-c8d3555ff3b6" class="bulleted-list"><li style="list-style-type:disc"><strong>ParserFactory (Creator)</strong>: 어떤 파서를 생성할지 결정</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81a2-8618-eaff46afff4e" class="bulleted-list"><li style="list-style-type:disc"><strong>PlaylistParser (Product)</strong>: 파서의 공통 인터페이스</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8167-8712-ed8c00b73ab5" class="bulleted-list"><li style="list-style-type:disc"><strong>GenieParser / YouTubePlaylistReader (ConcreteProduct)</strong>: 실제 파싱 수행</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81d1-bb0c-e8d6d5f21756" class="bulleted-list"><li style="list-style-type:disc"><strong>PlaylistConverter (Client)</strong>: Parser의 구체 클래스를 몰라도 되고, Factory의 결과만 사용</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8195-a591-dce97d0aa613" class="">Adapter 패턴 Role-Playing</h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8128-88e4-cbbdc5e6d41e" class="bulleted-list"><li style="list-style-type:disc"><strong>IPlaylistTargetAPI (Target)</strong>: 변환 과정에서 필요한 공통 작업 정의</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ee-ad30-d21a42a2d293" class="bulleted-list"><li style="list-style-type:disc"><strong>YouTubeAdapter / SpotifyAdapter (Adapter)</strong>: 플랫폼별 API 요청 형식을 공통 규격에 맞게 변환</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81d9-9088-c3ffcdeb701a" class="bulleted-list"><li style="list-style-type:disc"><strong>YouTubeAPIClient / SpotifyAPIClient (Adaptee)</strong>: 실제 외부 API 호출 수행</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8110-ad18-e3829fa61bae" class="bulleted-list"><li style="list-style-type:disc"><strong>PlaylistConverter (Client)</strong>: API 구조 차이를 몰라도 한 가지 방식으로 호출 가능</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81a3-aeb0-f9ff36294e97" class="">Strategy 패턴 Role-Playing</h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8136-8175-d1a5d42b9d7a" class="bulleted-list"><li style="list-style-type:disc"><strong>MatchStrategy (Strategy)</strong>: 매칭 알고리즘의 표준 인터페이스 제공</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8119-b7eb-cc5d5296c3bc" class="bulleted-list"><li style="list-style-type:disc"><strong>TitleExactMatch, FuzzyMatch, KoreanNormalizeMatch (ConcreteStrategy)</strong>: 각기 다른 알고리즘 구현</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81e8-83f0-ca33312206c9" class="bulleted-list"><li style="list-style-type:disc"><strong>MatchingEngine (Context)</strong>: 상황에 적합한 전략 선택 후 실행</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-815b-be06-c2f1ba55e354" class="">이를 통해 전체 설계는 입력 파싱 모듈의 확장성, 외부 API 구조 통합, 매칭 로직 다양화라는 핵심 세 요소를 안정적으로 만족하게 되었으며, 변경과 확장에 강한 구조로 바뀌었다.</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

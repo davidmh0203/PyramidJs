@@ -1,0 +1,731 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[소프트웨어공학][기능 점수 산정][이민형] (1)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2cac520c-c0ba-8017-8357-d675ea6cbd78" class="page sans"><header><h1 class="page-title" dir="auto">[소프트웨어공학][기능 점수 산정][이민형] (1)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ba-acd0-de61e6c29260" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8192-ac3a-f5427a003408" class="">과목: 소프트웨어공학</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8114-ad0d-ec078c394241" class="">담당교수님: 손한성 교수님</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-812d-b43b-eb5a90ee317c" class="">학과: 게임소프트웨어전공</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8189-bf20-f620974ca333" class="">이름: 이민형</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8156-8325-d58332d04c3a" class="">학번: 92115174</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81f8-80d1-da072ad775ae" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-81a1-be12-e018ca3d1e22" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/348af5cc-e3ec-47ae-ab05-a68d0caaaa65.png"><img style="width:497.1279373368146px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/348af5cc-e3ec-47ae-ab05-a68d0caaaa65.png"/></a></figure></div><div style="display:contents" dir="ltr"><nav id="2cac520c-c0ba-81e5-8e86-ff59cb7d1b16" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81cc-8af2-c9c6fd722941">1. 개요</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81d1-acd1-cb514c12a252">2. 데이터 기능 분석</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81d6-ab3d-e2792b9ef03d">3. 처리 기능 분석</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8118-a752-c4ff9a30e56e">4. 최종 기능점수 산정</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-817b-81ba-f01cddc4dc31">(1) 정규법</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-814a-9813-ea3688a93035">(2) 간이법</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81da-a394-fa7ce163a5f0">5. 결론</a></div></nav></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8128-bd2d-d4ff6419e33d" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81cc-8af2-c9c6fd722941" class="">1. 개요</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8176-8bde-e665b04e04bd" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81da-adbd-d29980c6f179" class="">이번 과제에서는 제가 진행하고 있는 텀프로젝트인 Genie2YT 프로젝트의 소프트웨어 기능점수를  정규법과 간이법 두 가지 방식을 사용해 산정하였습니다.  음악앱의 재생목록을 다른 뮤직앱으로 옮겨주는 웹서비스를 최종 목표잡고, 현재는 지니뮤직에서 유튜브 뮤직으로 옮겨주는 것을 1차 목표로 삼고 진행중입니다.  </p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8124-a866-d586779d8ab5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81a4-aa09-f015356e2dea" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81d1-acd1-cb514c12a252" class="">2. 데이터 기능 분석</h1></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8189-b11c-e3e210d9b8be" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8120-b06f-d1ba00b3d43d"><th id="ewBt" class="simple-table-header-color simple-table-header">구분</th><th id="ZhoO" class="simple-table-header-color simple-table-header">데이터명</th><th id="{lRL" class="simple-table-header-color simple-table-header">설명</th><th id="JYvs" class="simple-table-header-color simple-table-header">이유</th><th id="tt@i" class="simple-table-header-color simple-table-header">복잡도</th><th id="L|vt" class="simple-table-header-color simple-table-header">가중치</th><th id="OCXE" class="simple-table-header-color simple-table-header">점수</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f9-8faf-e361b4aaedba"><td id="ewBt" class=""><strong>ILF</strong></td><td id="ZhoO" class="">사용자 정보</td><td id="{lRL" class="">로그인 ID, 이메일, OAuth 토큰 등</td><td id="JYvs" class="">Genie2YT 내부 DB에서 관리되는 사용자 계정 관련 정보로, 외부에서 직접 접근하지 않음. 6주차에서 말한 ‘시스템 내부 보관 데이터’에 해당.</td><td id="tt@i" class="">낮음</td><td id="L|vt" class="">7</td><td id="OCXE" class="">7</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81bf-be97-f39662a3a0f9"><td id="ewBt" class=""><strong>ILF</strong></td><td id="ZhoO" class="">변환 이력</td><td id="{lRL" class="">변환 날짜, 성공여부, 오류로그 등</td><td id="JYvs" class="">사용자가 변환한 결과를 추적하고 통계로 활용하기 위한 내부 기록이므로 ILF로 분류함.</td><td id="tt@i" class="">보통</td><td id="L|vt" class="">10</td><td id="OCXE" class="">10</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c6-9d70-c26d3f0bc912"><td id="ewBt" class=""><strong>EIF</strong></td><td id="ZhoO" class="">지니뮤직 API</td><td id="{lRL" class="">지니뮤직의 플레이리스트를 불러올 때 사용하는 외부 데이터.</td><td id="JYvs" class="">교수님이 예시로 든 “외부 시스템으로부터 읽는 데이터”에 해당.</td><td id="tt@i" class="">낮음</td><td id="L|vt" class="">5</td><td id="OCXE" class="">5</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fb-bf39-d422c5db5dc5"><td id="ewBt" class=""><strong>EIF</strong></td><td id="ZhoO" class="">유튜브 API</td><td id="{lRL" class="">변환 결과를 외부(유튜브 서버)로 전송할 때 사용.</td><td id="JYvs" class="">외부 플랫폼에 데이터를 전달하므로 EIF로 분류함.</td><td id="tt@i" class="">보통</td><td id="L|vt" class="">7</td><td id="OCXE" class="">7</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8116-ac0b-c5b57a8bebb9"><td id="ewBt" class=""><strong>합계</strong></td><td id="ZhoO" class=""></td><td id="{lRL" class=""></td><td id="JYvs" class=""></td><td id="tt@i" class=""></td><td id="L|vt" class=""></td><td id="OCXE" class=""><strong>29점</strong></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81d6-ab3d-e2792b9ef03d" class="">3. 처리 기능 분석</h1></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8135-9198-d62e63b2a1c3" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8155-98d1-d56f0dee9640"><th id="emqa" class="simple-table-header-color simple-table-header">구분</th><th id="t}HU" class="simple-table-header-color simple-table-header">기능명</th><th id="MLWl" class="simple-table-header-color simple-table-header">설명</th><th id="?_Q?" class="simple-table-header-color simple-table-header">데이터 항목 수</th><th id="u_dV" class="simple-table-header-color simple-table-header">참조 파일 수</th><th id="h|;J" class="simple-table-header-color simple-table-header">복잡도</th><th id="[XCX" class="simple-table-header-color simple-table-header">가중치</th><th id="xZNh" class="simple-table-header-color simple-table-header">점수</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81dd-a3f4-fdb4a4ddbeca"><td id="emqa" class="">EI</td><td id="t}HU" class="">로그인</td><td id="MLWl" class="">사용자 계정 입력 및 인증 요청</td><td id="?_Q?" class="">5</td><td id="u_dV" class="">1</td><td id="h|;J" class="">낮음</td><td id="[XCX" class="">3</td><td id="xZNh" class="">3</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a6-82b3-c9b50a34a7f2"><td id="emqa" class="">EI</td><td id="t}HU" class="">플레이리스트 입력</td><td id="MLWl" class="">지니 URL 또는 ID 입력 기능</td><td id="?_Q?" class="">6</td><td id="u_dV" class="">2</td><td id="h|;J" class="">보통</td><td id="[XCX" class="">4</td><td id="xZNh" class="">4</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8118-878c-cdf9baddaa80"><td id="emqa" class="">EO</td><td id="t}HU" class="">변환 결과 출력</td><td id="MLWl" class="">변환된 곡 수, 소요시간, 상태 표시</td><td id="?_Q?" class="">8</td><td id="u_dV" class="">2</td><td id="h|;J" class="">보통</td><td id="[XCX" class="">5</td><td id="xZNh" class="">5</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e4-ac6c-e7ab0912e6e5"><td id="emqa" class="">EO</td><td id="t}HU" class="">오류로그 출력</td><td id="MLWl" class="">실패 이유, 시간, 코드 등 표시</td><td id="?_Q?" class="">6</td><td id="u_dV" class="">2</td><td id="h|;J" class="">낮음</td><td id="[XCX" class="">4</td><td id="xZNh" class="">4</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8111-964c-dbf9473abe1f"><td id="emqa" class="">EQ</td><td id="t}HU" class="">변환 목록 조회</td><td id="MLWl" class="">내가 변환한 기록을 검색 및 필터링</td><td id="?_Q?" class="">10</td><td id="u_dV" class="">2</td><td id="h|;J" class="">높음</td><td id="[XCX" class="">6</td><td id="xZNh" class="">6</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-812f-8975-f62c32f40928"><td id="emqa" class=""><strong>합계</strong></td><td id="t}HU" class=""></td><td id="MLWl" class=""></td><td id="?_Q?" class=""></td><td id="u_dV" class=""></td><td id="h|;J" class=""></td><td id="[XCX" class=""></td><td id="xZNh" class=""><strong>총 22점</strong></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-811a-bc0d-f564ec25e8e8" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8118-a752-c4ff9a30e56e" class="">4. 최종 기능점수 산정</h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-817b-81ba-f01cddc4dc31" class="">(1) 정규법</h2></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-8143-8dc1-e272e2748816" class="numbered-list" start="1"><li>기능점수 산정 유형: 신규 웹스비스를 개발하는 것이므로 개발 프로젝트 유형에 해당한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-81e7-a7b1-f1b1c8f257eb" class="numbered-list" start="2"><li>범위및 경계설정<div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8181-9d57-e74efda0a0a1" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813f-b5c5-f18cb185d280"><th id="n&lt;G}" class="simple-table-header-color simple-table-header">구분</th><th id="~IW[" class="simple-table-header-color simple-table-header">내용</th><th id="lJbp" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-814d-8e9c-c27c129ece0f"><td id="n&lt;G}" class=""><strong>입력 경로</strong></td><td id="~IW[" class="">사용자 로그인, 지니뮤직 URL 입력</td><td id="lJbp" class="">사용자로부터 데이터가 들어오는 부분</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8142-822d-c235f0c32828"><td id="n&lt;G}" class=""><strong>내부 처리</strong></td><td id="~IW[" class="">플레이리스트 변환 로직, DB 저장</td><td id="lJbp" class="">시스템 내부에서 연산과 저장이 일어나는 부분</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d9-9660-de85af091882"><td id="n&lt;G}" class=""><strong>출력 경로</strong></td><td id="~IW[" class="">유튜브 API 전송, 결과 화면</td><td id="lJbp" class="">외부나 사용자에게 결과를 돌려주는 부분</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-818e-b9a4-d7ddbf2537e1"><td id="n&lt;G}" class=""><strong>외부 시스템</strong></td><td id="~IW[" class="">지니뮤직 서버, 유튜브 API</td><td id="lJbp" class="">외부 데이터 인터페이스</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81f9-b026-e8221ad1af0a" class="">경계는 Genie2YT 서버 내부로 설정하고, 유튜브 API는 외부 인터페이스로 설정하였다.</p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-8119-8d1c-da3639390df3" class="numbered-list" start="3"><li>데이터 기능분석<div style="display:contents" dir="auto"><p id="2cac520c-c0ba-811c-9803-ce6df216471d" class=""><strong>데이터 기능 산정</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81f8-9f01-db76ed638fd1" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815f-aeb9-d7513da2bedc"><th id="WV~g" class="simple-table-header-color simple-table-header">기능 그룹</th><th id="uqWH" class="simple-table-header-color simple-table-header">파일명</th><th id="=Dfm" class="simple-table-header-color simple-table-header">파일 타입</th><th id="MkSc" class="simple-table-header-color simple-table-header">필드명</th><th id="vvll" class="simple-table-header-color simple-table-header">필드 타입</th><th id="xK~g" class="simple-table-header-color simple-table-header">비고</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e6-8a67-fa30d8514bf4"><td id="WV~g" class=""><strong>사용자 관리</strong></td><td id="uqWH" class="">user_info</td><td id="=Dfm" class="">ILF</td><td id="MkSc" class="">user_id, email, password, token, reg_date</td><td id="vvll" class="">CHAR, CHAR, CHAR, CHAR, DATE</td><td id="xK~g" class=""><strong>PK: user_id</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81be-b74e-dcd81264be9b"><td id="WV~g" class=""><strong>변환 이력 관리</strong></td><td id="uqWH" class="">convert_log</td><td id="=Dfm" class="">ILF</td><td id="MkSc" class="">log_id, user_id, src_playlist, dest_playlist, result, error_msg, date</td><td id="vvll" class="">INT, INT, CHAR, CHAR, CHAR, CHAR, DATETIME</td><td id="xK~g" class=""><strong>PK: log_id / FK: user_id</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b7-bf80-c1fe3f653293"><td id="WV~g" class=""><strong>지니뮤직 API 연동</strong></td><td id="uqWH" class="">genie_playlist</td><td id="=Dfm" class="">EIF</td><td id="MkSc" class="">track_id, title, artist, album, duration</td><td id="vvll" class="">CHAR, CHAR, CHAR, CHAR, INT</td><td id="xK~g" class="">외부 데이터 참조</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8150-8174-f5626f8c2d75"><td id="WV~g" class=""><strong>유튜브 API 연동</strong></td><td id="uqWH" class="">youtube_playlist</td><td id="=Dfm" class="">EIF</td><td id="MkSc" class="">yt_id, title, channel, status</td><td id="vvll" class="">CHAR, CHAR, CHAR, CHAR</td><td id="xK~g" class="">외부 전송용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d4-8cc9-d681c6def848"><td id="WV~g" class=""><strong>합계</strong></td><td id="uqWH" class=""></td><td id="=Dfm" class=""></td><td id="MkSc" class="">총 45 필드</td><td id="vvll" class=""></td><td id="xK~g" class=""></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8151-b458-dfd5683f0489" class=""><strong>데이터 기능 복잡도 식별</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8149-9645-cbde3c4ebdb0" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8137-9d27-d06fe0568cf2"><th id="rrBq" class="simple-table-header-color simple-table-header">파일명</th><th id="Z\Hd" class="simple-table-header-color simple-table-header">파일타입</th><th id="vDyN" class="simple-table-header-color simple-table-header">데이터 항목 수</th><th id="x\nL" class="simple-table-header-color simple-table-header">레코드 타입 수</th><th id="JnxJ" class="simple-table-header-color simple-table-header">복잡도 판단</th><th id="xTwP" class="simple-table-header-color simple-table-header">근거</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e8-bb18-fa461a137769"><td id="rrBq" class=""><strong>user_info</strong></td><td id="Z\Hd" class="">ILF</td><td id="vDyN" class="">12</td><td id="x\nL" class="">2</td><td id="JnxJ" class="">낮음(Low)</td><td id="xTwP" class="">데이터 항목 수 1~19, 레코드 타입 수 2~5 → 낮음</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e5-a19a-f12164e8587d"><td id="rrBq" class=""><strong>convert_log</strong></td><td id="Z\Hd" class="">ILF</td><td id="vDyN" class="">15</td><td id="x\nL" class="">3</td><td id="JnxJ" class="">보통(Average)</td><td id="xTwP" class="">데이터 항목 수 1~19, 레코드 타입 수 2~5 → 낮음이지만 관리정보 포함 → 보통으로 상향</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fa-b37f-f993aa19ee5a"><td id="rrBq" class=""><strong>genie_playlist</strong></td><td id="Z\Hd" class="">EIF</td><td id="vDyN" class="">8</td><td id="x\nL" class="">1</td><td id="JnxJ" class="">낮음(Low)</td><td id="xTwP" class="">데이터 항목 수 1~19, 레코드 타입 수 1 → 낮음</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81dd-9f36-f668ab775934"><td id="rrBq" class=""><strong>youtube_playlist</strong></td><td id="Z\Hd" class="">EIF</td><td id="vDyN" class="">10</td><td id="x\nL" class="">1</td><td id="JnxJ" class="">보통(Average)</td><td id="xTwP" class="">데이터 항목 수 1~19, 레코드 타입 수 1이지만 외부 전송 연산 포함 → 보통으로 증가</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8111-8d9f-d1957177ce7c" class="">
+</p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-816a-bf6a-d149f59a9be9" class="numbered-list" start="4"><li>처리기능 산출 및 복잡도 식별<div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81c8-8988-db3ad5d16a70" class=""><strong>처리 기능 산정 위한 자료 </strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81c5-a1d0-d9fee044ac7d" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fb-807d-f06a5a22201a"><th id="nAVv" class="simple-table-header-color simple-table-header"><strong>유형</strong></th><th id="F_qE" class="simple-table-header-color simple-table-header"><strong>ILF / EIF 명칭</strong></th><th id="^nl\" class="simple-table-header-color simple-table-header"><strong>처리 태스크</strong></th><th id="FzVj" class="simple-table-header-color simple-table-header"><strong>데이터 항목수 </strong></th><th id="hB;B" class="simple-table-header-color simple-table-header"><strong>참조 파일 수</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c2-bcb8-d89e4363b82e"><td id="nAVv" class=""><strong>입력 </strong></td><td id="F_qE" class="">user_info (ILF)</td><td id="^nl\" class="">사용자 로그인 정보 입력 및 인증</td><td id="FzVj" class="">5</td><td id="hB;B" class="">1</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8198-94ba-fa9fe85f1669"><td id="nAVv" class=""><strong>입력 </strong></td><td id="F_qE" class="">genie_playlist (EIF), convert_log (ILF)</td><td id="^nl\" class="">지니 플레이리스트 URL 입력 후 곡 정보 파싱</td><td id="FzVj" class="">6</td><td id="hB;B" class="">2</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8172-a215-cc0c7ed5f951"><td id="nAVv" class=""><strong>출력 </strong></td><td id="F_qE" class="">convert_log (ILF), youtube_playlist (EIF)</td><td id="^nl\" class="">변환 결과 및 상태 보고서 출력</td><td id="FzVj" class="">8</td><td id="hB;B" class="">2</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c0-a90d-d5174993a003"><td id="nAVv" class=""><strong>출력 </strong></td><td id="F_qE" class="">convert_log (ILF)</td><td id="^nl\" class="">오류 로그 및 실패 사유 출력</td><td id="FzVj" class="">6</td><td id="hB;B" class="">2</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-816c-9bef-cb13fec9e006"><td id="nAVv" class=""><strong>질의 </strong></td><td id="F_qE" class="">convert_log (ILF)</td><td id="^nl\" class="">변환 이력 검색 및 조회</td><td id="FzVj" class="">10</td><td id="hB;B" class="">2</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ca-9e01-d85f39060720" class=""><strong>복잡도 판정</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8176-8385-cac683666544" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fc-9049-e9362be37cb9"><th id="OG==" class="simple-table-header-color simple-table-header"><strong>유형</strong></th><th id="jfO&gt;" class="simple-table-header-color simple-table-header"><strong>데이터 항목 수</strong></th><th id="gLVb" class="simple-table-header-color simple-table-header"><strong>참조 파일 수</strong></th><th id="cpiS" class="simple-table-header-color simple-table-header"><strong>복잡도 수준</strong></th><th id="L`d[" class="simple-table-header-color simple-table-header" style="width:304.2528381347656px"><strong>근거 (복잡도 결정 위한 매트릭스)</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8136-a333-d67ef9544ae2"><td id="OG==" class=""><strong>입력 </strong></td><td id="jfO&gt;" class="">5</td><td id="gLVb" class="">1</td><td id="cpiS" class="">낮음 (Low)</td><td id="L`d[" class="" style="width:304.2528381347656px">데이터 항목 수 15 이하, 참조 파일 수 1 이하 → 낮음</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813f-bc87-df619fe98073"><td id="OG==" class=""><strong>입력 </strong></td><td id="jfO&gt;" class="">6</td><td id="gLVb" class="">2</td><td id="cpiS" class="">보통 (Average)</td><td id="L`d[" class="" style="width:304.2528381347656px">데이터 항목 수 15 이하, 참조 파일 수 2개 → 보통</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-810e-900c-d46163a21358"><td id="OG==" class=""><strong>출력 </strong></td><td id="jfO&gt;" class="">8</td><td id="gLVb" class="">2</td><td id="cpiS" class="">보통 (Average)</td><td id="L`d[" class="" style="width:304.2528381347656px">데이터 항목 수 20 이하, 참조 파일 수 2개 → 보통</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d8-b3c2-e0e8c519684d"><td id="OG==" class=""><strong>출력 </strong></td><td id="jfO&gt;" class="">6</td><td id="gLVb" class="">2</td><td id="cpiS" class="">낮음 (Low)</td><td id="L`d[" class="" style="width:304.2528381347656px">데이터 항목 수가 적고 단순 로그 출력 → 낮음</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8143-96e5-c9dd3100bedb"><td id="OG==" class=""><strong>질의 </strong></td><td id="jfO&gt;" class="">10</td><td id="gLVb" class="">2</td><td id="cpiS" class="">높음 (High)</td><td id="L`d[" class="" style="width:304.2528381347656px">데이터 항목 수가 많고 조건 검색 포함 → 높음</td></tr></div></tbody></table></div></li></ol></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8121-b45b-f95ecaec9a67" class="">
+</p></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-81b8-b9db-e1a5f8ddebe2" class="numbered-list" start="5"><li>예비기능 점수산정</li></ol></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81cf-8762-c167ea8bed5c" class="">위에서 선정한 데이터/처리 기능에 복잡도에 따른 가중치를 정리하면 다음과 같다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-810d-8a26-cf8a254f978c" class="">데이터 기능점수</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81cc-a6c1-e202ee505fd4" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8184-be41-db0283245098"><th id="mf{G" class="simple-table-header-color simple-table-header">구분</th><th id="Ec|h" class="simple-table-header-color simple-table-header">기능명</th><th id=":W?t" class="simple-table-header-color simple-table-header">복잡도 수준</th><th id="CsZV" class="simple-table-header-color simple-table-header">가중치</th><th id="FDqr" class="simple-table-header-color simple-table-header">점수</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d4-84e1-fa58bf9f058f"><td id="mf{G" class=""><strong>ILF</strong></td><td id="Ec|h" class="">사용자 정보</td><td id=":W?t" class="">낮음</td><td id="CsZV" class="">7</td><td id="FDqr" class="">7</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d0-aff6-ce475e293170"><td id="mf{G" class=""><strong>ILF</strong></td><td id="Ec|h" class="">변환 이력</td><td id=":W?t" class="">보통</td><td id="CsZV" class="">10</td><td id="FDqr" class="">10</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-818b-bf7b-ff1596216b06"><td id="mf{G" class=""><strong>EIF</strong></td><td id="Ec|h" class="">지니뮤직 API</td><td id=":W?t" class="">낮음</td><td id="CsZV" class="">5</td><td id="FDqr" class="">5</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-810b-9ddf-d432fc335107"><td id="mf{G" class=""><strong>EIF</strong></td><td id="Ec|h" class="">유튜브 API</td><td id=":W?t" class="">보통</td><td id="CsZV" class="">7</td><td id="FDqr" class="">7</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-818d-91db-e86bd6d77dd9"><td id="mf{G" class=""><strong>소계</strong></td><td id="Ec|h" class=""></td><td id=":W?t" class=""></td><td id="CsZV" class=""></td><td id="FDqr" class=""><strong>29점</strong></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8144-899d-fd29f45570b4" class=""><strong>처리 기능 점수</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8136-b043-d309823193b0" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a6-9983-e3eb55b31608"><th id="q;|\" class="simple-table-header-color simple-table-header"><strong>구분</strong></th><th id="z}Uu" class="simple-table-header-color simple-table-header"><strong>기능명</strong></th><th id="Ka|u" class="simple-table-header-color simple-table-header"><strong>복잡도 수준</strong></th><th id="Fqe`" class="simple-table-header-color simple-table-header"><strong>가중치</strong></th><th id="|JvK" class="simple-table-header-color simple-table-header"><strong>점수</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d7-84ff-cf25b89feebc"><td id="q;|\" class=""><strong>입력</strong></td><td id="z}Uu" class="">로그인</td><td id="Ka|u" class="">낮음</td><td id="Fqe`" class="">3</td><td id="|JvK" class="">3</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ab-89de-da2881cbf7f3"><td id="q;|\" class=""><strong>입력</strong></td><td id="z}Uu" class="">플레이리스트 입력</td><td id="Ka|u" class="">보통</td><td id="Fqe`" class="">4</td><td id="|JvK" class="">4</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8149-adc9-f5d620efc70d"><td id="q;|\" class=""><strong>출력</strong></td><td id="z}Uu" class="">변환 결과 출력</td><td id="Ka|u" class="">보통</td><td id="Fqe`" class="">5</td><td id="|JvK" class="">5</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-812a-ada3-ce9909205a07"><td id="q;|\" class=""><strong>출력</strong></td><td id="z}Uu" class="">오류로그 출력</td><td id="Ka|u" class="">낮음</td><td id="Fqe`" class="">4</td><td id="|JvK" class="">4</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81cb-916a-ef3578a42ada"><td id="q;|\" class=""><strong>질의</strong></td><td id="z}Uu" class="">변환 목록 조회</td><td id="Ka|u" class="">높음</td><td id="Fqe`" class="">6</td><td id="|JvK" class="">6</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-817c-974b-e2167188fcba"><td id="q;|\" class=""><strong>소계</strong></td><td id="z}Uu" class=""></td><td id="Ka|u" class=""></td><td id="Fqe`" class=""></td><td id="|JvK" class=""><strong>22점</strong></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81c4-9051-ec5638b9da0e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8125-a091-e3b052f0b558" class="">예비 기능 점수 계산</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b4-bac9-dfcab35621dc" class=""><strong>데이터 기능 + 처리 기능 = 29 + 22 = 51점</strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8162-868b-f73f06dd6913" class="">
+</p></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-8176-b41a-e8cd5d060d13" class="numbered-list" start="6"><li>조정 인자 값 산출<div style="display:contents" dir="auto"><p id="2cac520c-c0ba-813f-9a15-c5c32a2d6043" class=""><strong>조정인자 값 산출</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81f7-9c84-eeb2eec5388c" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-816c-88d8-f6fd856da016"><th id="ogp&lt;" class="simple-table-header-color simple-table-header"><strong>번호</strong></th><th id="X@S^" class="simple-table-header-color simple-table-header"><strong>조정 인자 항목</strong></th><th id="dvDM" class="simple-table-header-color simple-table-header"><strong>평가 기준</strong></th><th id="^DfC" class="simple-table-header-color simple-table-header"><strong>점수(0~5)</strong></th><th id="s|gC" class="simple-table-header-color simple-table-header"><strong>비고</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8122-8a60-d4f2063fdb71"><td id="ogp&lt;" class="">1</td><td id="X@S^" class="">데이터 통신의 정도</td><td id="dvDM" class="">지니뮤직·유튜브 API와 실시간 통신</td><td id="^DfC" class="">4</td><td id="s|gC" class="">외부 연동 필수</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8118-b104-c671e6148a3e"><td id="ogp&lt;" class="">2</td><td id="X@S^" class="">성능 요구 수준</td><td id="dvDM" class="">변환 속도와 오류 재시도 중요</td><td id="^DfC" class="">3</td><td id="s|gC" class="">중간 수준</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8157-8733-fc0355accff8"><td id="ogp&lt;" class="">3</td><td id="X@S^" class="">처리의 복잡도</td><td id="dvDM" class="">변환 로직 + 매칭 알고리즘 포함</td><td id="^DfC" class="">3</td><td id="s|gC" class="">복합 처리</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-817e-a463-d207dee77829"><td id="ogp&lt;" class="">4</td><td id="X@S^" class="">재사용성</td><td id="dvDM" class="">일부 API 모듈 재사용 가능</td><td id="^DfC" class="">2</td><td id="s|gC" class="">제한적 재사용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8108-874a-f6bebcf5c124"><td id="ogp&lt;" class="">5</td><td id="X@S^" class="">설치 용이성</td><td id="dvDM" class="">웹 기반, 별도 설치 불필요</td><td id="^DfC" class="">1</td><td id="s|gC" class="">낮음</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e3-873d-eee0078a9364"><td id="ogp&lt;" class="">6</td><td id="X@S^" class="">운영의 편의성</td><td id="dvDM" class="">브라우저 환경, 간단한 UI</td><td id="^DfC" class="">3</td><td id="s|gC" class="">중간</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8102-868b-daa356129221"><td id="ogp&lt;" class="">7</td><td id="X@S^" class="">다중 사이트 지원</td><td id="dvDM" class="">서버 단일, 다중 미지원</td><td id="^DfC" class="">1</td><td id="s|gC" class="">낮음</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c1-93bf-debe6c5206ea"><td id="ogp&lt;" class="">8</td><td id="X@S^" class="">데이터 처리량</td><td id="dvDM" class="">평균 사용량, 대량 트래픽 아님</td><td id="^DfC" class="">2</td><td id="s|gC" class="">중간 이하</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8184-a763-cfe500e57c44"><td id="ogp&lt;" class="">9</td><td id="X@S^" class="">온라인 데이터 입력</td><td id="dvDM" class="">사용자 URL 입력 기반</td><td id="^DfC" class="">3</td><td id="s|gC" class="">표준 수준</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8185-b192-d358f6a8e3a3"><td id="ogp&lt;" class="">10</td><td id="X@S^" class="">최종 사용자 효율성</td><td id="dvDM" class="">직관적 UI, 즉시 변환 피드백</td><td id="^DfC" class="">4</td><td id="s|gC" class="">높음</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d1-82db-fef32661fbbf"><td id="ogp&lt;" class="">11</td><td id="X@S^" class="">외부 인터페이스 복잡성</td><td id="dvDM" class="">API 키 인증, 요청 제한 등</td><td id="^DfC" class="">4</td><td id="s|gC" class="">비교적 높음</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8116-81c1-c662c8c753d0"><td id="ogp&lt;" class="">12</td><td id="X@S^" class="">내부 논리 복잡성</td><td id="dvDM" class="">DB 저장·로그 관리 포함</td><td id="^DfC" class="">3</td><td id="s|gC" class="">중간</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b8-b881-e6e1fef3d8f5"><td id="ogp&lt;" class="">13</td><td id="X@S^" class="">변경 용이성</td><td id="dvDM" class="">모듈별 분리, 수정 쉬움</td><td id="^DfC" class="">3</td><td id="s|gC" class="">중간</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ab-a766-c606d66e9c9e"><td id="ogp&lt;" class="">14</td><td id="X@S^" class="">보안 요구 수준</td><td id="dvDM" class="">OAuth 인증, 기본 보안 조치</td><td id="^DfC" class="">3</td><td id="s|gC" class="">중간</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8168-a660-d0885b1a2515"><td id="ogp&lt;" class=""><strong>총합</strong></td><td id="X@S^" class=""></td><td id="dvDM" class=""></td><td id="^DfC" class=""></td><td id="s|gC" class=""><strong>39</strong></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8196-a48b-ca7f2f5a34aa" class=""><strong>TDI= 39</strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81bc-a93e-e4e2b45ceaad" class=""><strong>VAF = 0.65+0.49 = 1.04</strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81c6-a305-f556cb527c08" class="">
+</p></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-815f-a697-d8d12d24c499" class="numbered-list" start="7"><li>최종 기능 점수 산출<div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8141-a98e-d845b9a805d1" class=""><strong>최종 기능점수 = 예비 기능점수 × VAF</strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8140-adc7-d54ff38e6e47" class="">51 <strong>× 1.04 = 53.04 →최종 기능점수는 53.04 포인트이다.</strong></p></div></li></ol></div></li></ol></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8182-83a1-fa661882f032" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-814a-9813-ea3688a93035" class="">(2) 간이법</h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-815d-85ca-c9cd38baaab2" class="">1,2 산정유형 및 적용 범위 선정<div class="indented"><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-81b3-a7d9-f74f1b382fa8" class="numbered-list" start="1"><li>산정유형:  신규 개발되는 웹서비스로  신규 개발 프로젝트 타입으로 산정한다. 산정 대상은 전체 시스템이며, 초기 단계의 기능점수 산정에 적합하다</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-8161-8f9d-c25d5dad1fbe" class="numbered-list" start="2"><li>적용범위: 시스템 전체 기능 중 사용자 인증, 지니뮤직 연동, 유튜브 연동 및 전송, 변환이력 관리인 핵심 기능만 산정 대상으로 한다.</li></ol></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8140-8797-caef70938c74" class="">
+</p></div></div></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81c2-bb24-f7d3f26738fd" class="">
+</p></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-81c3-a756-c486df5aa003" class="numbered-list" start="3"><li>데이터 기능 식별 <div style="display:contents" dir="auto"><p id="2cac520c-c0ba-811b-bd6b-f10b118e5f37" class=""><strong>서브 시스템 식별</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8127-a159-d8b6ef802321" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8164-94e2-dc244d4e6659"><th id="LBR]" class="simple-table-header-color simple-table-header"><strong>서브시스템명</strong></th><th id="&lt;ygC" class="simple-table-header-color simple-table-header"><strong>주요 기능 설명</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8173-9e9f-ce8769bc145d"><td id="LBR]" class="">사용자 관리 모듈</td><td id="&lt;ygC" class="">로그인 및 인증 처리</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f5-84e1-f2d773ac8180"><td id="LBR]" class="">재생목록 입력 모듈</td><td id="&lt;ygC" class="">지니뮤직 플레이리스트 입력 및 파싱</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8150-a178-c1e2f1ca115a"><td id="LBR]" class="">변환 및 출력 모듈</td><td id="&lt;ygC" class="">변환 결과 표시, 오류로그 출력</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d8-b119-c27df25b7bee"><td id="LBR]" class="">이력 관리 모듈</td><td id="&lt;ygC" class="">변환 이력 조회 및 기록 관리</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-813e-9966-e3da19d7f28c" class=""><strong>서브시스템별 데이터 기능 식별</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-814d-9567-d009474d9c65" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8185-a608-e250d94768cd"><th id="MW&lt;_" class="simple-table-header-color simple-table-header"><strong>서브시스템명</strong></th><th id="v|?M" class="simple-table-header-color simple-table-header"><strong>데이터 기능명</strong></th><th id="sBgZ" class="simple-table-header-color simple-table-header"><strong>유형</strong></th><th id="IL_I" class="simple-table-header-color simple-table-header"><strong>주요 내용</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8115-b6ce-d944466543ac"><td id="MW&lt;_" class="">사용자 관리 모듈</td><td id="v|?M" class="">사용자 정보</td><td id="sBgZ" class="">내부 논리 파일</td><td id="IL_I" class="">사용자 ID, 비밀번호, 토큰 등 인증 데이터 저장</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81cf-969f-edfe3e416eaf"><td id="MW&lt;_" class="">재생목록 입력 모듈</td><td id="v|?M" class="">지니뮤직 데이터</td><td id="sBgZ" class="">외부 인터페이스 파일</td><td id="IL_I" class="">지니뮤직 API 를 통해 곡/앨범 정보 참조</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-818c-95cb-c8d8279d084b"><td id="MW&lt;_" class="">변환 및 출력 모듈</td><td id="v|?M" class="">유튜브 데이터</td><td id="sBgZ" class="">외부 인터페이스 파일</td><td id="IL_I" class="">유튜브 API 를 통해 재생목록 전송</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8139-8993-ce729b53fdae"><td id="MW&lt;_" class="">이력 관리 모듈</td><td id="v|?M" class="">변환 이력</td><td id="sBgZ" class="">내부 논리 파일</td><td id="IL_I" class="">변환 날짜, 결과, 오류 로그 기록</td></tr></div></tbody></table></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-8104-a251-f3df9699432e" class="numbered-list" start="4"><li>처리기능 식별</li></ol></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-817c-bfc8-d66c4a235c52" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813b-8c38-c6adaa01b57f"><th id="&lt;;]:" class="simple-table-header-color simple-table-header"><strong>유형</strong></th><th id=";GtT" class="simple-table-header-color simple-table-header"><strong>데이터 기능명</strong></th><th id="oZv;" class="simple-table-header-color simple-table-header"><strong>처리 태스크(기능명)</strong></th><th id="TeBe" class="simple-table-header-color simple-table-header"><strong>데이터 항목 수</strong></th><th id="=VRK" class="simple-table-header-color simple-table-header"><strong>참조 파일 수</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8105-8033-d81478590590"><td id="&lt;;]:" class=""><strong>입력</strong></td><td id=";GtT" class="">사용자 정보</td><td id="oZv;" class="">로그인 요청 처리</td><td id="TeBe" class="">5</td><td id="=VRK" class="">1</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8172-aead-e4e380014216"><td id="&lt;;]:" class=""><strong>입력</strong></td><td id=";GtT" class="">지니뮤직 데이터, 변환 이력</td><td id="oZv;" class="">플레이리스트 입력 및 곡 정보 파싱</td><td id="TeBe" class="">6</td><td id="=VRK" class="">2</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815c-8a4f-fa87df8b4a67"><td id="&lt;;]:" class=""><strong>출력</strong></td><td id=";GtT" class="">유튜브 데이터, 변환 이력</td><td id="oZv;" class="">변환 결과 출력</td><td id="TeBe" class="">8</td><td id="=VRK" class="">2</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b6-bb3d-ffa11c811290"><td id="&lt;;]:" class=""><strong>출력</strong></td><td id=";GtT" class="">변환 이력</td><td id="oZv;" class="">오류 로그 출력</td><td id="TeBe" class="">6</td><td id="=VRK" class="">2</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f2-aaac-f330890e8116"><td id="&lt;;]:" class=""><strong>질의</strong></td><td id=";GtT" class="">변환 이력</td><td id="oZv;" class="">변환 목록 조회</td><td id="TeBe" class="">10</td><td id="=VRK" class="">2</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-813c-8bcb-ef9ea496ff0c" class="">데이터 및 처리 기능 식별 기능 산정 (통합)</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-810f-ada6-d768434dc2b9" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8150-8f15-e6ec2ddd73d5"><td id="nbYI" class="">단위업무 식별자</td><td id="JhVZ" class="">데이터 기능</td><td id="g^iL" class=""></td><td id="g[t}" class="">처리 기능 (EI)</td><td id="]__m" class=""></td><td id="f;oL" class=""></td><td id="wCTA" class="">EO</td><td id="V^CR" class="">EQ</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a9-bbd6-f09f5bd492f8"><td id="nbYI" class=""></td><td id="JhVZ" class="">ILF</td><td id="g^iL" class="">EIF</td><td id="g[t}" class="">입력</td><td id="]__m" class="">수정</td><td id="f;oL" class="">삭제</td><td id="wCTA" class=""></td><td id="V^CR" class=""></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ac-a516-f1a993dbdeea"><td id="nbYI" class="">사용자 관리</td><td id="JhVZ" class="">1</td><td id="g^iL" class="">0</td><td id="g[t}" class="">1</td><td id="]__m" class="">0</td><td id="f;oL" class="">0</td><td id="wCTA" class="">0</td><td id="V^CR" class="">0</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a2-a02b-e4f94e69df27"><td id="nbYI" class="">재생목록 입력</td><td id="JhVZ" class="">1</td><td id="g^iL" class="">1</td><td id="g[t}" class="">1</td><td id="]__m" class="">0</td><td id="f;oL" class="">0</td><td id="wCTA" class="">0</td><td id="V^CR" class="">0</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f8-ab06-ccb2a1969be4"><td id="nbYI" class="">결과 출력</td><td id="JhVZ" class="">0</td><td id="g^iL" class="">1</td><td id="g[t}" class="">0</td><td id="]__m" class="">0</td><td id="f;oL" class="">0</td><td id="wCTA" class="">1</td><td id="V^CR" class="">0</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81da-b382-f96a833ddd1f"><td id="nbYI" class="">이력 조회</td><td id="JhVZ" class="">1</td><td id="g^iL" class="">0</td><td id="g[t}" class="">0</td><td id="]__m" class="">0</td><td id="f;oL" class="">0</td><td id="wCTA" class="">0</td><td id="V^CR" class="">1</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8194-b329-c24c8a106f69"><td id="nbYI" class="">합계</td><td id="JhVZ" class="">3</td><td id="g^iL" class="">2</td><td id="g[t}" class="">2</td><td id="]__m" class="">0</td><td id="f;oL" class="">0</td><td id="wCTA" class="">1</td><td id="V^CR" class="">1</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8107-8c6b-d43ffb4cf956" class="">
+</p></div><div style="display:contents" dir="auto"><ol type="1" id="2cac520c-c0ba-8103-be19-e3699f997e13" class="numbered-list" start="5"><li>기능점수산정</li></ol></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8184-8bf5-c53984f5ee6e" class="">간이법의 평균 복잡도 가중치표를 이용하여 적용하면 다음과 같은 결과가 나온다.</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81d8-9728-c5ba7ca10555" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f9-b60f-cd8bb096e004"><td id="NYl|" class="">구분</td><td id=":o_g" class="">기능 수</td><td id="_fIn" class="">가중치(평균)</td><td id="NQoS" class="">점수</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8155-8883-c57c372c50f4"><td id="NYl|" class="">내부 논리 파일</td><td id=":o_g" class="">2</td><td id="_fIn" class="">7</td><td id="NQoS" class="">14</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c8-abab-e1bf42ed31f0"><td id="NYl|" class="">외부 인터페이스 파일</td><td id=":o_g" class="">2</td><td id="_fIn" class="">5</td><td id="NQoS" class="">10</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d1-b01d-c83aa0d3fcd1"><td id="NYl|" class="">입력</td><td id=":o_g" class="">2</td><td id="_fIn" class="">4</td><td id="NQoS" class="">8</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d6-946c-c88ba729353d"><td id="NYl|" class="">출력</td><td id=":o_g" class="">2</td><td id="_fIn" class="">5</td><td id="NQoS" class="">10</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815b-8e46-f5e33bb0028e"><td id="NYl|" class="">질의</td><td id=":o_g" class="">1</td><td id="_fIn" class="">4</td><td id="NQoS" class="">4</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ad-b6cc-f9c9a5e53fdf"><td id="NYl|" class="">합계</td><td id=":o_g" class=""></td><td id="_fIn" class=""></td><td id="NQoS" class="">46</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-814b-822d-d29c78254af8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8166-9cd5-ed974483544e" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81da-a394-fa7ce163a5f0" class="">5. 결론</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ba-b985-f6adb5c7a8bc" class="">텀프로젝트인 Genie2YT 소프트웨어를 대상으로 정규법과 간이법 절차를 적용하여 기능점수를 산정했다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8149-9f8e-d59215adedd8" class="">정규법에서는 6개 단계를 거쳐 총 53점이 , 간이법에서는 평균가중치를 적용하여 46점을 얻었다. 이를 통해 Genie2YT는 중간수준의 복잡도를 가진 웹 서비스로, 40~60FP인 중형시스템 수준임을 확인할 수 있었다.</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

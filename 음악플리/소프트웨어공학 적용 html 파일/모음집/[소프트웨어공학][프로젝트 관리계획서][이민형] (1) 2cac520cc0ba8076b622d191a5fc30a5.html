@@ -1,0 +1,731 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[소프트웨어공학][프로젝트 관리계획서][이민형] (1)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2cac520c-c0ba-8076-b622-d191a5fc30a5" class="page sans"><header><h1 class="page-title" dir="auto">[소프트웨어공학][프로젝트 관리계획서][이민형] (1)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b3-9e88-c7cce9976456" class=""><strong>주제: TuneMyMusic 서비스 분석 및 프로젝트 관리 계획</strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ad-a64a-ffb7f3ca727c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b9-b5ce-c046dbc11794" class="">과목: 소프트웨어공학</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8191-b9d8-e39a662e64d9" class="">담당교수님: 손한성 교수님</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ab-889a-e9d0e10347c4" class="">학과: 게임소프트웨어전공</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-816a-9fbd-e583b089f32f" class="">이름: 이민형</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81bf-a589-e1e94edf4cdc" class="">학번: 92115174</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81f4-a441-d4cb59e3b467" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-81a2-b379-dfa27008b5cf" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/348af5cc-e3ec-47ae-ab05-a68d0caaaa65.png"><img style="width:497.1279373368146px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/348af5cc-e3ec-47ae-ab05-a68d0caaaa65.png"/></a></figure></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8111-9af9-cb52904572a3" class=""><strong>목차</strong></h1></div><div style="display:contents" dir="ltr"><nav id="2cac520c-c0ba-81d4-b3a4-d56990118489" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8111-9af9-cb52904572a3"><strong>목차</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-816f-9dff-e18776a4576b">1. 개요(Introduction)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8129-9bda-e28e79366ed7">1.1 문서의 목적</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-816b-bcaa-fdd71500b861">1.2 프로젝트 개요</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8122-92c8-f8b205ef50dd">1.3 관련 문서, 용어 및 약어  </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81ab-b1ad-e69e7d138d61">2. 개발 계획(Development Plan)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8181-ab21-c5af70e5a4a2">2.1 프로세스 모델 및 개발 방법론</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8164-9bf8-c91aea4bff52">2.2 작업 분합도(Work Breakdown Structure) </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-812f-a50f-df7ab665dc51">2.3 소요 자원(Staffing, Cost)  </a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-816d-9586-f55078692a7e">인적 자원</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-810c-8813-f7c4aeaec53b">기술 자원</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-810f-906f-e26c184b75f7">YouTube API 할당량(Quota) 및 비용 구조</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-8106-a807-c1e7482acb36">🎧 각 음악 플랫폼 API 효율적 활용 전략</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-8156-87fe-c19b6fb004a1">기술비용 예상 표</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-81fb-ba33-e48f48ee1166">2.4 일정 계획(Gantt Chart) </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81f0-9380-ef9ec79ecc76">3. 조직 구성(Organization) </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-819d-a4a8-febfb9954d10">3.1 팀 구조</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-81d8-84c9-e5c2d4c4b60c"><strong>팀 구조 선정 전략</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-81a7-9159-e3996c372fe0">고려 요인</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-81b9-9bb9-e0ca0d48fa77">선택 가능한 팀 구조 유형</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-81ed-ac3a-cddf509a9b5a">선정 이유</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-812d-b238-e6f76bba4457">3.2 책임 및 역할 </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81b1-8e26-c9db8c2d4f8f">4. 기술 관리 계획(Technical Management) </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-818a-84b3-cb022b7379dd">4.1 버전 관리</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-811a-bad4-e904ded159f9">4.2 형상 관리</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-81fc-a04f-fb4d359907c6">4.3 기술 관리</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8189-a5e3-c09bf55e9ede">5. 품질 관리 계획(Quality control)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8139-917f-e9435df1d3b9">5.1 품질 목표</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8133-824d-c20e1ffd48fb">5.2 검토 방법 및 주기</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-81be-a417-de640cec21b1">5.3 품질 관리 적용 기법</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8154-84e1-c25ce4656e91">5.4 리스크 관리</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81b4-9ab9-c1a8d5251d7e">6. 개발 환경(Development Environment)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8197-ba01-f221d3bfcffe">6.1 요구되는 소프트웨어 스펙</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-81f7-8515-f077b88273dc">6.2 요구되는 하드웨어 스펙</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8194-b8d4-de84382a7d1d">6.3 개발 공간 및 보안 요구사항</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-819e-9caa-c4de31452c77">7. 개발 산출물(Deliverables)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-818f-a08f-fb8a8184855c">7. 1 산출물 목록: 산출물 명, 생성 일자, 배포처</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81db-aecc-edee54395559">8.기타고려사항</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-818f-ad07-e15c60b18879"><strong>OAuth2 인증 및 보안 관리</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8151-9b5f-f58dd08c90d6"><strong>외부 API 정책 변경 리스크</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-81d9-a080-c591cc116bb9"><strong>데이터 매칭 정확도</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8118-ba57-d55b6bb85d07"><strong>저작권 및 데이터 접근 제한</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-816b-b20d-e8bac669c5df">9.참고 문헌 및 부록</a></div></nav></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8146-9faf-c9d851c2106d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8131-9f71-c282848bc996" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-816f-9dff-e18776a4576b" class="">1. 개요(Introduction)</h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8129-9bda-e28e79366ed7" class="">1.1 문서의 목적</h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81e2-91d5-fb81e8c21d15" class="">본 문서는 음악 스트리밍 플랫폼 간 재생목록을 이전하는 서비스 ‘TuneMyMusic’을 분석하고,</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ad-88bb-e0f3132e417d" class="">해당 서비스를 모델로 한 유사 프로젝트 개발 계획을 수립하기 위한 프로젝트 관리계획서이다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8121-8a31-f0e3897b6e0e" class="">이 문서는 소프트웨어공학 수업의 과제 목적에 따라 작성되었으며, 서비스 구조, 개발 절차, API 활용 전략, 품질 및 리스크 관리 계획을 포함한다.</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-816b-bcaa-fdd71500b861" class="">1.2 프로젝트 개요</h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-816e-9e6e-da10c870f1b1" class="">TuneMyMusic은 Spotify, Apple Music, YouTube Music, Deezer, Tidal 등 다양한 음악 플랫폼 간 재생목록(Playlist)을 손쉽게 옮길 수 있는 웹 기반 서비스이다.사용자는 로그인만으로 자신의 음악 데이터를 선택하고, 대상 플랫폼으로 자동 전송할 수 있다.추가로, “Sync 기능”을 통해 두 서비스 간 재생목록을 자동 동기화(주기적 업데이트)할 수 있다</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81a1-ada8-ce6e23bb2112" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8122-92c8-f8b205ef50dd" class="">1.3 관련 문서, 용어 및 약어  </h2></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8135-a155-d71ef5f5b27a" class="bulleted-list"><li style="list-style-type:disc">API (Application Programming Interface) : 각 음악 플랫폼의 데이터 접근 인터페이스</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ba-9aa0-cd80d8b29b80" class="bulleted-list"><li style="list-style-type:disc">OAuth 2.0 : 사용자 계정 인증 방식 (Spotify, YouTube 등 공통 사용)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8173-af77-f72f3e6b7878" class="bulleted-list"><li style="list-style-type:disc">Quota : YouTube Data API 등에서 요청 제한을 나타내는 단위</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ec-bfdf-f19cdad3f92c" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81ab-b1ad-e69e7d138d61" class="">2. 개발 계획(Development Plan)</h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8181-ab21-c5af70e5a4a2" class="">2.1 프로세스 모델 및 개발 방법론</h2></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8180-9135-c601f78bd412" class="bulleted-list"><li style="list-style-type:disc"><strong>개발 방법론:</strong> 애자일(Agile) + 스크럼(Scrum)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-811f-806b-f1be058e5e33" class="bulleted-list"><li style="list-style-type:disc"><strong>스프린트 주기:</strong> 1~2주 단위</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8114-aaeb-f452a230eade" class="bulleted-list"><li style="list-style-type:disc"><strong>핵심 목표:</strong> 기능 완성보다는 API 연동 실습과 사용자 흐름 구현 중심</li></ul></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8190-8f7e-cad4aec6061a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8183-b9df-dfa4b00d5faa"><th id="n:`v" class="simple-table-header-color simple-table-header">단계</th><th id="]Aiw" class="simple-table-header-color simple-table-header" style="width:337.99998474121094px">주요 내용</th><th id="]rH~" class="simple-table-header-color simple-table-header">산출물</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81aa-b879-e690031baf0f"><td id="n:`v" class="">요구분석</td><td id="]Aiw" class="" style="width:337.99998474121094px">TuneMyMusic 기능 조사, 각 플랫폼 API 분석</td><td id="]rH~" class="">요구사항 명세서</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a9-a66f-e7cadb15588f"><td id="n:`v" class="">설계</td><td id="]Aiw" class="" style="width:337.99998474121094px">재생목록 이전 알고리즘 설계 / OAuth 구조 설계</td><td id="]rH~" class="">시스템 구조도</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a7-97fc-e4ddd3d286f0"><td id="n:`v" class="">구현</td><td id="]Aiw" class="" style="width:337.99998474121094px">Flask 기반 백엔드 + REST API 구현</td><td id="]rH~" class="">기능별 모듈</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8192-a8f7-e9921e2b7a64"><td id="n:`v" class="">테스트</td><td id="]Aiw" class="" style="width:337.99998474121094px">Spotify ↔ YouTube 변환 테스트</td><td id="]rH~" class="">테스트 결과표</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-817e-8cba-c2b696c0e41d"><td id="n:`v" class="">배포</td><td id="]Aiw" class="" style="width:337.99998474121094px">로컬 서버 배포 및 시연 영상</td><td id="]rH~" class="">시연 보고서</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8164-9bf8-c91aea4bff52" class="">2.2 작업 분합도(Work Breakdown Structure) </h2></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-813d-b1d1-d06080e14ff9" class="link-to-page"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%EA%B3%84%ED%9A%8D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%EA%B0%84%ED%8A%B8%EC%B0%A8%ED%8A%B8%EB%A5%BC%20%EC%9C%84%ED%95%9C%20WBS%202cac520cc0ba813db1d1d06080e14ff9.html">간트차트를 위한 WBS</a></figure></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8160-bf1c-f93bf72a429a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8177-bf47-c82cc01baf9e"><th id="`vTj" class="simple-table-header-color simple-table-header" style="width:167.78976440429688px">단계</th><th id="m]tE" class="simple-table-header-color simple-table-header" style="width:75.99999237060547px">작업 코드</th><th id="{JRb" class="simple-table-header-color simple-table-header" style="width:137.99999237060547px">작업 명</th><th id="m&gt;k`" class="simple-table-header-color simple-table-header">담당 부서 / 역할</th><th id="FN=N" class="simple-table-header-color simple-table-header">시작일</th><th id="qm;n" class="simple-table-header-color simple-table-header" style="width:55.318180084228516px">종료일</th><th id="aXm&lt;" class="simple-table-header-color simple-table-header" style="width:71.10794830322266px">선행 작업</th><th id="tjCl" class="simple-table-header-color simple-table-header">산출물</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81bc-883f-e75dfb3ae3e0"><td id="`vTj" class="" style="width:167.78976440429688px"><strong>1. 기획 및 분석 단계</strong></td><td id="m]tE" class="" style="width:75.99999237060547px">1.1</td><td id="{JRb" class="" style="width:137.99999237060547px">프로젝트 계획 수립</td><td id="m&gt;k`" class="">PM / PL</td><td id="FN=N" class="">9/9</td><td id="qm;n" class="" style="width:55.318180084228516px">9/16</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">-</td><td id="tjCl" class="">프로젝트 계획서 초안</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815b-a262-f0e680ccdfa4"><td id="`vTj" class="" style="width:167.78976440429688px"></td><td id="m]tE" class="" style="width:75.99999237060547px">1.2</td><td id="{JRb" class="" style="width:137.99999237060547px">서비스 벤치마킹 및 요구사항 분석</td><td id="m&gt;k`" class="">기획팀 / CM</td><td id="FN=N" class="">9/16</td><td id="qm;n" class="" style="width:55.318180084228516px">9/23</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">1.1</td><td id="tjCl" class="">요구사항 명세서</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-816e-8111-f8d9b6264e9e"><td id="`vTj" class="" style="width:167.78976440429688px"></td><td id="m]tE" class="" style="width:75.99999237060547px">1.3</td><td id="{JRb" class="" style="width:137.99999237060547px">시스템 아키텍처 설계</td><td id="m&gt;k`" class="">TL / PL</td><td id="FN=N" class="">9/23</td><td id="qm;n" class="" style="width:55.318180084228516px">9/30</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">1.2</td><td id="tjCl" class="">시스템 구조도</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8181-82e7-e19552ff5bad"><td id="`vTj" class="" style="width:167.78976440429688px"><strong>2. 설계 단계</strong></td><td id="m]tE" class="" style="width:75.99999237060547px">2.1</td><td id="{JRb" class="" style="width:137.99999237060547px">API 명세 정의</td><td id="m&gt;k`" class="">TL / CM</td><td id="FN=N" class="">9/30</td><td id="qm;n" class="" style="width:55.318180084228516px">10/7</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">1.3</td><td id="tjCl" class="">API 명세서 (<code>api_spec.docx</code>)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8145-bf85-c19ccc6fbc1c"><td id="`vTj" class="" style="width:167.78976440429688px"></td><td id="m]tE" class="" style="width:75.99999237060547px">2.2</td><td id="{JRb" class="" style="width:137.99999237060547px">데이터베이스 및 매칭 로직 설계</td><td id="m&gt;k`" class="">PE / TL</td><td id="FN=N" class="">10/7</td><td id="qm;n" class="" style="width:55.318180084228516px">10/14</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">1.3</td><td id="tjCl" class="">설계 명세 문서</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815a-ab0c-ec20504c3a53"><td id="`vTj" class="" style="width:167.78976440429688px"><strong>3. 구현 단계</strong></td><td id="m]tE" class="" style="width:75.99999237060547px">3.1</td><td id="{JRb" class="" style="width:137.99999237060547px">Flask 서버 개발 (<code>main.py</code>)</td><td id="m&gt;k`" class="">PE / TL</td><td id="FN=N" class="">10/14</td><td id="qm;n" class="" style="width:55.318180084228516px">10/28</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">2.2</td><td id="tjCl" class="">서버 실행 모듈</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813e-b4f0-f6b3f9fb3bb8"><td id="`vTj" class="" style="width:167.78976440429688px"></td><td id="m]tE" class="" style="width:75.99999237060547px">3.2</td><td id="{JRb" class="" style="width:137.99999237060547px">API 통합 관리 모듈 개발 (<code>api_manager.py</code>)</td><td id="m&gt;k`" class="">PE / TL</td><td id="FN=N" class="">10/21</td><td id="qm;n" class="" style="width:55.318180084228516px">10/28</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">3.1</td><td id="tjCl" class="">API 통합 관리자</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8188-bcce-dcce0aea274f"><td id="`vTj" class="" style="width:167.78976440429688px"></td><td id="m]tE" class="" style="width:75.99999237060547px">3.3</td><td id="{JRb" class="" style="width:137.99999237060547px">프론트엔드 UI 개발 (<code>index.html</code>, <code>dashboard.html</code>)</td><td id="m&gt;k`" class="">PE / Front TL</td><td id="FN=N" class="">10/28</td><td id="qm;n" class="" style="width:55.318180084228516px">11/4</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">2.1</td><td id="tjCl" class="">UI 인터페이스</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8106-a7a4-f4ed9988d54a"><td id="`vTj" class="" style="width:167.78976440429688px"></td><td id="m]tE" class="" style="width:75.99999237060547px">3.4</td><td id="{JRb" class="" style="width:137.99999237060547px">Playlist 변환 / 동기화 모듈 (<code>playlist_sync.py</code>)</td><td id="m&gt;k`" class="">PE / Backend TL</td><td id="FN=N" class="">11/4</td><td id="qm;n" class="" style="width:55.318180084228516px">11/11</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">3.2</td><td id="tjCl" class="">Playlist 변환 모듈</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fd-9ca3-f203cd033adc"><td id="`vTj" class="" style="width:167.78976440429688px"><strong>4. 테스트 및 품질관리 단계</strong></td><td id="m]tE" class="" style="width:75.99999237060547px">4.1</td><td id="{JRb" class="" style="width:137.99999237060547px">통합 테스트 및 오류 수정</td><td id="m&gt;k`" class="">QE / QA팀</td><td id="FN=N" class="">11/11</td><td id="qm;n" class="" style="width:55.318180084228516px">11/25</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">3.4</td><td id="tjCl" class="">통합 테스트 리포트</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f9-b826-fb50199585fa"><td id="`vTj" class="" style="width:167.78976440429688px"></td><td id="m]tE" class="" style="width:75.99999237060547px">4.2</td><td id="{JRb" class="" style="width:137.99999237060547px">품질검토 및 리스크 분석</td><td id="m&gt;k`" class="">QE / PM</td><td id="FN=N" class="">11/25</td><td id="qm;n" class="" style="width:55.318180084228516px">12/2</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">4.1</td><td id="tjCl" class="">리스크·품질 관리 보고서</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8135-9e31-fbf20318d2d9"><td id="`vTj" class="" style="width:167.78976440429688px"><strong>5. 문서화 및 보고 단계</strong></td><td id="m]tE" class="" style="width:75.99999237060547px">5.1</td><td id="{JRb" class="" style="width:137.99999237060547px">프로젝트 진행 문서 정리</td><td id="m&gt;k`" class="">RG / PM</td><td id="FN=N" class="">12/2</td><td id="qm;n" class="" style="width:55.318180084228516px">12/9</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">4.2</td><td id="tjCl" class="">간트차트 및 일정 관리표</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8179-b69f-d30f7999ed55"><td id="`vTj" class="" style="width:167.78976440429688px"></td><td id="m]tE" class="" style="width:75.99999237060547px">5.2</td><td id="{JRb" class="" style="width:137.99999237060547px">최종 결과 보고서 작성</td><td id="m&gt;k`" class="">RG / PL</td><td id="FN=N" class="">12/9</td><td id="qm;n" class="" style="width:55.318180084228516px">12/20</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">5.1</td><td id="tjCl" class="">프로젝트 최종 보고서</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e6-b02a-f415a50029c3"><td id="`vTj" class="" style="width:167.78976440429688px"></td><td id="m]tE" class="" style="width:75.99999237060547px">5.3</td><td id="{JRb" class="" style="width:137.99999237060547px">발표자료 제작 및 시연 준비</td><td id="m&gt;k`" class="">RG / 전체</td><td id="FN=N" class="">12/20</td><td id="qm;n" class="" style="width:55.318180084228516px">12/23</td><td id="aXm&lt;" class="" style="width:71.10794830322266px">5.2</td><td id="tjCl" class="">발표자료 (<code>presentation.pptx</code>)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-811e-a4cd-e187d8399f45" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-812f-a50f-df7ab665dc51" class="">2.3 소요 자원(Staffing, Cost)  </h2></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-816d-9586-f55078692a7e" class="">인적 자원</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81eb-9492-ef187a1b03a7" class="">역할별 인원: 약 17명 (기술인력 10명, 관리 및 품질 4명, 지원인력 3명)</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81ed-aee3-d513f671beb0" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81de-975f-f19baec183d5"><th id="\z@{" class="simple-table-header-color simple-table-header">역할</th><th id="cTj^" class="simple-table-header-color simple-table-header" style="width:43.21590805053711px">인원</th><th id="IQN\" class="simple-table-header-color simple-table-header" style="width:67.43465423583984px">투입기간</th><th id="Wlcv" class="simple-table-header-color simple-table-header" style="width:236.12783813476562px">주요 업무</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8198-9595-df9eadf73364"><td id="\z@{" class=""><strong>PM (Project Manager)</strong></td><td id="cTj^" class="" style="width:43.21590805053711px">1</td><td id="IQN\" class="" style="width:67.43465423583984px">3.5개월</td><td id="Wlcv" class="" style="width:236.12783813476562px">일정·예산·리스크 총괄</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-810d-8196-eec6225428c4"><td id="\z@{" class=""><strong>PL (Project Leader)</strong></td><td id="cTj^" class="" style="width:43.21590805053711px">1</td><td id="IQN\" class="" style="width:67.43465423583984px">3.5개월</td><td id="Wlcv" class="" style="width:236.12783813476562px">팀 간 일정·품질 관리</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81be-b662-c42ae4c70b06"><td id="\z@{" class=""><strong>TL (Tech Leader)</strong></td><td id="cTj^" class="" style="width:43.21590805053711px">2</td><td id="IQN\" class="" style="width:67.43465423583984px">3.5개월</td><td id="Wlcv" class="" style="width:236.12783813476562px">기술 의사결정, 설계 관리</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b2-bac0-d21d9f3831b4"><td id="\z@{" class=""><strong>PE (Program Engineer)</strong></td><td id="cTj^" class="" style="width:43.21590805053711px">6</td><td id="IQN\" class="" style="width:67.43465423583984px">3.5개월</td><td id="Wlcv" class="" style="width:236.12783813476562px">API 연동, 서버 개발, UI 구현</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8135-a7a5-eb0d5237e6fa"><td id="\z@{" class=""><strong>CM (Content Manager)</strong></td><td id="cTj^" class="" style="width:43.21590805053711px">2</td><td id="IQN\" class="" style="width:67.43465423583984px">3.5개월</td><td id="Wlcv" class="" style="width:236.12783813476562px">API 키, 문서, OAuth 관리</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8174-a8c0-fca1f0885bc8"><td id="\z@{" class=""><strong>QE (Quality Engineer)</strong></td><td id="cTj^" class="" style="width:43.21590805053711px">2</td><td id="IQN\" class="" style="width:67.43465423583984px">3.5개월</td><td id="Wlcv" class="" style="width:236.12783813476562px">테스트, 품질 점검, QA 문서</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b3-9807-ea2274177244"><td id="\z@{" class=""><strong>RG (Rear Support Group)</strong></td><td id="cTj^" class="" style="width:43.21590805053711px">3</td><td id="IQN\" class="" style="width:67.43465423583984px">3.5개월</td><td id="Wlcv" class="" style="width:236.12783813476562px">보고서, 발표자료, 문서화, 커뮤니케이션</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-810c-8813-f7c4aeaec53b" class="">기술 자원</h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-814a-97fc-de78e5311b50" class="bulleted-list"><li style="list-style-type:disc">개발 언어: Python (Flask), JavaScript (React)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ea-b3e0-cd0da90f6f3e" class="bulleted-list"><li style="list-style-type:disc">DB: SQLite (테스트용), PostgreSQL (확장용)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8115-a398-e0f232bc0abe" class="bulleted-list"><li style="list-style-type:disc">API: Spotify Web API, YouTube Data API v3, Apple Music API</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-810f-906f-e26c184b75f7" class="">YouTube API 할당량(Quota) 및 비용 구조</h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8158-9c53-ea1d183b1bb7" class="bulleted-list"><li style="list-style-type:disc">기본 할당량: 10,000단위 / 하루</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81e1-91dd-ef05140339cc" class="bulleted-list"><li style="list-style-type:disc">읽기 요청: 약 1단위</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8105-9ab9-f4cb0239f355" class="bulleted-list"><li style="list-style-type:disc">쓰기 요청 (playlistItems.insert): 약 50단위</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8181-a9bb-d2e982b8e638" class="bulleted-list"><li style="list-style-type:disc">동영상 업로드: 약 1,600단위</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-816a-8709-e099b04c9c3e" class="bulleted-list"><li style="list-style-type:disc">초과 시: API 호출 제한 (별도 과금 없음, 단 Google에 증설 요청 가능)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81da-b669-c4bd2d76f1f3" class="bulleted-list"><li style="list-style-type:disc">효율적 사용 전략<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81e2-85ef-f76e747fa258" class="bulleted-list"><li style="list-style-type:circle">동일 곡 중복 요청 방지 (Cache 적용)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81b9-b211-e0880b114194" class="bulleted-list"><li style="list-style-type:circle">사용자 로그인별 API 키 분리 → Quota 분산</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-815d-8178-c86eb971bcdf" class="bulleted-list"><li style="list-style-type:circle">Google Cloud Console에 증설 요청서 제출</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-819d-be1b-f0ecb5ac71e7" class="bulleted-list"><li style="list-style-type:circle">실패 시 재시도(log 기록 기반)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8106-a807-c1e7482acb36" class="">🎧 각 음악 플랫폼 API 효율적 활용 전략</h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8174-92cb-fed964f5ec6f" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b1-862f-c97fce3ec9da"><th id="&lt;?&gt;]" class="simple-table-header-color simple-table-header" style="width:120.21874237060547px">플랫폼</th><th id="[}b[" class="simple-table-header-color simple-table-header" style="width:157.2783966064453px">제공 API</th><th id="vLht" class="simple-table-header-color simple-table-header">효율적 사용 전략</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8199-82b5-d926f15cee9f"><td id="&lt;?&gt;]" class="" style="width:120.21874237060547px"><strong>Spotify</strong></td><td id="[}b[" class="" style="width:157.2783966064453px">Spotify Web API</td><td id="vLht" class="">곡 검색 시 <code>limit=50</code> 페이징, 중복 제거</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ad-a6e6-d6a9c6e694e5"><td id="&lt;?&gt;]" class="" style="width:120.21874237060547px"><strong>Apple Music</strong></td><td id="[}b[" class="" style="width:157.2783966064453px">MusicKit + Token 인증</td><td id="vLht" class="">토큰을 미리 발급 후 재사용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81bc-8c88-c337bd4cb576"><td id="&lt;?&gt;]" class="" style="width:120.21874237060547px"><strong>Deezer</strong></td><td id="[}b[" class="" style="width:157.2783966064453px">Deezer Public API</td><td id="vLht" class="">앨범/아티스트 이름 기반 fallback 검색</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e9-940f-cece1b64d0de"><td id="&lt;?&gt;]" class="" style="width:120.21874237060547px"><strong>YouTube Music</strong></td><td id="[}b[" class="" style="width:157.2783966064453px">YouTube Data API v3</td><td id="vLht" class="">keyword 필터 최적화 + 캐싱</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8137-874b-f7bdbcf0b2c0"><td id="&lt;?&gt;]" class="" style="width:120.21874237060547px"><strong>Genie (비공식)</strong></td><td id="[}b[" class="" style="width:157.2783966064453px">HTML 파싱</td><td id="vLht" class="">직접 API 대신 BeautifulSoup 이용</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8156-87fe-c19b6fb004a1" class="">기술비용 예상 표</h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8133-b75c-e4f1887ca0b2" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-811e-a9be-e7d1b0c211c8"><th id="csrU" class="simple-table-header-color simple-table-header" style="width:211.0283966064453px">항목</th><th id="qdfp" class="simple-table-header-color simple-table-header" style="width:356.397705078125px">상세 내용</th><th id="?yPo" class="simple-table-header-color simple-table-header" style="width:77.69033813476562px">월 비용</th><th id="`HV;" class="simple-table-header-color simple-table-header" style="width:52.065338134765625px">기간</th><th id="xPWz" class="simple-table-header-color simple-table-header" style="width:85.88636016845703px">총액</th><th id="&lt;q~l" class="simple-table-header-color simple-table-header">비고</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8103-9c10-e0e7d0f35cf3"><td id="csrU" class="" style="width:211.0283966064453px"><strong>개발 환경</strong></td><td id="qdfp" class="" style="width:356.397705078125px">macOS / Windows / VSCode / Flask / React (오픈소스)</td><td id="?yPo" class="" style="width:77.69033813476562px">₩0</td><td id="`HV;" class="" style="width:52.065338134765625px">-</td><td id="xPWz" class="" style="width:85.88636016845703px">₩0</td><td id="&lt;q~l" class="">무료 사용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d6-be77-e3ec3e4eece6"><td id="csrU" class="" style="width:211.0283966064453px"><strong>클라우드 서버</strong></td><td id="qdfp" class="" style="width:356.397705078125px">AWS EC2 t3.medium (2vCPU, 4GB RAM)</td><td id="?yPo" class="" style="width:77.69033813476562px">₩60,000</td><td id="`HV;" class="" style="width:52.065338134765625px">4개월</td><td id="xPWz" class="" style="width:85.88636016845703px">₩240,000</td><td id="&lt;q~l" class="">웹서버 및 API 배포용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a5-882a-d080d4921e20"><td id="csrU" class="" style="width:211.0283966064453px"><strong>DB 서버</strong></td><td id="qdfp" class="" style="width:356.397705078125px">AWS RDS PostgreSQL (Free Tier 이후)</td><td id="?yPo" class="" style="width:77.69033813476562px">₩20,000</td><td id="`HV;" class="" style="width:52.065338134765625px">4개월</td><td id="xPWz" class="" style="width:85.88636016845703px">₩80,000</td><td id="&lt;q~l" class="">데이터 저장 및 로그</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81eb-8b9f-dc9e7f7c96a7"><td id="csrU" class="" style="width:211.0283966064453px"><strong>스토리지</strong></td><td id="qdfp" class="" style="width:356.397705078125px">S3 (10GB 사용 기준)</td><td id="?yPo" class="" style="width:77.69033813476562px">₩5,000</td><td id="`HV;" class="" style="width:52.065338134765625px">4개월</td><td id="xPWz" class="" style="width:85.88636016845703px">₩20,000</td><td id="&lt;q~l" class="">로그 및 백업</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8197-ab3c-c79ce3db3a0c"><td id="csrU" class="" style="width:211.0283966064453px"><strong>API 서비스 (YouTube, Spotify)</strong></td><td id="qdfp" class="" style="width:356.397705078125px">기본 무료, 증설 시 유료 할당</td><td id="?yPo" class="" style="width:77.69033813476562px">₩0</td><td id="`HV;" class="" style="width:52.065338134765625px">-</td><td id="xPWz" class="" style="width:85.88636016845703px">₩0</td><td id="&lt;q~l" class="">무료 기본 한도 사용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8135-a651-c9c04dfc8251"><td id="csrU" class="" style="width:211.0283966064453px"><strong>모니터링 및 로깅</strong></td><td id="qdfp" class="" style="width:356.397705078125px">Datadog 또는 AWS CloudWatch</td><td id="?yPo" class="" style="width:77.69033813476562px">₩10,000</td><td id="`HV;" class="" style="width:52.065338134765625px">4개월</td><td id="xPWz" class="" style="width:85.88636016845703px">₩40,000</td><td id="&lt;q~l" class="">오류 및 성능 모니터링</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-818f-b7b1-edc4970df2ff"><td id="csrU" class="" style="width:211.0283966064453px"><strong>CI/CD</strong></td><td id="qdfp" class="" style="width:356.397705078125px">GitHub Actions / Render / Vercel</td><td id="?yPo" class="" style="width:77.69033813476562px">₩0</td><td id="`HV;" class="" style="width:52.065338134765625px">-</td><td id="xPWz" class="" style="width:85.88636016845703px">₩0</td><td id="&lt;q~l" class="">무료 플랜 사용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-816a-aedd-fe5bd0286983"><td id="csrU" class="" style="width:211.0283966064453px"><strong>협업 도구</strong></td><td id="qdfp" class="" style="width:356.397705078125px">Notion / Slack / Google Workspace</td><td id="?yPo" class="" style="width:77.69033813476562px">₩12,000</td><td id="`HV;" class="" style="width:52.065338134765625px">4개월</td><td id="xPWz" class="" style="width:85.88636016845703px">₩48,000</td><td id="&lt;q~l" class="">팀 내 커뮤니케이션</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8125-91aa-c51e9ab2af96"><td id="csrU" class="" style="width:211.0283966064453px"><strong>디자인 도구</strong></td><td id="qdfp" class="" style="width:356.397705078125px">Figma Pro (3인 라이선스)</td><td id="?yPo" class="" style="width:77.69033813476562px">₩10,000</td><td id="`HV;" class="" style="width:52.065338134765625px">4개월</td><td id="xPWz" class="" style="width:85.88636016845703px">₩40,000</td><td id="&lt;q~l" class="">UI/UX 시안 제작</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81cf-b7c0-c399bda5874d"><td id="csrU" class="" style="width:211.0283966064453px"><strong>테스트 장비</strong></td><td id="qdfp" class="" style="width:356.397705078125px">노트북, 태블릿, 스마트폰 (사내 보유 장비)</td><td id="?yPo" class="" style="width:77.69033813476562px">₩0</td><td id="`HV;" class="" style="width:52.065338134765625px">-</td><td id="xPWz" class="" style="width:85.88636016845703px">₩0</td><td id="&lt;q~l" class="">기존 장비 활용</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8136-acae-e5cac6ef6c5c" class="">예상 기술비용 합계:<strong>₩468,000 (약 47만 원)</strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b3-959b-d22975640473" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-81fb-ba33-e48f48ee1166" class="">2.4 일정 계획(Gantt Chart) </h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-812b-b34e-e7def0422671" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-81e2-af87-c47c7cb693d6" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%EA%B3%84%ED%9A%8D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image.png"><img style="width:816px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%EA%B3%84%ED%9A%8D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image.png"/></a><figcaption>WBS 일정 기반 간트차트</figcaption></figure></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-812a-a80e-ebc2e88673fa" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81f0-9380-ef9ec79ecc76" class="">3. 조직 구성(Organization) </h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-819d-a4a8-febfb9954d10" class="">3.1 팀 구조</h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8167-b793-f63eba4d1334" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81d8-84c9-e5c2d4c4b60c" class=""><strong>팀 구조 선정 전략</strong></h3></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81a7-9159-e3996c372fe0" class="">고려 요인</h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81de-bfff-fe3370a21c66" class="bulleted-list"><li style="list-style-type:disc">프로젝트는 다수의 외부 API(YouTube, Spotify, Apple Music 등)와 연동해야 함</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81c4-a325-f6690e73b29c" class="bulleted-list"><li style="list-style-type:disc">백엔드-프론트엔드 간 협업이 필수이며, 일정 관리와 커뮤니케이션이 중요함</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-814a-8fc8-c3d322888298" class="bulleted-list"><li style="list-style-type:disc">실시간 회의와 문서 기반 협업이 병행되는 형태가 효율적임</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81b9-9bb9-e0ca0d48fa77" class="">선택 가능한 팀 구조 유형</h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81e3-8f55-d3466a1ef809" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8192-8c41-dc519618913e"><th id="Zowf" class="simple-table-header-color simple-table-header" style="width:115.01988220214844px">팀 구조 유형</th><th id="zt\c" class="simple-table-header-color simple-table-header">특징</th><th id="^Jnf" class="simple-table-header-color simple-table-header">장점</th><th id="jJkI" class="simple-table-header-color simple-table-header" style="width:199.36647033691406px">단점</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81cd-9ab2-fa4079c31eaf"><td id="Zowf" class="" style="width:115.01988220214844px"><strong>중앙집중형</strong></td><td id="zt\c" class="">PM 중심 의사결정, 수직적 보고 체계</td><td id="^Jnf" class="">명확한 통제, 일정 관리 용이</td><td id="jJkI" class="" style="width:199.36647033691406px">유연성 부족, 개발 속도 저하 가능</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c8-96cf-cbba6f46fddc"><td id="Zowf" class="" style="width:115.01988220214844px"><strong>분산형(탈중앙형)</strong></td><td id="zt\c" class="">각 파트 자율 진행, 문서로 공유</td><td id="^Jnf" class="">유연하고 신속한 대응 가능</td><td id="jJkI" class="" style="width:199.36647033691406px">조율 및 통합 어려움</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813f-ab05-fc5aecf1a94e"><td id="Zowf" class="" style="width:115.01988220214844px"><strong>하이브리드형</strong></td><td id="zt\c" class="">핵심 결정은 중앙집중식, 개발은 분산식</td><td id="^Jnf" class="">통제와 유연성의 균형</td><td id="jJkI" class="" style="width:199.36647033691406px">관리 복잡성 증가 가능</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8199-ac25-f3276e332e4e" class=""><strong>최종 선정 구조: 하이브리드 팀 구조 (Hybrid Team Structure) </strong></p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81ed-ac3a-cddf509a9b5a" class="">선정 이유</h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8120-95f6-ca362ca5ef59" class="bulleted-list"><li style="list-style-type:disc">TuneMyMusic 유사 시스템은 플랫폼 간 복수 API 연동이 핵심이므로, 각 플랫폼별 분할 개발(분산형 특성) 과 통합 검증 및 일정 관리(중앙집중형 특성)이 요구된다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-815c-bb7f-d10e7797090c" class="bulleted-list"><li style="list-style-type:disc">백엔드(API) / 프론트엔드(UI) / 품질관리 / 지원그룹이 서로 병행되지만,최종 통합 및 품질 승인은 PM → PL → TL → QE 단계를 거치는 중앙 방식을 유지한다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-817b-9cee-e77bb8a67403" class="bulleted-list"><li style="list-style-type:disc">따라서 하이브리드형 팀 구조가 기술적 효율성과 관리적 통제의 균형을 가장 잘 충족한다.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8146-83e7-ca3aee5ca117" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%EA%B3%84%ED%9A%8D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%90%E1%85%B5%E1%86%B7%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9.png"><img style="width:288px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%EA%B3%84%ED%9A%8D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%90%E1%85%B5%E1%86%B7%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9.png"/></a><figcaption>프로젝트 팀 조직도</figcaption></figure></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-812d-b238-e6f76bba4457" class="">3.2 책임 및 역할 </h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8150-8bb5-fd668e64acbe" class="">책임 및 역할</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81da-8feb-c28a34ef94b8" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ab-bcd7-d56a296097c8"><th id="ieid" class="simple-table-header-color simple-table-header" style="width:119.43749237060547px">구분</th><th id=":?lg" class="simple-table-header-color simple-table-header" style="width:238.20169067382812px">약어</th><th id="D:~&lt;" class="simple-table-header-color simple-table-header" style="width:163.5568084716797px">역할명</th><th id="&gt;{v[" class="simple-table-header-color simple-table-header" style="width:311.8238525390625px">주요 업무</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-816c-9b55-fb187b03bbf8"><td id="ieid" class="" style="width:119.43749237060547px"><strong>프로젝트 관리자</strong></td><td id=":?lg" class="" style="width:238.20169067382812px">PM (Project Manager)</td><td id="D:~&lt;" class="" style="width:163.5568084716797px">프로젝트 총괄 관리</td><td id="&gt;{v[" class="" style="width:311.8238525390625px">일정 수립, 예산·리스크 관리, 사용자 보고</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a2-b921-ea65434aec0f"><td id="ieid" class="" style="width:119.43749237060547px"><strong>프로젝트 리더</strong></td><td id=":?lg" class="" style="width:238.20169067382812px">PL (Project Leader)</td><td id="D:~&lt;" class="" style="width:163.5568084716797px">개발 전반 조율</td><td id="&gt;{v[" class="" style="width:311.8238525390625px">팀 간 일정 관리, 품질 점검, 보고 체계 유지</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8193-b283-f7c35592a470"><td id="ieid" class="" style="width:119.43749237060547px"><strong>기술 리더</strong></td><td id=":?lg" class="" style="width:238.20169067382812px">TL (Tech Leader)</td><td id="D:~&lt;" class="" style="width:163.5568084716797px">기술적 의사결정</td><td id="&gt;{v[" class="" style="width:311.8238525390625px">개발 환경, 프레임워크 선정, 아키텍처 설계</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8110-a2ed-ca6514bd7062"><td id="ieid" class="" style="width:119.43749237060547px"><strong>프로그램 엔지니어</strong></td><td id=":?lg" class="" style="width:238.20169067382812px">PE (Program Engineer)</td><td id="D:~&lt;" class="" style="width:163.5568084716797px">실제 시스템 구현</td><td id="&gt;{v[" class="" style="width:311.8238525390625px">Flask API 서버, Playlist 변환 로직, DB 관리</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-810b-a50b-f3aaa6a08a38"><td id="ieid" class="" style="width:119.43749237060547px"><strong>콘텐츠 매니저</strong></td><td id=":?lg" class="" style="width:238.20169067382812px">CM (Content Manager)</td><td id="D:~&lt;" class="" style="width:163.5568084716797px">외부 서비스 연동 관리</td><td id="&gt;{v[" class="" style="width:311.8238525390625px">YouTube/Spotify API 관리, OAuth 인증 흐름 점검</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f8-9323-f2ab8d07289b"><td id="ieid" class="" style="width:119.43749237060547px"><strong>품질 엔지니어</strong></td><td id=":?lg" class="" style="width:238.20169067382812px">QE (Quality Engineer)</td><td id="D:~&lt;" class="" style="width:163.5568084716797px">품질 및 테스트 관리</td><td id="&gt;{v[" class="" style="width:311.8238525390625px">단위·통합 테스트, 품질 기준 설정 및 평가</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b3-bde5-df6eba8732dc"><td id="ieid" class="" style="width:119.43749237060547px"><strong>리어종 그룹</strong></td><td id=":?lg" class="" style="width:238.20169067382812px">RG (Liaison / Rear Support Group)</td><td id="D:~&lt;" class="" style="width:163.5568084716797px">외부 커뮤니케이션 및 지원</td><td id="&gt;{v[" class="" style="width:311.8238525390625px">문서화, 보고서·발표자료 제작, 대외 협력 및 학과 지원</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81b1-8e26-c9db8c2d4f8f" class="">4. 기술 관리 계획(Technical Management) </h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-818a-84b3-cb022b7379dd" class="">4.1 버전 관리</h2></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8169-9839-f2656d3273b4" class="bulleted-list"><li style="list-style-type:disc">GitHub Flow 전략 (main / dev / feature 브랜치)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81dd-9c26-ddaa38d639a0" class="bulleted-list"><li style="list-style-type:disc">코드 단위별 커밋 기록 및 깃허브 Pull Request를 통한 리뷰 수행</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8105-b531-e701cf208123" class="bulleted-list"><li style="list-style-type:disc">주요 버전은 v1.0, v1.1와 같은 태그로 관리</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8198-81c4-f231c923abbe" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-811a-bad4-e904ded159f9" class="">4.2 형상 관리</h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8163-b061-d0e817f295b5" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8159-b91f-d513e68578ba" class="bulleted-list"><li style="list-style-type:disc"><code>.env</code> 파일로 API Key 분리</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8108-8114-d0ff02b034f9" class="bulleted-list"><li style="list-style-type:disc">환경별 설정 파일 관리 (<code>config/dev.json</code>, <code>config/prod.json</code>)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81c4-bc2e-d7c434b11b93" class="bulleted-list"><li style="list-style-type:disc">GitHub Issues를 통한 변경 이력 기록</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8124-9e3f-c2917b24b6f7" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-81fc-a04f-fb4d359907c6" class="">4.3 기술 관리</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8199-a70d-e3b41eab3da1" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ad-86b0-ee42cedaf53a"><th id="~N}w" class="simple-table-header-color simple-table-header">관리 항목</th><th id="P{O:" class="simple-table-header-color simple-table-header" style="width:330.460205078125px">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c4-acf7-ca9417d9c4f9"><td id="~N}w" class="">언어/프레임워크</td><td id="P{O:" class="" style="width:330.460205078125px">Python 3.11 / Flask / React</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8166-9a5f-fa49d225ab00"><td id="~N}w" class="">데이터 관리</td><td id="P{O:" class="" style="width:330.460205078125px">SQLite → PostgreSQL 전환 가능성 고려</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-814d-b7a9-c56353ac197a"><td id="~N}w" class="">배포 환경</td><td id="P{O:" class="" style="width:330.460205078125px">로컬 테스트 후 Render/Vercel 배포</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8173-9392-f175d427dca1"><td id="~N}w" class="">의존성 관리</td><td id="P{O:" class="" style="width:330.460205078125px"><code>requirements.txt</code>, <code>package.json</code> 고정 버전 유지</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8190-9771-c15499756bb8" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8189-a5e3-c09bf55e9ede" class="">5. 품질 관리 계획(Quality control)</h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8139-917f-e9435df1d3b9" class="">5.1 품질 목표</h2></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8119-b417-d2ccce1cf0f2" class="bulleted-list"><li style="list-style-type:disc">재생목록 변환 성공률 95% 이상</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8151-b94d-e39e6d501d1d" class="bulleted-list"><li style="list-style-type:disc">사용자 로그인 오류 0%</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ce-ba15-e6cf73fce515" class="bulleted-list"><li style="list-style-type:disc">API 호출 실패율 5% 이하 유지</li></ul></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8133-824d-c20e1ffd48fb" class="">5.2 검토 방법 및 주기</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8181-bc1e-fe0c8bd6dcae" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e2-bd16-c76f66ad43f2"><th id="r~_C" class="simple-table-header-color simple-table-header" style="width:83.32954406738281px">구분</th><th id="xS]t" class="simple-table-header-color simple-table-header" style="width:71.11363220214844px">검토 주체</th><th id="K{|~" class="simple-table-header-color simple-table-header" style="width:111.34090423583984px">주기</th><th id="?_|f" class="simple-table-header-color simple-table-header">방법</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8120-9955-f92cbcf688fd"><td id="r~_C" class="" style="width:83.32954406738281px">코드 리뷰</td><td id="xS]t" class="" style="width:71.11363220214844px">전 팀원</td><td id="K{|~" class="" style="width:111.34090423583984px">주 1회</td><td id="?_|f" class="">GitHub Pull Request 리뷰</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-811b-8e8b-ca257c074a00"><td id="r~_C" class="" style="width:83.32954406738281px">기능 테스트</td><td id="xS]t" class="" style="width:71.11363220214844px">QA 담당</td><td id="K{|~" class="" style="width:111.34090423583984px">2주 1회</td><td id="?_|f" class="">테스트 케이스 검증</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8108-91af-f74271aeda7e"><td id="r~_C" class="" style="width:83.32954406738281px">문서 점검</td><td id="xS]t" class="" style="width:71.11363220214844px">팀장</td><td id="K{|~" class="" style="width:111.34090423583984px">매 스프린트 종료</td><td id="?_|f" class="">WBS 및 일정 검토</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-81be-a417-de640cec21b1" class="">5.3 품질 관리 적용 기법</h2></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8170-bbaf-ee761044a352" class="bulleted-list"><li style="list-style-type:disc">단위 테스트(pytest)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-814e-ac07-d09cc48705ab" class="bulleted-list"><li style="list-style-type:disc">API 호출 로깅 및 응답 분석</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8114-9c67-cd8b2c2a0049" class="bulleted-list"><li style="list-style-type:disc">UI 간소화 테스트 (사용자 흐름 테스트)</li></ul></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8154-84e1-c25ce4656e91" class="">5.4 리스크 관리</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8169-899b-ddc6007976a6" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8145-a979-cd820c2278a7"><th id="bunu" class="simple-table-header-color simple-table-header">리스크</th><th id="N~KN" class="simple-table-header-color simple-table-header">원인</th><th id="{]|[" class="simple-table-header-color simple-table-header">대응 방안</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-810e-9957-edd712f0a9db"><td id="bunu" class="">API 할당량 초과</td><td id="N~KN" class="">YouTube API 제한</td><td id="{]|[" class="">사용자별 키 분리 / 증설 요청</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81eb-ae8a-d3e0485e462f"><td id="bunu" class="">데이터 매칭 실패</td><td id="N~KN" class="">음원 ID 불일치</td><td id="{]|[" class="">문자열 유사도 비교, 수동 매칭 옵션</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-810f-b235-c5a976c1b41b"><td id="bunu" class="">인증 오류</td><td id="N~KN" class="">OAuth 토큰 만료</td><td id="{]|[" class="">Refresh Token 사용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b5-8c94-d9b48d4bac8a"><td id="bunu" class="">네트워크 오류</td><td id="N~KN" class="">서버 응답 지연</td><td id="{]|[" class="">비동기 큐, 재시도 로직 적용</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81b4-9ab9-c1a8d5251d7e" class="">6. 개발 환경(Development Environment)</h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8197-ba01-f221d3bfcffe" class="">6.1 요구되는 소프트웨어 스펙</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8120-b380-c06160ebeb18" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81df-b30d-c70884507666"><th id="_f^p" class="simple-table-header-color simple-table-header">구분</th><th id="UuQv" class="simple-table-header-color simple-table-header" style="width:467.99998474121094px">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8130-8303-fc852cefedb0"><td id="_f^p" class=""><strong>운영체제 (OS)</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">macOS / Windows 10 이상 / Ubuntu 22.04</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f5-b6fc-ccc5ada07dee"><td id="_f^p" class=""><strong>개발언어</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">Python 3.11 (Flask Framework), JavaScript (React)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fb-9009-e464df57d82a"><td id="_f^p" class=""><strong>백엔드 프레임워크</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">Flask – RESTful API 서버 구성</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c4-a5af-c33fd18fbd06"><td id="_f^p" class=""><strong>프론트엔드 프레임워크</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">React.js – 사용자 로그인 및 재생목록 확인 UI</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81dd-b7bc-f2082af4b5aa"><td id="_f^p" class=""><strong>데이터베이스</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">SQLite (테스트용), PostgreSQL (확장용)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815c-9983-d6ad8c7832a4"><td id="_f^p" class=""><strong>API 연동</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">YouTube Data API v3, Spotify Web API, Apple Music API</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813e-8ff3-d41fe419d03c"><td id="_f^p" class=""><strong>테스트 도구</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">Postman, pytest</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-812c-890f-e25d34fc3c1d"><td id="_f^p" class=""><strong>형상관리</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">GitHub Repository – main/dev/feature 브랜치 구조</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-811b-9aa5-ffad1d0e101a"><td id="_f^p" class=""><strong>문서관리</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">Google Docs, Notion (주차별 기록 및 피드백 관리)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fb-a689-e55513b197fd"><td id="_f^p" class=""><strong>배포 환경</strong></td><td id="UuQv" class="" style="width:467.99998474121094px">Render 또는 Vercel (무료 호스팅 기반)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8168-a6bf-d0fe20fdce8b" class="bulleted-list"><li style="list-style-type:disc"><em>설명: </em>본 프로젝트는 주로 웹 기반 Flask 서버와 React 프론트엔드로 구성된다. 외부 API 사용량 제한(Quota)을 고려해, 로컬 환경에서 테스트 후 필요 시 Vercel/Render를 통해 외부에서 접근 가능한 데모 서버로 배포할 예정이다.</li></ul></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-81f7-8515-f077b88273dc" class="">6.2 요구되는 하드웨어 스펙</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8142-8b7f-f03781661dbd" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-819a-8ee0-c49a630bf621"><th id="z?M?" class="simple-table-header-color simple-table-header">구분</th><th id="Ea?^" class="simple-table-header-color simple-table-header">항목</th><th id="G?~M" class="simple-table-header-color simple-table-header">최소 사양</th><th id="?]go" class="simple-table-header-color simple-table-header">권장 사양</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81bf-9701-e16524a1af9e"><td id="z?M?" class=""><strong>개발용 노트북</strong></td><td id="Ea?^" class="">CPU</td><td id="G?~M" class="">Intel i5 10세대 이상</td><td id="?]go" class="">M1/M2, i7 이상</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8165-bd10-cb00b60b228b"><td id="z?M?" class=""></td><td id="Ea?^" class="">RAM</td><td id="G?~M" class="">8GB 이상</td><td id="?]go" class="">16GB 이상</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d3-957d-df862be6de16"><td id="z?M?" class=""></td><td id="Ea?^" class="">저장공간</td><td id="G?~M" class="">256GB SSD 이상</td><td id="?]go" class="">512GB SSD 이상</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-814f-8bcd-c269abfdb792"><td id="z?M?" class=""><strong>서버(테스트용)</strong></td><td id="Ea?^" class="">CPU</td><td id="G?~M" class="">2코어 이상</td><td id="?]go" class="">4코어 이상</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8165-a620-e9dd8cfa7956"><td id="z?M?" class=""></td><td id="Ea?^" class="">RAM</td><td id="G?~M" class="">2GB 이상</td><td id="?]go" class="">8GB 이상</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813a-825b-f18a9654ebd5"><td id="z?M?" class=""></td><td id="Ea?^" class="">네트워크</td><td id="G?~M" class="">안정적인 인터넷 연결 필수</td><td id="?]go" class="">고정 IP or 클라우드 환경</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f0-9d0a-ce1a15df79c1"><td id="z?M?" class=""><strong>기타 장비</strong></td><td id="Ea?^" class="">모니터, 외장 SSD, GitHub 계정</td><td id="G?~M" class="">개발 환경 통합용</td><td id="?]go" class=""></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-810c-8964-e749c6387266" class="">TuneMyMusic  시스템은 대규모 연산이 필요하지 않기 때문에  로컬PC 기반 개발로 충분하지만, API 호출 로그 및 캐시 기능 테스트시 여유로운 RAM이 필요하다.  테스트 서버는 오라클 혹은 AWS Free-tier 환경으로 대체 가능하다.</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8194-b8d4-de84382a7d1d" class="">6.3 개발 공간 및 보안 요구사항</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-819d-ab8f-ed289cd5308f" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815d-a68c-ee6f4e013333"><th id="N=?=" class="simple-table-header-color simple-table-header">구분</th><th id="yt;T" class="simple-table-header-color simple-table-header" style="width:445.99998474121094px">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a8-9740-ef8837ef13d3"><td id="N=?=" class=""><strong>개발 공간</strong></td><td id="yt;T" class="" style="width:445.99998474121094px">00사옥 2층 전산2팀 사무실 및 개인 노트북 환경에서 병행 개발</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d8-bd71-eea76dd42a45"><td id="N=?=" class=""><strong>협업 관리</strong></td><td id="yt;T" class="" style="width:445.99998474121094px">GitHub 및 Notion 기반 협업 (실시간 기록 공유)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-811e-8d04-e1997ede377d"><td id="N=?=" class=""><strong>보안 관리</strong></td><td id="yt;T" class="" style="width:445.99998474121094px"><code>.env</code> 파일을 통한 API Key 암호화 저장</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815d-a3da-fc300dd6f6ef"><td id="N=?=" class=""><strong>인증 관리</strong></td><td id="yt;T" class="" style="width:445.99998474121094px">OAuth 2.0 프로토콜 사용 (Spotify, YouTube, Apple Music)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8152-8521-d614c79856c9"><td id="N=?=" class=""><strong>데이터 보호</strong></td><td id="yt;T" class="" style="width:445.99998474121094px">사용자의 계정 정보 및 토큰은 서버 DB에 저장하지 않고 세션 기반 유지</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81dd-b6a0-d6c081001b56"><td id="N=?=" class=""><strong>백업 전략</strong></td><td id="yt;T" class="" style="width:445.99998474121094px">주요 산출물 및 코드 GitHub Cloud 백업 자동화 (commit 시점 저장)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-810a-a281-c06fba0bec0a"><td id="N=?=" class=""><strong>네트워크 보안</strong></td><td id="yt;T" class="" style="width:445.99998474121094px">HTTPS 환경에서 API 통신 (SSL 적용)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-817f-9392-c507eedcc50c" class="">실제 음악 플랫폼 API는 Oauth 인증 기반이므로 사용자 개인정보 보호가 핵심이다. API 키 및 토큰은 환경변수로 관리하도록하며,  해당 환경변수는 외부로 노출되지 않도록 .gitignore 설정을 적용한다.</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-819e-9caa-c4de31452c77" class="">7. 개발 산출물(Deliverables)</h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-818f-a08f-fb8a8184855c" class="">7. 1 산출물 목록: 산출물 명, 생성 일자, 배포처</h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-810d-879d-c6e4a4de62e5" class=""><em>(기간: 2025.09.09 ~ 12.23)</em></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-813f-a9fd-e1a414c4b821" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b9-865d-facc1c473013"><th id="fczn" class="simple-table-header-color simple-table-header" style="width:45.99999237060547px">구분</th><th id="s&gt;kO" class="simple-table-header-color simple-table-header" style="width:321px">산출물 명</th><th id="_`T?" class="simple-table-header-color simple-table-header">생성 예정일</th><th id="El}e" class="simple-table-header-color simple-table-header" style="width:160.19033813476562px">담당 부서 / 배포처</th><th id="{b;u" class="simple-table-header-color simple-table-header" style="width:327.3295440673828px">주요 내용 및 설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8146-b6c0-ee2c687a0de0"><td id="fczn" class="" style="width:45.99999237060547px">1</td><td id="s&gt;kO" class="" style="width:321px"><strong>프로젝트 계획서 초안 (Project Plan Draft)</strong></td><td id="_`T?" class="">2025.09.16</td><td id="El}e" class="" style="width:160.19033813476562px">PM팀 → 전 팀 배포</td><td id="{b;u" class="" style="width:327.3295440673828px">프로젝트 목표, 일정, 범위, 리스크 초안 작성 및 공유.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8148-a131-ff51c173f9d7"><td id="fczn" class="" style="width:45.99999237060547px">2</td><td id="s&gt;kO" class="" style="width:321px"><strong>요구사항 명세서 (Requirement Specification)</strong></td><td id="_`T?" class="">2025.09.23</td><td id="El}e" class="" style="width:160.19033813476562px">기획팀 → 개발팀</td><td id="{b;u" class="" style="width:327.3295440673828px">TuneMyMusic 주요 기능 및 API 요구사항 정의.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81cc-8cc8-c464c508c604"><td id="fczn" class="" style="width:45.99999237060547px">3</td><td id="s&gt;kO" class="" style="width:321px"><strong>시스템 구조도 (System Architecture Diagram)</strong></td><td id="_`T?" class="">2025.09.30</td><td id="El}e" class="" style="width:160.19033813476562px">백엔드팀 내부</td><td id="{b;u" class="" style="width:327.3295440673828px">API 연동 구조, OAuth 인증 흐름 설계.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-817e-9c2d-fced0ba55a8e"><td id="fczn" class="" style="width:45.99999237060547px">4</td><td id="s&gt;kO" class="" style="width:321px"><strong>API 명세서 (</strong><code><strong>api_spec.docx</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.10.07</td><td id="El}e" class="" style="width:160.19033813476562px">백엔드팀 → 프론트엔드팀</td><td id="{b;u" class="" style="width:327.3295440673828px">YouTube / Spotify / Apple Music API 명세 및 호출 방식 정의.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8192-8e92-c5815c55c208"><td id="fczn" class="" style="width:45.99999237060547px">5</td><td id="s&gt;kO" class="" style="width:321px"><strong>Flask 서버 모듈 (</strong><code><strong>main.py</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.10.21</td><td id="El}e" class="" style="width:160.19033813476562px">개발팀 내부 배포</td><td id="{b;u" class="" style="width:327.3295440673828px">서버 실행 및 API 호출 라우팅 로직 구현.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e6-bf99-ff6c1d56fa15"><td id="fczn" class="" style="width:45.99999237060547px">6</td><td id="s&gt;kO" class="" style="width:321px"><strong>API 통합 관리자 (</strong><code><strong>api_manager.py</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.10.28</td><td id="El}e" class="" style="width:160.19033813476562px">백엔드팀 내부</td><td id="{b;u" class="" style="width:327.3295440673828px">API 요청 효율화 및 할당량 관리 기능 완성.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8117-b88b-d8f220dca2a1"><td id="fczn" class="" style="width:45.99999237060547px">7</td><td id="s&gt;kO" class="" style="width:321px"><strong>UI 인터페이스 (</strong><code><strong>index.html</strong></code><strong>, </strong><code><strong>dashboard.html</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.11.04</td><td id="El}e" class="" style="width:160.19033813476562px">프론트엔드팀 → QA팀</td><td id="{b;u" class="" style="width:327.3295440673828px">로그인/변환 페이지 UI 구축 완료.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ea-a1e1-ef5e5e608942"><td id="fczn" class="" style="width:45.99999237060547px">8</td><td id="s&gt;kO" class="" style="width:321px"><strong>Playlist 변환/동기화 모듈 (</strong><code><strong>playlist_sync.py</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.11.11</td><td id="El}e" class="" style="width:160.19033813476562px">백엔드팀 → QA팀</td><td id="{b;u" class="" style="width:327.3295440673828px">Playlist 매칭 및 자동 동기화 로직 구현.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-819d-ad40-c9fd77f26832"><td id="fczn" class="" style="width:45.99999237060547px">9</td><td id="s&gt;kO" class="" style="width:321px"><strong>통합 테스트 리포트 (</strong><code><strong>integration_test.xlsx</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.11.25</td><td id="El}e" class="" style="width:160.19033813476562px">QA팀 → PM팀</td><td id="{b;u" class="" style="width:327.3295440673828px">API 응답시간, 매칭 정확도 등 통합 테스트 결과 기록.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815b-b081-ea943983cdf9"><td id="fczn" class="" style="width:45.99999237060547px">10</td><td id="s&gt;kO" class="" style="width:321px"><strong>품질 검토 및 리스크 관리 보고서 (</strong><code><strong>risk_quality_report.docx</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.12.02</td><td id="El}e" class="" style="width:160.19033813476562px">QA팀 → PM팀</td><td id="{b;u" class="" style="width:327.3295440673828px">API Quota 초과 대응, 품질 점검 결과 정리.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81cf-967e-d49c9aff6e7c"><td id="fczn" class="" style="width:45.99999237060547px">11</td><td id="s&gt;kO" class="" style="width:321px"><strong>간트차트 및 일정 관리표 (</strong><code><strong>TuneMyMusic_GanttChart_Final.xlsx</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.12.09</td><td id="El}e" class="" style="width:160.19033813476562px">PM팀 → 교수 제출용</td><td id="{b;u" class="" style="width:327.3295440673828px">주차별 진행률, 산출물 완료 시점 시각화.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8185-839d-c7c67de76c42"><td id="fczn" class="" style="width:45.99999237060547px">12</td><td id="s&gt;kO" class="" style="width:321px"><strong>최종 결과 보고서 (</strong><code><strong>project_final_report.docx</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.12.20</td><td id="El}e" class="" style="width:160.19033813476562px">PM팀 → 교수 제출용</td><td id="{b;u" class="" style="width:327.3295440673828px">전체 개발 과정 및 기술 분석 결과 요약.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-816d-97bc-f051ebefdf7c"><td id="fczn" class="" style="width:45.99999237060547px">13</td><td id="s&gt;kO" class="" style="width:321px"><strong>최종 발표 자료 (</strong><code><strong>presentation.pptx</strong></code><strong>)</strong></td><td id="_`T?" class="">2025.12.23</td><td id="El}e" class="" style="width:160.19033813476562px">발표팀</td><td id="{b;u" class="" style="width:327.3295440673828px">기말발표용 슬라이드, 시연 영상 포함.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8188-a5cf-da493afe928f" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-818e-950d-faf84241ce38" class="bulleted-list"><li style="list-style-type:disc">개발 중 생성되는 산출물은 GitHub 저장소에 백업된다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-817e-80ea-e8e9d5717cb4" class="bulleted-list"><li style="list-style-type:disc">내부 평가용 문서는 .docx 및 .pdf 형태로 최종 제출한다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8102-b92f-e0d957a96fab" class="bulleted-list"><li style="list-style-type:disc">API 인증키 관련 자료는 배포되지 않으며, 시연용 더미 계정으로만 테스트 한다.</li></ul></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81db-aecc-edee54395559" class="">8.기타고려사항</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-817d-a135-d6a1e04bb057" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-818f-ad07-e15c60b18879" class=""><strong>OAuth2 인증 및 보안 관리</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-814f-ad9b-eb2e2763921a" class="bulleted-list"><li style="list-style-type:disc">사용자 계정 접근 시 OAuth 인증 과정에서 Access Token 만료 / 갱신 실패가 발생할 수 있음.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8145-8d6b-f0e45927aa35" class="bulleted-list"><li style="list-style-type:disc">보안상 Token, API Key는 DB에 직접 저장하지 않고 환경 변수(.env) 또는 암호화 스토리지로 관리.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81b4-80f5-d8b3b96659e1" class="bulleted-list"><li style="list-style-type:disc">토큰 자동 갱신 로직 구현 및 토큰 만료 시 사용자 재로그인 유도</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-812f-af11-fbe0bfc2beae" class="bulleted-list"><li style="list-style-type:disc">HTTPS 기반 통신 필수 (인증 정보 암호화 전송).</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8151-9b5f-f58dd08c90d6" class=""><strong>외부 API 정책 변경 리스크</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-811b-9d62-fa7a7cedacc1" class="bulleted-list"><li style="list-style-type:disc">YouTube, Spotify, Apple Music 등 외부 API 의존도가 높아 정책 변경 시 서비스 장애 가능.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8158-9df9-dde3354d0a71" class="bulleted-list"><li style="list-style-type:disc">Google의 YouTube Data API는 하루 할당량(10,000단위) 제한이 존재하며, 초과 시 API 요청 차단 발생.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8172-b88a-e1e92179847c" class="bulleted-list"><li style="list-style-type:disc">대응 방안: API 호출 최적화 / 캐싱 / 사용자별 인증키 분리 / Quota 증설 요청 자동화.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81d9-a080-c591cc116bb9" class=""><strong>데이터 매칭 정확도</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8183-b68a-c24ff3dea626" class="bulleted-list"><li style="list-style-type:disc">서로 다른 플랫폼 간 트랙 이름/아티스트 표기법 차이로 매칭 실패 가능.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8181-8609-d752148460b1" class="bulleted-list"><li style="list-style-type:disc">문자열 유사도(Levenshtein Distance, Jaro-Winkler) 기반 검색 보정 알고리즘 적용 필요.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81d1-a96c-ca7818830e75" class="bulleted-list"><li style="list-style-type:disc">예: “아이유(IU)” vs “IU” / “사랑은 아파도 (Love Hurts)” 같은 변형 케이스 대응.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8121-b591-cd264970a6d9" class="bulleted-list"><li style="list-style-type:disc">서버 부하 최소화를 위해 매칭 결과는 캐시에 저장하며, 동일 요청 시 API 호출 없이 재사용한다.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8118-ba57-d55b6bb85d07" class=""><strong>저작권 및 데이터 접근 제한</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-818c-8dd6-c52880802077" class="bulleted-list"><li style="list-style-type:disc">음악 데이터(재생목록, 곡명, 앨범아트)는 각 플랫폼의 저작권 보호 대상.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-812c-a67f-d2f0aaafbab8" class="bulleted-list"><li style="list-style-type:disc">TuneMyMusic처럼 “사용자 계정 내 플레이리스트 복제”는 허용되지만, 곡 파일 다운로드나 외부 공유는 저작권 위반 소지 있음.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81e2-aa24-fd9d26148b24" class="bulleted-list"><li style="list-style-type:disc">대응 방안: “메타데이터(제목, 아티스트명, ID)”만 이동하고, 음원은 대상 플랫폼 내에서만 재생되도록 제한.</li></ul></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-816b-b20d-e8bac669c5df" class="">9.참고 문헌 및 부록</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81e2-bff0-f7ecdd2ff886" class=""><a href="https://www.tunemymusic.com/">TuneMyMusic 공식 웹사이트</a></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81bf-936c-f2ec7da94ae4" class="">[YouTube Data API v3 Documentation – Google Developers]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8189-8047-ed62846e7b0b" class="">[Using OAuth 2.0 to Access Google APIs<strong> - </strong> Google Developers]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81c5-9486-ee0bcaccfbf4" class="">[🔐 OAuth 2.0 완벽 가이드: 개념부터 실무 적용까지 한 번에 이해하기 - by journeylabs - tistory]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81d4-acf2-f4cdfa1097dd" class="">[[OAuth] 프로젝트에 OAuth 2.0 적용하기<strong> - </strong><a href="http://velog.io/@zini9188">velog.io/@zini9188</a>]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8189-ac7b-de8b12a2bc07" class="">[Apple Music Gets New Transfer Tool to Make Switching From Spotify Easier - apple]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8123-bf36-ed0314e9575f" class="">[Spotify Web API Documentation – Developer Portal]<br/>[Spotify to Youtube Music — How I wrote a simple tool in Python to migrate my playlists.] by<br/>ThreeTweetThread | The Pythoneers | Medium</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81d7-b87b-cea170ca8706" class="">[[멜론 ➡ Youtube Music] 멜론 플레이리스트 유튜브 뮤직(Youtube music)으로 옮기는 방법- by earthconquest.tistory]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-815b-b1c1-c64a61310814" class="">[멜론에 플레이리스트 자동으로 추가하기 by elishaz.tistory, 개발자도구→ 스크립트 적용]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81bf-a017-c644a10458dd" class="">[YouTube Data API ] 재생목록의 동영상리스트 데이터 가져오기— by bigexecution.tistory]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81c9-8a1c-db76be2b1ec1" class="">[음악추천 챗복2. 음악데이터 파악하기|Spotify API 이해 — by pearlluck.tistory]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81dc-bece-efada791c32f" class="">[멜론 플레이리스트 유튜브 뮤직 재생목록으로 옮기기 with NodeJS, Selenium— by mag1c.tistory]</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-817f-81b5-f20df74be68e" class="">GitHub - hansbala/myncer: An OSS alternative to soundiiz, tune my<br/>music, etc.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-810d-9072-e1218c7f0a79" class="">GitHub - esosaoh/Playlifts: Transfer playlists between Youtube Music,<br/>Spotify, and more</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b9-afc5-c269228991d8" class="">GitHub - linsomniac/spotify_to_ytmusic: Copy playlists and liked music from Spotify to<br/>YTMusic</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81db-a550-d63fd68fe6d6" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

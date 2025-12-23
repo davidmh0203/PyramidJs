@@ -1,0 +1,735 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[소프트웨어공학][요구사항 분석서][이민형] (1)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2cac520c-c0ba-806c-9672-c6f468bd893f" class="page sans"><header><h1 class="page-title" dir="auto">[소프트웨어공학][요구사항 분석서][이민형] (1)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8022-b37e-d94d95af0e28" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80fe-9dd1-c4289efd7cdd" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80ed-bbe2-d8278eb6fbe5" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8064-9813-f8a966d40ca7" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/348af5cc-e3ec-47ae-ab05-a68d0caaaa65.png"><img style="width:497.1279373368146px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/348af5cc-e3ec-47ae-ab05-a68d0caaaa65.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-807c-86a1-df2f02950672" class="">과목: 소프트웨어공학</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-803d-a299-d093926a29c0" class="">담당교수님: 손한성 교수님</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80e4-b7b2-c9d962b672c2" class="">학과: 게임소프트웨어전공</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80fc-8247-fee70d69acd8" class="">이름: 이민형</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-803e-9d16-ebf81024228e" class="">학번: 92115174</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8044-87eb-e6161ba9cd64" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80e3-98a6-da1b0d0d56fc" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80f1-830e-d37bbf045d85" class="">
+</p></div><div style="display:contents" dir="ltr"><nav id="2cac520c-c0ba-80f9-ab75-eb81b438d843" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-80d5-8a5c-d0086949097c">1. 개요 </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-80b5-9fd5-da4cee6beac1">1.1 문서의 목적 및 범위</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8040-8dd5-fc6fcb8a045e">1.2 프로젝트 개요</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-805f-b7d8-ff4def06f64c">1.3 관련문서, 용어 및 약어</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-806e-81bb-d1641143e97f">2. 요구사항</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-805b-a884-e144f45e91d2">2.1 기능 분석</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-80fc-bdd6-cfc33acc28c9">① 요구사항 검토</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-8060-b90b-c6d9c0d5477e">② 요구사항을 토대로 시스템 경계 결정</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-804a-8a1f-db7a432d15a5">③ 경계 설정된 시스템에 대한 명칭 정의</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-8087-8b70-f1bab1d21829">④ 시스템 외부에 존재하는 액터 식별 및 각 액터 역할 정의</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-80b7-bda2-c86d01302674">⑤ 각 액터가 시스템에서 사용하는 기능 식별</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-80ea-980f-eb0880ac7907">⑥ 식별된 사용자 기능과 액터 간 관계 정의</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-802e-8d99-c0836e8630ab">유스케이스 설명서</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-80a1-bc9b-c80efb7f1570">UC-01. 로그인하기 (Login)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-8071-bb56-d367979700ca">UC-02. 재생목록 URL 입력 (Input Playlist URL)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-800b-9d4e-df03b4798c05">UC-03. 곡 정보 추출 (Extract Song Info)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-80db-9775-ea279f963513">UC-04. YouTube 재생목록 생성 (Create YouTube Playlist)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-8084-8498-e1e5909fa888">UC-05. 변환 결과 확인 (Check Conversion Result)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-8060-9acc-f2629438c785">UC-06. 오류 로그 보기 (View Error Log)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-809d-985e-f058695268f0">2.2 구조 분석</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-8020-b68c-c349efd2354b">클래스 식별 결과표</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-806c-a11d-c7726774ae1b">④ 클래스 관계 해석</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8060-8c5e-e081a60c52fa">2.3 행위 분석</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-80f2-9990-c98ed63146ff">순차 다이어그램</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2cac520c-c0ba-8065-b3cd-d97cb0d9cd38">상태기계 다이어그램</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8030-af2c-cbdf355b1920">3. 분석 산출물 점검</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8093-bd85-e9ceef7bfd1f">(1) 기능 모델(Use Case Diagram) 점검</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8054-bf29-fec35f3f5970">(2) 구조 모델(Class Diagram) 점검</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-80eb-96e7-d2611db3aaa3">(3) 행위 모델(Sequence Diagram) 점검</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-809c-bb12-c321c998edcc">4. 인터페이스 분석</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-80b6-8f06-ebe026d34d3c">5. 제약사항</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-80c5-9c5e-e49b1ced8be9">6. 요구사항 추적표</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8063-9321-d99d134f027e">7. 참고문헌 및 목록</a></div></nav></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8023-b3bf-f231d704c1aa" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80d3-b2bd-d5299e5dc608" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8012-bda9-cae1d218f43b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80af-9205-c9290910eb69" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-80d5-8a5c-d0086949097c" class="">1. 개요 </h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-80b5-9fd5-da4cee6beac1" class="">1.1 문서의 목적 및 범위</h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8099-8c1a-c6e74527071e" class="">이 문서는 Genie2YT프로젝트 속  시스템에 대한 요구사항 분석서이다. 요구사항 정의서를 통해 도출된 요구사항에 대해 기능, 구조, 행위 모델을 이용한 분석, 시스템의 인터페이스, 제약사항, 요구사항 추적 등 기술한다. </p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-806d-b5c6-ce6549ef8e1f" class="">이 문서의 범위는 기능 분석을 위한 유스케이스 다이어그램 및 설명서, 구조와 행위 분석을 위한 클래스, 순차 다이어그램,분석된 모델간 일관겅 점검, 인터페이스 정의 및 제약사항, 요구사항 추적표를 포함한다.</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8040-8dd5-fc6fcb8a045e" class="">1.2 프로젝트 개요</h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8071-b597-e03deca0f349" class="">프로젝트명<strong>:</strong> Genie2YT – 국내 음악 플랫폼 재생목록 변환 시스템</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8061-82d4-c05d3102e663" class="">프로젝트 목적: 지니뮤직(Genie Music)과 같은 국내 음악 플랫폼의 재생목록을 YouTube Music으로 자동 변환하여 사용자가 플랫폼 간 음악 감상 경험을 연속적으로 유지할 수 있도록 하는 서비스이다. 국내 플랫폼에는 공개 API가 제공되지 않으므로, 본 시스템은 지니뮤직 HTML 페이지를 파싱하고 및 YouTube Data API 연동을 통해 재생목록을 생성한다.</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-805f-b7d8-ff4def06f64c" class="">1.3 관련문서, 용어 및 약어</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8057-871b-c3ecc7951659" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-804d-b2ec-e78c2a49f901"><th id="X}p:" class="simple-table-header-color simple-table-header">구분</th><th id="V;KV" class="simple-table-header-color simple-table-header">명칭</th><th id="=&gt;ur" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8090-a0a5-cab8b29c2e97"><td id="X}p:" class=""><strong>문서</strong></td><td id="V;KV" class="">Genie2YT 요구사항 정의서</td><td id="=&gt;ur" class="">본 분석서의 상위 문서로, 기능 및 비기능 요구사항 명세</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-804f-8f7a-edc50fc37577"><td id="X}p:" class=""></td><td id="V;KV" class="">Genie2YT 프로젝트 관리계획서</td><td id="=&gt;ur" class="">일정, 인력, 자원 배분 계획 문서 </td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8012-abed-f326120f3f8d"><td id="X}p:" class=""><strong>용어</strong></td><td id="V;KV" class=""><strong>Genie API</strong></td><td id="=&gt;ur" class="">공식 API가 아닌, Genie 웹페이지를 HTML 구조로 파싱하는 내부 모듈(= Genie Parser)을 의미함</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8023-89f4-ccbb275d2c1f"><td id="X}p:" class=""></td><td id="V;KV" class=""><strong>Parser (파서)</strong></td><td id="=&gt;ur" class="">HTML 문서를 파싱하여 곡명, 가수명, 앨범 정보를 추출하는 기능 모듈</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-807b-b270-fb74a9e92385"><td id="X}p:" class=""></td><td id="V;KV" class=""><strong>Converter (변환기)</strong></td><td id="=&gt;ur" class="">추출된 데이터를 YouTube Playlist 형태로 변환하는 모듈</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-809e-8cb4-f65d6fe248c5"><td id="X}p:" class=""></td><td id="V;KV" class=""><strong>OAuth</strong></td><td id="=&gt;ur" class="">사용자 인증을 위한 Google 계정 연동 프로토콜</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80db-81c5-fd9d31737f6d"><td id="X}p:" class=""></td><td id="V;KV" class=""><strong>FR (Functional Requirement)</strong></td><td id="=&gt;ur" class="">기능 요구사항, 시스템이 수행해야 할 동작 명세</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-806e-81bb-d1641143e97f" class="">2. 요구사항</h1></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-805b-a884-e144f45e91d2" class="">2.1 기능 분석</h2></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-80fc-bdd6-cfc33acc28c9" class="">① 요구사항 검토</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80d1-8f33-c7a45c1bc462" class="">요구사항 정의서에 제시된 기능적 요구사항(FR-01~FR-15)을 검토하였다. 검토한 결과, 시스템의 핵심 기능은 로그인, 재생목록 입력, 곡 데이터 추출, YouTube 재생목록 생성, 결과 표시의 다섯 가지로 요약된다. 또한 비기능 요구사항(NFR)으로는 처리속도(10초 이내), 보안(HTTPS), 신뢰성(로그 저장 및 복구) 등이 존재한다. 이 과정을 통해 유스케이스로 표현 가능한 사용자 중심 기능의 범위를 확정하였다.</p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8060-b90b-c6d9c0d5477e" class="">② 요구사항을 토대로 시스템 경계 결정</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80bd-aca1-d1dab50c9e7b" class="">시스템 경계는 “국내 음악 플랫폼의 재생목록을 YouTube Music으로 자동 변환하는 웹 서비스”로 설정하였다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-804a-9b3b-e84ed9015f84" class="">외부와 내부를 구분하면 다음과 같다.</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80d6-91ec-cefa3f2883bf" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8027-a586-d8a1fb8df017"><th id="^rbB" class="simple-table-header-color simple-table-header">구분</th><th id="pmv_" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8016-881f-e7f6e3ddc3a1"><td id="^rbB" class=""><strong>시스템 내부</strong></td><td id="pmv_" class="">Flask 서버, 변환 로직, 데이터베이스, YouTube API 호출 모듈</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8032-b5ee-fba54bdb8625"><td id="^rbB" class=""><strong>시스템 외부</strong></td><td id="pmv_" class="">사용자, Google OAuth 서버, Genie 서버, YouTube 서버</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-804a-8a1f-db7a432d15a5" class="">③ 경계 설정된 시스템에 대한 명칭 정의</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8019-94e5-fe304a6e741f" class="">경계가 확정된 시스템의 공식 명칭은 “Genie2YT (플리포터, Playlist Porter)”로 정의하였다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-805e-b92b-c670fa56b389" class="">시스템 명칭은 “Genie → YouTube”라는 주요 기능을 직관적으로 나타내며,</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80dd-9753-e7662fa650da" class="">이 명칭을 기준으로 이후 산출물(다이어그램, 설명서, 클래스 구조)을 통일하였다.</p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8087-8b70-f1bab1d21829" class="">④ 시스템 외부에 존재하는 액터 식별 및 각 액터 역할 정의</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8062-8769-f32ca1047d2f" class="">시스템 외부에서 Genie2YT와 상호작용하는 주체를 아래와 같이 식별하였다.</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-801c-b148-c7c85daaf826" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80c0-b741-cf0725542910"><th id="CtFu" class="simple-table-header-color simple-table-header">액터명</th><th id="Nkpt" class="simple-table-header-color simple-table-header">유형</th><th id="?LqE" class="simple-table-header-color simple-table-header">역할</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80d5-aa30-eafe73d58aa0"><td id="CtFu" class=""><strong>User (사용자)</strong></td><td id="Nkpt" class="">기본 액터</td><td id="?LqE" class="">웹 서비스를 이용해 재생목록 변환을 요청하는 주체</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8078-9aaf-ca6333caa66f"><td id="CtFu" class=""><strong>Google OAuth Server</strong></td><td id="Nkpt" class="">보조 액터</td><td id="?LqE" class="">로그인 및 인증 토큰 발급 담당</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8039-9b93-dd4f7b24eeff"><td id="CtFu" class=""><strong>Genie Server</strong></td><td id="Nkpt" class="">보조 액터</td><td id="?LqE" class="">HTML 형태의 재생목록 데이터를 제공</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8037-928e-fd3c8e990512"><td id="CtFu" class=""><strong>YouTube Data API Server</strong></td><td id="Nkpt" class="">보조 액터</td><td id="?LqE" class="">변환된 곡 정보를 받아 재생목록 생성 수행</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-80b7-bda2-c86d01302674" class="">⑤ 각 액터가 시스템에서 사용하는 기능 식별</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-802c-b9cf-f3098c48b84c" class="">각 액터가 수행하거나 요청하는 주요 기능을 다음과 같이 도출하였다.</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8031-89a8-c465268201fb" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-806c-a4f1-c7360f6ba192"><th id="E?wy" class="simple-table-header-color simple-table-header">액터</th><th id="tScH" class="simple-table-header-color simple-table-header">관련 기능</th><th id="];ix" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-803f-9983-d5442d167073"><td id="E?wy" class="">사용자(User)</td><td id="tScH" class="">로그인하기, 재생목록 URL 입력, 변환 결과 확인</td><td id="];ix" class="">서비스 이용을 위한 기본 절차 수행</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80c5-8904-fb03fdcbe316"><td id="E?wy" class="">Google OAuth</td><td id="tScH" class="">사용자 인증 및 토큰 검증</td><td id="];ix" class="">로그인 요청 시 응답</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-802e-b85d-cd7828fcbc50"><td id="E?wy" class="">Genie Server</td><td id="tScH" class="">곡 데이터 제공</td><td id="];ix" class="">HTML 파싱 대상</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-809e-a2c9-ee1a903f1ad3"><td id="E?wy" class="">YouTube API</td><td id="tScH" class="">재생목록 생성, 곡 추가</td><td id="];ix" class="">변환 결과 반영</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-80ea-980f-eb0880ac7907" class="">⑥ 식별된 사용자 기능과 액터 간 관계 정의</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-804c-9f7a-c64cb4c2e97c" class="">유스케이스 간 관계를 정리하면 다음과 같다.</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8069-bfb1-d2f2b18cbb56" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80b4-bde2-e2097fb51b7c"><th id="zqwJ" class="simple-table-header-color simple-table-header">관계 유형</th><th id="Fw@d" class="simple-table-header-color simple-table-header">설명</th><th id="D]@E" class="simple-table-header-color simple-table-header">적용 사례</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80c2-ba69-ef43fb393ea6"><td id="zqwJ" class=""><strong>include(포함 관계)</strong></td><td id="Fw@d" class="">다른 유스케이스 수행에 반드시 필요한 기능</td><td id="D]@E" class="">‘로그인하기’는 모든 주요 기능에 포함됨</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-801e-aa12-dbe81c4b5f74"><td id="zqwJ" class=""><strong>extend(확장 관계)</strong></td><td id="Fw@d" class="">선택적으로 수행되는 보조 기능</td><td id="D]@E" class="">‘오류 처리’, ‘로그 보기’는 확장 관계로 설정됨</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-802b-a7eb-f5fa52bca4cf" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-80e6-bda1-cf35d1812683" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%8B%E1%85%B2%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B3_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7.png"><img style="width:2245px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%8B%E1%85%B2%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B3_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7.png"/></a><figcaption>유스케이스 다이어그램</figcaption></figure></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8043-9d13-ebefa2201a05" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-802e-8d99-c0836e8630ab" class="">유스케이스 설명서</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8099-bad1-d110b769f77e" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-80a1-bc9b-c80efb7f1570" class="">UC-01. 로그인하기 (Login)</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80ed-bd76-f32d224077e1" class=""><strong>식별부</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80f5-9d8d-c75b4ad8053a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80e9-b407-e9b767e5449b"><th id="aygx" class="simple-table-header-color simple-table-header">항목</th><th id="KE=;" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80bf-87d5-d2fb3e709ff0"><td id="aygx" class=""><strong>유스케이스 명칭</strong></td><td id="KE=;" class="">로그인하기 (Login)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ad-9cea-e69978a0efd7"><td id="aygx" class=""><strong>유스케이스 ID</strong></td><td id="KE=;" class="">UC-01</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8013-bc10-e4eedc83ec02"><td id="aygx" class=""><strong>주요 액터</strong></td><td id="KE=;" class="">사용자(User), Google OAuth 서버</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8060-9591-c90490b93ff7"><td id="aygx" class=""><strong>선행 조건</strong></td><td id="KE=;" class="">사용자가 서비스 접속 완료 상태여야 함</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-807e-bd36-f26e87b60294"><td id="aygx" class=""><strong>사후 조건</strong></td><td id="KE=;" class="">Access Token 발급 및 사용자 세션 생성</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-806a-a852-c29bdd5a2f63"><td id="aygx" class=""><strong>입력 데이터</strong></td><td id="KE=;" class="">사용자 Google 계정 인증 정보</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80e8-a042-ef9bcece5570"><td id="aygx" class=""><strong>출력 데이터</strong></td><td id="KE=;" class="">Access Token, 사용자 이메일(ID)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80d5-8782-e6d528c761d2"><td id="aygx" class=""><strong>목적</strong></td><td id="KE=;" class="">사용자의 신원을 확인하고 개인화된 변환 기능 제공</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80b8-ae58-c0cd5d1f1eb5"><td id="aygx" class=""><strong>발생 주기</strong></td><td id="KE=;" class="">최초 접속 시 1회 또는 세션 만료 시</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8041-a69b-cdd5ed7281b6"><td id="aygx" class=""><strong>트리거</strong></td><td id="KE=;" class="">“로그인하기” 버튼 클릭</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8038-8d48-c1d565665c04" class=""><strong>Normal Flow of Events (Normal Scenario)</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80f6-90da-c1b83301f9d1" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80e0-8dc3-d4837ac1a7d1"><th id="a|Q_" class="simple-table-header-color simple-table-header">단계</th><th id="eviE" class="simple-table-header-color simple-table-header">행위자</th><th id="hJ=u" class="simple-table-header-color simple-table-header">시스템의 동작</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8088-a504-e5b8a5dc1037"><td id="a|Q_" class="">1</td><td id="eviE" class="">사용자</td><td id="hJ=u" class="">“로그인하기” 버튼 클릭</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8051-a747-c30d2d3e705f"><td id="a|Q_" class="">2</td><td id="eviE" class="">시스템</td><td id="hJ=u" class="">Google OAuth 인증 페이지로 이동</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8096-9ef5-c24fe32fe844"><td id="a|Q_" class="">3</td><td id="eviE" class="">OAuth 서버</td><td id="hJ=u" class="">사용자가 Google 계정 정보를 입력</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80a9-8b5d-caf59b8dc534"><td id="a|Q_" class="">4</td><td id="eviE" class="">OAuth 서버</td><td id="hJ=u" class="">인증 성공 후 Access Token 발급</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8026-979d-f79511c9288c"><td id="a|Q_" class="">5</td><td id="eviE" class="">시스템</td><td id="hJ=u" class="">사용자 세션 생성 및 메인 화면 이동</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8013-b517-d68fc7c82669" class=""><strong>Sub Flow / Alternative–Exception Flow</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8069-98bc-eebe7bbe5c3a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ca-a942-cf491f77398b"><th id="w|QZ" class="simple-table-header-color simple-table-header">예외 번호</th><th id="KPZ_" class="simple-table-header-color simple-table-header">발생 조건</th><th id="\LBG" class="simple-table-header-color simple-table-header">예외 흐름 / 처리 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-800f-a0f7-f5f3401bfd1e"><td id="w|QZ" class="">SF1</td><td id="KPZ_" class="">로그인 중 사용자가 취소를 누름</td><td id="\LBG" class="">로그인 프로세스 중단, 초기 화면으로 복귀</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8022-a47d-de033e04d5f1"><td id="w|QZ" class="">EX1</td><td id="KPZ_" class="">OAuth 인증 실패</td><td id="\LBG" class="">오류 코드 표시 및 재로그인 요청</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8031-a181-db05647dec1c"><td id="w|QZ" class="">EX2</td><td id="KPZ_" class="">네트워크 단절</td><td id="\LBG" class="">재시도 버튼 제공, 일정 시간 후 재시도</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-801f-bfed-d3300d4c11a6"><td id="w|QZ" class="">EX3</td><td id="KPZ_" class="">토큰 만료</td><td id="\LBG" class="">자동 로그아웃 및 로그인 화면으로 리디렉션</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8071-bb56-d367979700ca" class="">UC-02. 재생목록 URL 입력 (Input Playlist URL)</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8099-9269-da9e057f5dc9" class=""><strong>식별부</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80a2-9aab-fd9021424fbd" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8032-8555-ddf30d8a925f"><th id="LgrR" class="simple-table-header-color simple-table-header">항목</th><th id="aQhO" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8056-b083-f3b25904d0d0"><td id="LgrR" class=""><strong>유스케이스 명칭</strong></td><td id="aQhO" class="">재생목록 URL 입력 (Input Playlist URL)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8019-8976-c0353dc30e12"><td id="LgrR" class=""><strong>유스케이스 ID</strong></td><td id="aQhO" class="">UC-02</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8051-93e7-e26a4a6889b6"><td id="LgrR" class=""><strong>주요 액터</strong></td><td id="aQhO" class="">사용자(User)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-806d-946a-e4cfa1d0d286"><td id="LgrR" class=""><strong>선행 조건</strong></td><td id="aQhO" class="">로그인 완료 상태여야 함</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8006-b9dc-ea5f60dcd6fd"><td id="LgrR" class=""><strong>사후 조건</strong></td><td id="aQhO" class="">URL이 Flask 서버로 전달되어 파싱 준비 완료</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8068-9336-db5526a90e77"><td id="LgrR" class=""><strong>입력 데이터</strong></td><td id="aQhO" class="">지니뮤직 재생목록 URL 문자열</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-805d-999b-fcfaa9b1b085"><td id="LgrR" class=""><strong>출력 데이터</strong></td><td id="aQhO" class="">URL 유효성 검사 결과(True/False)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80f4-ba96-c05e99e03377"><td id="LgrR" class=""><strong>목적</strong></td><td id="aQhO" class="">사용자가 이전하려는 재생목록의 위치를 시스템에 제공</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80a9-a740-d10c634b0d99"><td id="LgrR" class=""><strong>발생 주기</strong></td><td id="aQhO" class="">사용자가 변환할 때마다</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ac-86fe-d5feb9461190"><td id="LgrR" class=""><strong>트리거</strong></td><td id="aQhO" class="">URL 입력 후 “변환 시작” 버튼 클릭</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8023-b616-d9da6004ec90" class=""><strong>Normal Flow of Events</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-805b-9b13-f0db540c2c0c" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-801a-947a-c659ab85f48a"><th id="sM_X" class="simple-table-header-color simple-table-header">단계</th><th id=";P@A" class="simple-table-header-color simple-table-header">행위자</th><th id="=ObT" class="simple-table-header-color simple-table-header">시스템의 동작</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-801f-b2a5-e6a59ecbea8b"><td id="sM_X" class="">1</td><td id=";P@A" class="">사용자</td><td id="=ObT" class="">재생목록 URL 입력 후 “변환 시작” 클릭</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80d6-9108-d295ecd5fb7e"><td id="sM_X" class="">2</td><td id=";P@A" class="">시스템</td><td id="=ObT" class="">입력된 URL의 형식을 검증</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-806b-addb-eb066375be6e"><td id="sM_X" class="">3</td><td id=";P@A" class="">시스템</td><td id="=ObT" class="">유효한 URL일 경우 Flask 서버로 전달</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8099-8f1f-d3ae3b9c42a5"><td id="sM_X" class="">4</td><td id=";P@A" class="">시스템</td><td id="=ObT" class="">URL 로그 기록 후 파싱 요청 준비</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-809a-a705-f5e4d6302e95" class=""><strong>Sub Flow / Alternative–Exception Flow</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-804b-873a-cf7e37e76668" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80d9-b125-efb6339cf493"><th id="fyf}" class="simple-table-header-color simple-table-header">예외 번호</th><th id="R?lL" class="simple-table-header-color simple-table-header">발생 조건</th><th id="pP;\" class="simple-table-header-color simple-table-header">예외 흐름 / 처리 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8009-8657-f98b2830a6f4"><td id="fyf}" class="">SF1</td><td id="R?lL" class="">URL 입력 후 수정 요청</td><td id="pP;\" class="">기존 URL 삭제 후 재입력 가능</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8038-85de-d05f25a3c068"><td id="fyf}" class="">EX1</td><td id="R?lL" class="">URL 형식 오류</td><td id="pP;\" class="">“유효하지 않은 URL” 메시지 표시</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8080-9788-d7f18da79c09"><td id="fyf}" class="">EX2</td><td id="R?lL" class="">비지니뮤직 도메인 입력</td><td id="pP;\" class="">“지원되지 않는 플랫폼입니다” 출력</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80b7-ac96-c8d43f498f7a"><td id="fyf}" class="">EX3</td><td id="R?lL" class="">입력 필드 공란</td><td id="pP;\" class="">“URL을 입력해주세요” 팝업 표시</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-800b-9d4e-df03b4798c05" class="">UC-03. 곡 정보 추출 (Extract Song Info)</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80b7-bf8a-e17badd05429" class=""><strong>식별부</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8083-9d49-fdcf9d945be5" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8078-a14a-cf3895eb872f"><th id="}rSM" class="simple-table-header-color simple-table-header">항목</th><th id="flfG" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80cb-8a7f-da8e48629cea"><td id="}rSM" class=""><strong>유스케이스 명칭</strong></td><td id="flfG" class="">곡 정보 추출 (Extract Song Info)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8003-b7af-f75957c855c4"><td id="}rSM" class=""><strong>유스케이스 ID</strong></td><td id="flfG" class="">UC-03</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ec-8bec-d3d6d8377dea"><td id="}rSM" class=""><strong>주요 액터</strong></td><td id="flfG" class="">Genie Server (HTML 데이터 제공자)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80de-909d-f0661d100942"><td id="}rSM" class=""><strong>선행 조건</strong></td><td id="flfG" class="">유효한 URL이 입력되어 있어야 함</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8078-9cc8-ed6b833b557c"><td id="}rSM" class=""><strong>사후 조건</strong></td><td id="flfG" class="">HTML 파싱 완료 및 곡 데이터 JSON 생성</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8013-a186-f9d451e9f139"><td id="}rSM" class=""><strong>입력 데이터</strong></td><td id="flfG" class="">지니뮤직 재생목록 HTML</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-807b-b70b-e7c01a274807"><td id="}rSM" class=""><strong>출력 데이터</strong></td><td id="flfG" class="">곡명, 아티스트, 앨범 등의 JSON 리스트</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-802c-8323-ec69f0a9bd41"><td id="}rSM" class=""><strong>목적</strong></td><td id="flfG" class="">지니뮤직 페이지에서 필요한 곡 데이터를 추출하여 YouTube 변환 준비</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80a6-9817-c17a42e05f6a"><td id="}rSM" class=""><strong>발생 주기</strong></td><td id="flfG" class="">URL 입력 시 자동 수행</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80d1-be54-e856677829db"><td id="}rSM" class=""><strong>트리거</strong></td><td id="flfG" class="">Flask 서버의 파싱 요청 발생 시</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80fe-8487-d6a9935f327d" class=""><strong>Normal Flow of Events</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80b3-a383-dddea966aa26" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80fc-a263-cf706c2c0cb4"><th id="zvO[" class="simple-table-header-color simple-table-header">단계</th><th id="M_?=" class="simple-table-header-color simple-table-header">행위자</th><th id="r&gt;{V" class="simple-table-header-color simple-table-header">시스템의 동작</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8036-ab01-d1fab8e65acd"><td id="zvO[" class="">1</td><td id="M_?=" class="">시스템</td><td id="r&gt;{V" class="">Flask 서버가 Genie 서버에 HTML 요청</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8026-bd4a-cd6b5a02f872"><td id="zvO[" class="">2</td><td id="M_?=" class="">Genie 서버</td><td id="r&gt;{V" class="">HTML 데이터 반환</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-801e-b8fa-d04ac48a4761"><td id="zvO[" class="">3</td><td id="M_?=" class="">시스템</td><td id="r&gt;{V" class="">BeautifulSoup으로 파싱 수행</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80c5-a673-c6813f3a611e"><td id="zvO[" class="">4</td><td id="M_?=" class="">시스템</td><td id="r&gt;{V" class="">곡명·가수·앨범 정보 추출</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-808d-850a-c06ce53bd48f"><td id="zvO[" class="">5</td><td id="M_?=" class="">시스템</td><td id="r&gt;{V" class="">JSON 형식으로 변환 후 캐시에 저장</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8009-afdb-d2a1ec23c673" class=""><strong>Sub Flow / Alternative–Exception Flow</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80dc-8eb0-c48d48f96669" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8024-b70d-db0ef493f070"><th id="{}Qn" class="simple-table-header-color simple-table-header">예외 번호</th><th id="neM~" class="simple-table-header-color simple-table-header">발생 조건</th><th id="&lt;&gt;&gt;}" class="simple-table-header-color simple-table-header">예외 흐름 / 처리 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80aa-a1df-d6dba5279f26"><td id="{}Qn" class="">SF1</td><td id="neM~" class="">일부 곡 정보 누락</td><td id="&lt;&gt;&gt;}" class="">비어 있는 항목은 “Unknown”으로 임시 채움</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80e7-a6a4-d3aa2f5f2220"><td id="{}Qn" class="">EX1</td><td id="neM~" class="">Genie 서버 응답 지연</td><td id="&lt;&gt;&gt;}" class="">최대 3회 재시도 후 실패 알림</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8063-953d-cd2cef4b0e5b"><td id="{}Qn" class="">EX2</td><td id="neM~" class="">HTML 구조 변경</td><td id="&lt;&gt;&gt;}" class="">“파싱 실패” 메시지 및 로그 기록</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ff-9714-ffb61fd1ef8c"><td id="{}Qn" class="">EX3</td><td id="neM~" class="">파싱 중 예외 발생</td><td id="&lt;&gt;&gt;}" class="">예외 처리 루틴 수행 및 복구 시도</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8094-88a8-fe4a7f9bef03" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-80db-9775-ea279f963513" class="">UC-04. YouTube 재생목록 생성 (Create YouTube Playlist)</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-804d-9805-e9cc151bedad" class=""><strong>식별부</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-808b-b5f7-d2240344ded4" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8013-9572-f49e5a76bdcc"><th id="H[}|" class="simple-table-header-color simple-table-header">항목</th><th id="KB&lt;r" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8092-b1c2-f63a462c400c"><td id="H[}|" class=""><strong>유스케이스 명칭</strong></td><td id="KB&lt;r" class="">YouTube 재생목록 생성 (Create YouTube Playlist)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80e1-8970-e7f48219276a"><td id="H[}|" class=""><strong>유스케이스 ID</strong></td><td id="KB&lt;r" class="">UC-04</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80f9-b164-ec9553d54ba0"><td id="H[}|" class=""><strong>주요 액터</strong></td><td id="KB&lt;r" class="">사용자(User), YouTube Data API</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8059-816e-c4c6e7809342"><td id="H[}|" class=""><strong>선행 조건</strong></td><td id="KB&lt;r" class="">곡 데이터 JSON이 준비되어 있어야 함</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80db-af5a-df66cae4aaa9"><td id="H[}|" class=""><strong>사후 조건</strong></td><td id="KB&lt;r" class="">YouTube 계정 내 새 재생목록이 생성되고 곡 추가 완료</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8005-b668-c57e145be79b"><td id="H[}|" class=""><strong>입력 데이터</strong></td><td id="KB&lt;r" class="">곡 데이터 JSON, 사용자 Access Token</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-809c-a4ce-d7d7639a0f3e"><td id="H[}|" class=""><strong>출력 데이터</strong></td><td id="KB&lt;r" class="">생성된 재생목록 ID, URL, 성공/실패 결과</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-806c-945c-ee5dbe66a5d9"><td id="H[}|" class=""><strong>목적</strong></td><td id="KB&lt;r" class="">추출된 곡 정보를 이용해 유튜브뮤직에 동일한 재생목록을 생성</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-803f-8db4-c0cc1427d247"><td id="H[}|" class=""><strong>발생 주기</strong></td><td id="KB&lt;r" class="">변환 요청 시 1회 수행</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80b2-8bda-c95b18f9efbf"><td id="H[}|" class=""><strong>트리거</strong></td><td id="KB&lt;r" class="">Flask 서버의 YouTube API 호출 요청</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80f2-a446-dbe5c65acff4" class=""><strong>Normal Flow of Events</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8094-a71d-e912aacd8d3e" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8035-9a7a-c9c2e3abdd49"><th id="axf;" class="simple-table-header-color simple-table-header">단계</th><th id="``qw" class="simple-table-header-color simple-table-header">행위자</th><th id="YKw&gt;" class="simple-table-header-color simple-table-header">시스템의 동작</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8004-89ed-cf92853460e8"><td id="axf;" class="">1</td><td id="``qw" class="">시스템</td><td id="YKw&gt;" class="">추출된 JSON 데이터를 YouTube API로 전달</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80e4-85de-dad1d5f61909"><td id="axf;" class="">2</td><td id="``qw" class="">YouTube API</td><td id="YKw&gt;" class="">Access Token 인증 확인</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8081-92aa-cca779351fbc"><td id="axf;" class="">3</td><td id="``qw" class="">시스템</td><td id="YKw&gt;" class="">새 재생목록 생성 요청 수행</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80b0-91c7-e7ef2396f19e"><td id="axf;" class="">4</td><td id="``qw" class="">YouTube API</td><td id="YKw&gt;" class="">playlistItems.insert 요청으로 곡 추가</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8040-ab15-ebd844e337be"><td id="axf;" class="">5</td><td id="``qw" class="">시스템</td><td id="YKw&gt;" class="">성공 결과 로그 저장</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80c9-9d9f-fcbb193b5d6b" class=""><strong>Sub Flow / Alternative–Exception Flow</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8061-9f6b-e6f86f0daa20" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80c9-853a-dc815f4bd44b"><th id="FdDD" class="simple-table-header-color simple-table-header">예외 번호</th><th id="uArc" class="simple-table-header-color simple-table-header">발생 조건</th><th id="ssD?" class="simple-table-header-color simple-table-header">예외 흐름 / 처리 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ed-9dc5-f620c6072bdc"><td id="FdDD" class="">SF1</td><td id="uArc" class="">사용자가 곡 매칭 확인 요청</td><td id="ssD?" class="">매칭된 곡 목록 미리보기 제공</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8028-9fc4-f0b048942561"><td id="FdDD" class="">EX1</td><td id="uArc" class="">API 인증 실패</td><td id="ssD?" class="">“로그인 상태를 확인하세요” 메시지 출력</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8037-bc8b-dc846604cc41"><td id="FdDD" class="">EX2</td><td id="uArc" class="">API Quota 초과</td><td id="ssD?" class="">일정 시간 대기 후 재시도</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80e5-964f-fd85c1fc0240"><td id="FdDD" class="">EX3</td><td id="uArc" class="">일부 곡 검색 실패</td><td id="ssD?" class="">후보곡 리스트 제시 및 수동 선택 유도</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80aa-ba45-d979e985c18b"><td id="FdDD" class="">EX4</td><td id="uArc" class="">네트워크 오류</td><td id="ssD?" class="">3회 재시도 후 오류 로그 기록</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8084-8498-e1e5909fa888" class="">UC-05. 변환 결과 확인 (Check Conversion Result)</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8015-944a-f66ffdab2abb" class=""><strong>식별부</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8038-8005-d48198d7e395" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ab-8bf4-e40ac5ed7e15"><th id="ZERc" class="simple-table-header-color simple-table-header">항목</th><th id="mxH:" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80f8-b4ce-d2f944927984"><td id="ZERc" class=""><strong>유스케이스 명칭</strong></td><td id="mxH:" class="">변환 결과 확인 (Check Conversion Result)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-802c-b540-c425d5c3baf4"><td id="ZERc" class=""><strong>유스케이스 ID</strong></td><td id="mxH:" class="">UC-05</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80de-9531-cfecde0713e9"><td id="ZERc" class=""><strong>주요 액터</strong></td><td id="mxH:" class="">사용자(User)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80e7-bb1b-d794021d8cb8"><td id="ZERc" class=""><strong>선행 조건</strong></td><td id="mxH:" class="">변환 프로세스가 완료되어야 함</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8091-97ac-c703c3204093"><td id="ZERc" class=""><strong>사후 조건</strong></td><td id="mxH:" class="">사용자에게 결과 요약(성공/실패/시간 등)이 표시됨</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8064-843d-c4fe7e5086be"><td id="ZERc" class=""><strong>입력 데이터</strong></td><td id="mxH:" class="">변환 로그 ID</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80bc-bf8c-e4d988042191"><td id="ZERc" class=""><strong>출력 데이터</strong></td><td id="mxH:" class="">성공/실패 횟수, 링크, 처리 시간</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8062-9a95-e61ca179f8d1"><td id="ZERc" class=""><strong>목적</strong></td><td id="mxH:" class="">변환 완료 여부 및 결과를 사용자에게 시각적으로 제공</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80fc-8b47-d3cc239c89ac"><td id="ZERc" class=""><strong>발생 주기</strong></td><td id="mxH:" class="">변환 종료 시</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ab-b8d6-f9a53edc9e15"><td id="ZERc" class=""><strong>트리거</strong></td><td id="mxH:" class="">변환 완료 후 자동 호출 또는 “결과 보기” 버튼 클릭</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8021-9460-f34d3409f5fe" class=""><strong>Normal Flow of Events</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80d6-9257-c331e4852272" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8091-a573-e3629855dc84"><th id="y[Ad" class="simple-table-header-color simple-table-header">단계</th><th id="fGLM" class="simple-table-header-color simple-table-header">행위자</th><th id="voZL" class="simple-table-header-color simple-table-header">시스템의 동작</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-809e-8d7b-f8c6489bad54"><td id="y[Ad" class="">1</td><td id="fGLM" class="">시스템</td><td id="voZL" class="">변환 완료 상태를 감지</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8017-8fa4-ed381ce0c9d3"><td id="y[Ad" class="">2</td><td id="fGLM" class="">시스템</td><td id="voZL" class="">성공/실패 곡 수 집계</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80dc-b111-c43a3495e6ed"><td id="y[Ad" class="">3</td><td id="fGLM" class="">시스템</td><td id="voZL" class="">처리 시간, 성공률 계산</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80c4-aac4-ed518d7fa2fb"><td id="y[Ad" class="">4</td><td id="fGLM" class="">사용자</td><td id="voZL" class="">결과 요약 확인 및 링크 클릭</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8081-9b77-f9ac0daea3f3" class=""><strong>Sub Flow / Alternative–Exception Flow</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8097-9774-d441e794e901" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-807d-97d2-ef5fdeff8f5e"><th id="yU|]" class="simple-table-header-color simple-table-header">예외 번호</th><th id=":B]]" class="simple-table-header-color simple-table-header">발생 조건</th><th id="aogF" class="simple-table-header-color simple-table-header">예외 흐름 / 처리 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-808c-998e-f26994336f6a"><td id="yU|]" class="">SF1</td><td id=":B]]" class="">사용자 요청 시 상세 로그 조회</td><td id="aogF" class="">각 곡별 상태를 테이블로 표시</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8070-8a97-d1c799d16ded"><td id="yU|]" class="">EX1</td><td id=":B]]" class="">로그 파일 손상</td><td id="aogF" class="">백업 로그로 복원 시도</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8058-8524-c0919d6dce38"><td id="yU|]" class="">EX2</td><td id=":B]]" class="">YouTube 링크 오류</td><td id="aogF" class="">“링크를 열 수 없습니다” 경고 표시</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-803f-9f01-fcbbcf6d88ad"><td id="yU|]" class="">EX3</td><td id=":B]]" class="">결과 데이터 누락</td><td id="aogF" class="">“변환 결과를 불러올 수 없습니다” 알림 표시</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8060-9acc-f2629438c785" class="">UC-06. 오류 로그 보기 (View Error Log)</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8002-bb47-c42d8bfbfa0a" class=""><strong>식별부</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80fb-affb-e38fb07bc0ed" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8042-aff8-c5bec633ffaa"><th id="ljPv" class="simple-table-header-color simple-table-header">항목</th><th id="|Es^" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80d8-b47c-f421646df4f0"><td id="ljPv" class=""><strong>유스케이스 명칭</strong></td><td id="|Es^" class="">오류 로그 보기 (View Error Log)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8058-ab10-edcbd4d80848"><td id="ljPv" class=""><strong>유스케이스 ID</strong></td><td id="|Es^" class="">UC-06</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8006-a00d-cb9549e9ff20"><td id="ljPv" class=""><strong>주요 액터</strong></td><td id="|Es^" class="">사용자(User)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-803f-a3bf-c2b580bbfe3b"><td id="ljPv" class=""><strong>선행 조건</strong></td><td id="|Es^" class="">변환이 실패했거나 오류가 발생해야 함</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-800f-a13f-c272de34ef91"><td id="ljPv" class=""><strong>사후 조건</strong></td><td id="|Es^" class="">로그 데이터가 화면에 표시됨</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-805b-87aa-d970040615b1"><td id="ljPv" class=""><strong>입력 데이터</strong></td><td id="|Es^" class="">로그 ID, 오류 코드</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80b2-a589-c9540f84c48b"><td id="ljPv" class=""><strong>출력 데이터</strong></td><td id="|Es^" class="">오류 원인, 발생 시각, 재시도 가능 여부</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ba-a7f4-f7b3e251d431"><td id="ljPv" class=""><strong>목적</strong></td><td id="|Es^" class="">오류 원인을 분석하고 재시도를 유도</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-807b-adab-c9d5f4907849"><td id="ljPv" class=""><strong>발생 주기</strong></td><td id="|Es^" class="">오류 발생 시</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-806e-92e6-cdc0d726fc23"><td id="ljPv" class=""><strong>트리거</strong></td><td id="|Es^" class="">“오류 로그 보기” 버튼 클릭</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80b0-88dc-f1315fc61f99" class=""><strong>Normal Flow of Events</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80ff-94f1-ff855ab979f9" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80fb-b413-ff48fc4a228e"><th id="NQAy" class="simple-table-header-color simple-table-header">단계</th><th id="&lt;PZL" class="simple-table-header-color simple-table-header">행위자</th><th id="MYeL" class="simple-table-header-color simple-table-header">시스템의 동작</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8022-9905-c2d30f2e3a81"><td id="NQAy" class="">1</td><td id="&lt;PZL" class="">사용자</td><td id="MYeL" class="">“오류 로그 보기” 버튼 클릭</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80c1-a3b9-e5e4d3dc821f"><td id="NQAy" class="">2</td><td id="&lt;PZL" class="">시스템</td><td id="MYeL" class="">DB에서 최근 오류 로그 조회</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80cd-ac72-ccf6321d701f"><td id="NQAy" class="">3</td><td id="&lt;PZL" class="">시스템</td><td id="MYeL" class="">오류 코드, 시간, 원인을 표시</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8087-8ba7-face48dfdae5"><td id="NQAy" class="">4</td><td id="&lt;PZL" class="">사용자</td><td id="MYeL" class="">“재시도” 버튼 클릭 가능</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8065-bc41-fea7b42cdf7c" class=""><strong>Sub Flow / Alternative–Exception Flow</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-802e-a668-f28479871b7a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8035-8098-db03958d65d7"><th id="=z`&gt;" class="simple-table-header-color simple-table-header">예외 번호</th><th id="LonO" class="simple-table-header-color simple-table-header">발생 조건</th><th id=";hG=" class="simple-table-header-color simple-table-header">예외 흐름 / 처리 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80cb-a9b4-f34cf6a087fa"><td id="=z`&gt;" class="">SF1</td><td id="LonO" class="">사용자가 로그 내보내기 요청</td><td id=";hG=" class="">CSV로 로그 저장</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80a2-958d-e35510544a88"><td id="=z`&gt;" class="">EX1</td><td id="LonO" class="">로그 없음</td><td id=";hG=" class="">“저장된 로그가 없습니다” 메시지 표시</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-805d-9e71-e5244365573d"><td id="=z`&gt;" class="">EX2</td><td id="LonO" class="">DB 연결 실패</td><td id=";hG=" class="">“서버 오류입니다. 잠시 후 재시도해주세요” 출력</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80eb-a8cf-daf33abe2205"><td id="=z`&gt;" class="">EX3</td><td id="LonO" class="">로그 파일 손상</td><td id=";hG=" class="">복구 불가 시 새 로그 파일 생성 후 알림 표시</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-809d-985e-f058695268f0" class="">2.2 구조 분석</h2></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8020-b68c-c349efd2354b" class="">클래스 식별 결과표</h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8075-a2fa-de23774c395d" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8027-beb6-c26717821cc6"><th id="rpCM" class="simple-table-header-color simple-table-header">클래스명</th><th id="@rp~" class="simple-table-header-color simple-table-header">주요 속성</th><th id="ud_q" class="simple-table-header-color simple-table-header">주요 연산</th><th id="C[VX" class="simple-table-header-color simple-table-header">관계</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-805f-bf62-fe604f1d07f9"><td id="rpCM" class=""><strong>User</strong></td><td id="@rp~" class="">user_id, email, token</td><td id="ud_q" class="">login(), logout()</td><td id="C[VX" class="">1:N → ConvertLog</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-802c-bb4e-ce49ad658dcf"><td id="rpCM" class=""><strong>Playlist</strong></td><td id="@rp~" class="">title, track_list, platform</td><td id="ud_q" class="">parse(), get_tracks()</td><td id="C[VX" class="">포함 → GenieAPI</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ea-b784-f5fec37203d9"><td id="rpCM" class=""><strong>Converter</strong></td><td id="@rp~" class="">mapping_rule, status</td><td id="ud_q" class="">match_song(), upload_to_youtube()</td><td id="C[VX" class="">집합 → Playlist, YouTubeAPI</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80f6-8c02-f3ece18194fe"><td id="rpCM" class=""><strong>GenieAPI</strong></td><td id="@rp~" class="">url, response</td><td id="ud_q" class="">fetch_playlist()</td><td id="C[VX" class="">제공 → Playlist</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80cb-bb13-ddba7b888c4d"><td id="rpCM" class=""><strong>YouTubeAPI</strong></td><td id="@rp~" class="">access_token, quota</td><td id="ud_q" class="">create_playlist(), add_track()</td><td id="C[VX" class="">사용 → Converter</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80a1-82b8-e60905b0321f"><td id="rpCM" class=""><strong>ConvertLog</strong></td><td id="@rp~" class="">log_id, status, time</td><td id="ud_q" class="">save_log(), get_logs()</td><td id="C[VX" class="">연결 → User</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-806c-a11d-c7726774ae1b" class="">④ 클래스 관계 해석</h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-806d-91e1-fd32c73ee69b" class="bulleted-list"><li style="list-style-type:disc"><strong>User ↔ ConvertLog</strong> : 사용자와 변환 이력 간 1:N 관계</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-80bb-9134-f54cd18249fd" class="bulleted-list"><li style="list-style-type:disc"><strong>Converter ↔ Playlist</strong> : Converter가 여러 Playlist를 처리할 수 있는 집합 관계</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-808d-b1ac-f82e2bd070c2" class="bulleted-list"><li style="list-style-type:disc"><strong>Converter ↔ YouTubeAPI</strong> : Converter가 API를 조합해 재생목록을 업로드</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8089-93a9-d5a77eb2f6c8" class="bulleted-list"><li style="list-style-type:disc"><strong>Playlist ↔ GenieAPI</strong> : Playlist가 GenieAPI에 의존하여 곡 데이터를 가져옴</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-808a-9c4c-e4cb8d001968" class="bulleted-list"><li style="list-style-type:disc"><strong>Converter ↔ ErrorHandler</strong>(미표시): 예외 발생 시 확장 가능</li></ul></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-80c9-b7bd-df21eefc3d3f" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image.png"><img style="width:624px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image.png"/></a><figcaption>클래스 다이어그램</figcaption></figure></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8060-8c5e-e081a60c52fa" class="">2.3 행위 분석</h2></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80ef-beba-c6b8d7fe1287" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-80f2-9990-c98ed63146ff" class="">순차 다이어그램</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80f1-a969-c0d1840ab0bd" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8031-a6f8-c9d3e0b64acb" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%89%E1%85%AE%E1%86%AB%E1%84%8E%E1%85%A1_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7.png"><img style="width:528px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%89%E1%85%AE%E1%86%AB%E1%84%8E%E1%85%A1_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7.png"/></a><figcaption>순차 다이어그램</figcaption></figure></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8069-b4b4-f53a36625fcd" class=""><strong>다이어그램 설명</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80d2-b50d-c04baa7f08ab" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8012-aad6-df3303d6f352"><th id=";oce" class="simple-table-header-color simple-table-header">구간</th><th id="=lSs" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-807c-ae11-eaceec47de1b"><td id=";oce" class=""><strong>1단계</strong></td><td id="=lSs" class="">사용자가 로그인 요청 → OAuth 인증 후 토큰 획득</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8079-acec-ee0c6ca5e053"><td id=";oce" class=""><strong>2단계</strong></td><td id="=lSs" class="">사용자 URL 입력 → Flask 서버가 형식 검증</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-801b-91c9-d6364d8fbd06"><td id=";oce" class=""><strong>3단계</strong></td><td id="=lSs" class="">GenieAPI로 HTML 요청 → 곡 정보 파싱 및 JSON 변환</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8084-aaa7-fb0962a48261"><td id=";oce" class=""><strong>4단계</strong></td><td id="=lSs" class="">YouTube API로 Playlist 생성 및 곡 추가 반복 수행</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8024-962b-c1f647a67765"><td id=";oce" class=""><strong>5단계</strong></td><td id="=lSs" class="">변환 로그를 DB에 저장 → 사용자에게 결과 표시</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8065-b3cd-d97cb0d9cd38" class="">상태기계 다이어그램</h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-802a-9e07-f8f69ec970e3" class=""><strong>상태기계 다이어그램 필요성 분석: </strong> 이 시스템의 흐름은  “요청→ 변환 → 결과 표시”까지 일직선 흐름으로 처리되며 별도의 상태전이가 존재하지 않는다. 또한 Flask 서버 기반 요청-응답 구조로, 요청별 독립적인 과정이 수행되고 종료된다. 즉, 시스템이 세션 상태 혹은 내부 객체의 상태 전이를 추적하고 있지 않기 때문에 순차 다이어그램으로 충분하다고 판단하였다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8083-b78e-c628097fa08b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80d7-8579-d673d9b27458" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8030-af2c-cbdf355b1920" class="">3. 분석 산출물 점검</h1></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8093-bd85-e9ceef7bfd1f" class="">(1) 기능 모델(Use Case Diagram) 점검</h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80a4-a3b6-f4c35b194f56" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80fe-88ae-f046064e52fb"><th id="AC:s" class="simple-table-header-color simple-table-header">점검 기준</th><th id="FeBo" class="simple-table-header-color simple-table-header">Genie2YT 적용 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8049-9ec8-ec9f2278acbb"><td id="AC:s" class=""><strong>① 기능의 완전성</strong></td><td id="FeBo" class="">UC-01~UC-06(로그인, URL 입력, 곡 추출, 재생목록 생성, 결과확인, 오류로그)로 전체 기능 포함</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8073-831c-e7159b431691"><td id="AC:s" class=""><strong>② 액터 정의의 타당성</strong></td><td id="FeBo" class="">User, Google OAuth, Genie Server, YouTube API가 시스템 외부 주체로 타당하게 설정됨</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-808c-ac3c-d113859db5d8"><td id="AC:s" class=""><strong>③ 유스케이스 관계의 적절성</strong></td><td id="FeBo" class="">UC-01은 UC-02·UC-04에 포함(include), UC-05·UC-06은 확장(extend) 관계로 표현됨</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80c9-839d-c6ec5a8d091a"><td id="AC:s" class=""><strong>④ 기능 명칭의 명확성</strong></td><td id="FeBo" class="">모든 UC 명칭이 “동사+목적어” 형태(예: 로그인하기, 곡 정보 추출)로 일관성 유지</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8054-bf29-fec35f3f5970" class="">(2) 구조 모델(Class Diagram) 점검</h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80a7-abe6-dabd1c3c26e3" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-805c-bb76-c0121c1ce015"><th id="Ui_|" class="simple-table-header-color simple-table-header">점검 기준</th><th id="GrN^" class="simple-table-header-color simple-table-header">Genie2YT 적용 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8034-aba3-c58f8708c6a2"><td id="Ui_|" class=""><strong>① 클래스 식별의 타당성</strong></td><td id="GrN^" class="">User, Playlist, Converter, GenieParser, YouTubeAPI, ConvertLog 등 필수 객체 식별됨</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8093-abac-c1101861e3e1"><td id="Ui_|" class=""><strong>② 속성·연산의 적정성</strong></td><td id="GrN^" class="">각 클래스가 상태(속성)와 행위(연산)를 모두 포함 (save_log(), fetch_html(), create_playlist() 등)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-808b-bf5c-f783a62ecba5"><td id="Ui_|" class=""><strong>③ 클래스 간 관계의 타당성</strong></td><td id="GrN^" class="">User–ConvertLog(1:N), Converter–Playlist(포함), Converter–YouTubeAPI(의존) 관계가 논리적으로 타당</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80a0-8183-ef6c7a21b952"><td id="Ui_|" class=""><strong>④ 표기법의 일관성</strong></td><td id="GrN^" class="">Mermaid 및 PlantUML에서 UML 표준(*--, --&gt;, ..&gt;) 사용, 교재 표기와 일치</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-80eb-96e7-d2611db3aaa3" class="">(3) 행위 모델(Sequence Diagram) 점검</h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8077-ba44-edc8b3535a25" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ae-aaae-cfb96e0f8126"><th id="x[k\" class="simple-table-header-color simple-table-header">점검 기준</th><th id="hvi~" class="simple-table-header-color simple-table-header">Genie2YT 적용 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8041-bfcc-fd6ae3367be8"><td id="x[k\" class=""><strong>① 시나리오 일치성</strong></td><td id="hvi~" class="">UC-01~UC-05의 정상 시나리오가 순서대로 표현 (로그인→URL 입력→파싱→업로드→결과 표시)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8052-a8b7-f85fac5156a3"><td id="x[k\" class=""><strong>② 메시지 흐름의 논리성</strong></td><td id="hvi~" class="">User→System→GenieParser→YouTubeAPI→DB 흐름이 직관적이며 논리적</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8059-96c4-ed000b82044c"><td id="x[k\" class=""><strong>③ 반복·조건 표현의 적정성</strong></td><td id="hvi~" class="">곡 추가 시 loop 블록, API 오류 시 alt 구문으로 표현됨</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8025-a632-f4c5df6637ff"><td id="x[k\" class=""><strong>④ 클래스 연산과 메시지의 일치성</strong></td><td id="hvi~" class="">순차 다이어그램의 메시지가 클래스 연산(fetch_html, add_track, save_log)과 동일</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8069-8799-ecff71b19ab8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8066-90e2-e28154bb73e7" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-809c-bb12-c321c998edcc" class="">4. 인터페이스 분석</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8029-aab2-e1ab7df3fb65" class=""><strong>외부 인터페이스</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80a9-af52-f463cd48437d" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-808d-b7e3-f484d4dc80ce"><th id="ps[O" class="simple-table-header-color simple-table-header">인터페이스 ID</th><th id="enc_" class="simple-table-header-color simple-table-header">대상 시스템</th><th id="f&gt;^\" class="simple-table-header-color simple-table-header">주요 기능 / 내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-808f-86c4-dedb1329bdfe"><td id="ps[O" class="">IF-01</td><td id="enc_" class="">Google OAuth 2.0</td><td id="f&gt;^\" class="">사용자 인증 및 Access Token 발급</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8082-97cf-e848a5b5bcbf"><td id="ps[O" class="">IF-02</td><td id="enc_" class="">YouTube Data API v3</td><td id="f&gt;^\" class="">재생목록 생성, 곡 추가, 결과 수신</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-801b-b4d2-d9ed818d9197"><td id="ps[O" class="">IF-03</td><td id="enc_" class="">Genie Web (HTML 페이지)</td><td id="f&gt;^\" class="">BeautifulSoup 기반으로 HTML 파싱 및 곡 정보 추출</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-804d-bdf8-fd8aadb0c2b1"><td id="ps[O" class="">IF-04</td><td id="enc_" class="">Flask ↔ DB (SQLite)</td><td id="f&gt;^\" class="">사용자, 변환 이력, 로그 데이터 저장</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-806a-97a4-f3bafe9c8550"><td id="ps[O" class="">IF-05</td><td id="enc_" class="">Flask ↔ Frontend (React)</td><td id="f&gt;^\" class="">재생목록 URL 입력 및 결과 표시 UI 전송</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-80f9-bbfa-c66a8e6fa9fe" class=""><strong>내부 인터페이스</strong></p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80b7-a634-e0bd489bbc39" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8084-9f7a-f90b90b054d7"><th id="z`nF" class="simple-table-header-color simple-table-header">모듈명</th><th id=":Ft&gt;" class="simple-table-header-color simple-table-header">입력 데이터</th><th id="nAT^" class="simple-table-header-color simple-table-header">출력 데이터</th><th id="ZiJC" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80e5-9b6c-cadc14248b78"><td id="z`nF" class=""><code>auth.py</code></td><td id=":Ft&gt;" class="">사용자 Google 계정 정보</td><td id="nAT^" class="">Access Token</td><td id="ZiJC" class="">OAuth 인증 및 세션 생성</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80bc-8446-cfa71dad7c34"><td id="z`nF" class=""><code>parser.py</code></td><td id=":Ft&gt;" class="">Genie URL</td><td id="nAT^" class="">곡 정보(JSON)</td><td id="ZiJC" class="">HTML 요청 및 곡 데이터 추출</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8046-965c-d52724048a05"><td id="z`nF" class=""><code>yt_api.py</code></td><td id=":Ft&gt;" class="">곡 정보(JSON), Token</td><td id="nAT^" class="">YouTube Playlist ID, Video ID</td><td id="ZiJC" class="">유튜브 재생목록 생성 및 곡 업로드</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8048-a257-f28e2a299194"><td id="z`nF" class=""><code>db.py</code></td><td id=":Ft&gt;" class="">로그 정보</td><td id="nAT^" class="">저장 결과</td><td id="ZiJC" class="">변환 이력 저장 및 조회</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8003-a751-da8bf1baf22e"><td id="z`nF" class=""><code>result.py</code></td><td id=":Ft&gt;" class="">변환 결과, 오류 코드</td><td id="nAT^" class="">결과 페이지(JSON)</td><td id="ZiJC" class="">결과 요약 및 오류 처리</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-80b6-8f06-ebe026d34d3c" class="">5. 제약사항</h1></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-80f2-9ad7-fb0aca815bc4" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8004-801d-d1fe88df8082"><th id="S[VW" class="simple-table-header-color simple-table-header">구분</th><th id="E;sS" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8011-bb15-c964a36e91e8"><td id="S[VW" class=""><strong>기술적 제약</strong></td><td id="E;sS" class="">YouTube API 호출 한도(10,000unit/일) 제한으로 인해 대량 변환 시 지연 발생 가능</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80dc-8177-de534689fa0c"><td id="S[VW" class=""><strong>보안적 제약</strong></td><td id="E;sS" class="">모든 통신은 HTTPS를 사용해야 하며, OAuth 토큰은 세션 내에서만 유지, 토큰 및 API 키 보안 방법 준수</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8013-80da-e3f2a6548ca4"><td id="S[VW" class=""><strong>법적 제약</strong></td><td id="E;sS" class="">국내 음악 서비스(Genie) HTML 구조 변경 시 파싱 코드 수정 필요, 저작권 위반 금지</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ab-a450-f48fa4c57a68"><td id="S[VW" class=""><strong>운영적 제약</strong></td><td id="E;sS" class="">Flask 서버는 Google Cloud / Gabia Cloud 환경에서 동작, 네트워크 환경에 영향 받을 수 있음</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80fb-b712-f054ed854348"><td id="S[VW" class=""><strong>환경적 제약</strong></td><td id="E;sS" class="">Python 3.10 이상, API 키 유효성 관리 필요</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8062-991a-ca909fa0831e"><td id="S[VW" class=""><strong>사용성 제약</strong></td><td id="E;sS" class="">모바일 환경에서는 일부 기능(UI 스크롤, 로딩바 등) 제한적 작동 가능</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-80c5-9c5e-e49b1ced8be9" class="">6. 요구사항 추적표</h1></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8064-b6c4-c7ba292c02bf" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-807f-94e1-d12ebdbf73d0"><th id="ePs`" class="simple-table-header-color simple-table-header">요구사항 ID</th><th id="Ovf]" class="simple-table-header-color simple-table-header">요구사항 설명</th><th id="VO}f" class="simple-table-header-color simple-table-header">관련 유스케이스</th><th id="tsAx" class="simple-table-header-color simple-table-header">관련 클래스 / 모듈</th><th id="UpRW" class="simple-table-header-color simple-table-header">관련 시퀀스 / 다이어그램</th><th id="qdN^" class="simple-table-header-color simple-table-header">구현 파일</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80fd-b8a9-e3f5a9cfc697"><td id="ePs`" class=""><strong>FR-01</strong></td><td id="Ovf]" class="">사용자는 Google 계정으로 로그인할 수 있어야 한다.</td><td id="VO}f" class="">UC-01 로그인하기</td><td id="tsAx" class="">User, auth.py</td><td id="UpRW" class="">로그인 시퀀스</td><td id="qdN^" class=""><code>auth.py</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-808c-8f15-dff236beb509"><td id="ePs`" class=""><strong>FR-02</strong></td><td id="Ovf]" class="">사용자는 재생목록 URL을 입력할 수 있어야 한다.</td><td id="VO}f" class="">UC-02 URL 입력</td><td id="tsAx" class="">Playlist, parser.py</td><td id="UpRW" class="">입력·검증 시퀀스</td><td id="qdN^" class=""><code>parser.py</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ec-aaf9-e8d6ecc0e3bf"><td id="ePs`" class=""><strong>FR-03</strong></td><td id="Ovf]" class="">시스템은 Genie HTML을 파싱해 곡 정보를 추출해야 한다.</td><td id="VO}f" class="">UC-03 곡 정보 추출</td><td id="tsAx" class="">GenieParser, Converter</td><td id="UpRW" class="">곡 파싱 시퀀스</td><td id="qdN^" class=""><code>parser.py</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80dc-8aad-f0a8c2a1b086"><td id="ePs`" class=""><strong>FR-04</strong></td><td id="Ovf]" class="">시스템은 YouTube API를 사용해 재생목록을 생성해야 한다.</td><td id="VO}f" class="">UC-04 재생목록 생성</td><td id="tsAx" class="">YouTubeAPI, Converter</td><td id="UpRW" class="">업로드 시퀀스</td><td id="qdN^" class=""><code>yt_api.py</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ae-8a8c-cdfa9565c0a7"><td id="ePs`" class=""><strong>FR-05</strong></td><td id="Ovf]" class="">변환 완료 후 결과 요약 정보를 사용자에게 표시해야 한다.</td><td id="VO}f" class="">UC-05 결과 확인</td><td id="tsAx" class="">Converter, Result</td><td id="UpRW" class="">결과 표시 시퀀스</td><td id="qdN^" class=""><code>result.py</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80ba-bf56-f3937a134f85"><td id="ePs`" class=""><strong>FR-06</strong></td><td id="Ovf]" class="">사용자는 변환 로그를 조회할 수 있어야 한다.</td><td id="VO}f" class="">UC-06 오류 로그 보기</td><td id="tsAx" class="">ConvertLog, db.py</td><td id="UpRW" class="">로그 조회 시퀀스</td><td id="qdN^" class=""><code>db.py</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8004-a394-e25bc9adc4ec"><td id="ePs`" class=""><strong>FR-07</strong></td><td id="Ovf]" class="">API 호출 실패 시 재시도 기능이 필요하다.</td><td id="VO}f" class="">UC-04, UC-06</td><td id="tsAx" class="">Converter</td><td id="UpRW" class="">loop 및 alt 블록 시퀀스</td><td id="qdN^" class=""><code>yt_api.py</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-80a3-84f0-c197770e8075"><td id="ePs`" class=""><strong>FR-08</strong></td><td id="Ovf]" class="">사용자 세션은 일정 시간 후 자동 만료되어야 한다.</td><td id="VO}f" class="">UC-01</td><td id="tsAx" class="">User</td><td id="UpRW" class="">세션 흐름</td><td id="qdN^" class=""><code>auth.py</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-808d-a4ed-f13ffdd00125"><td id="ePs`" class=""><strong>FR-09</strong></td><td id="Ovf]" class="">곡 매칭 실패 시 대체 후보를 제시해야 한다.</td><td id="VO}f" class="">UC-04</td><td id="tsAx" class="">Converter, YouTubeAPI</td><td id="UpRW" class="">곡 업로드 루프 내 조건 분기</td><td id="qdN^" class=""><code>yt_api.py</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-803a-b25b-e532380b6265"><td id="ePs`" class=""><strong>FR-10</strong></td><td id="Ovf]" class="">변환 실패 시 오류 로그를 자동 저장해야 한다.</td><td id="VO}f" class="">UC-06</td><td id="tsAx" class="">ConvertLog, DB</td><td id="UpRW" class="">오류 처리 시퀀스</td><td id="qdN^" class=""><code>db.py</code></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8063-9321-d99d134f027e" class="">7. 참고문헌 및 목록</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-803f-ba96-c7555576b361" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8053-9067-e3350888334a" class=""><em>Spotify System Design \ </em>System Design One Newsletter | Neo Kim and Hayk | 2025 : 음악앱 구조 참고 </p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8019-aae6-c217627bfae6" class="">YouTube Data API v3 Documentation <em>\ </em>Google Developers | 2025</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-803e-8170-fa8ad5db0b96" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

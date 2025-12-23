@@ -1,0 +1,724 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[소프트웨어공학][시스템 설계][이민형] (1)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2cac520c-c0ba-80b1-95b0-e3a29ee74107" class="page sans"><header><h1 class="page-title" dir="auto">[소프트웨어공학][시스템 설계][이민형] (1)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81d4-9989-cc3584f1a31d" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8185-89f0-c772812e6547" class="">개요</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b8-bbd7-c59fb0a8d3d4" class="">이 문서는 Genie2YT Playlist Converter 시스템의 구조와 설계에 대하여 기술하기 위해 작성되었다. 시스템은 사용자가 지니뮤직(Genie Music)의 재생목록 URL을 입력하면, 이를 파싱하고 YouTube Music 재생목록으로 자동 변환하는 기능을 제공한다. 서비스 특성상 외부 API 연동, URL 기반 파싱, 유사도 매칭 알고리즘, 재생목록 업로드, 변환 이력 관리 등 다양한 기능이 통합되어 있으며, 이를 유지보수성과 확장성이 높은 구조로 설계하는 것이 핵심 목표이다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ce-950f-e455d88a8332" class="">3계층 아키텍처를 기반으로 설계하며 필요한 하드웨어, 소프트웨어 구성요소를 함께 기술한다</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-818e-915b-ef7fe509a4eb" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81be-8578-fa2ce8350ed3" class="">1. 전체 시스템 구조 패키지 다이어그램</h1></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-81a0-9522-f197109f62c4" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image.png"><img style="width:709.9715576171875px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8137-9ab3-ca069bd88b41" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8144-9cc6-c067c4a75276" class="bulleted-list"><li style="list-style-type:disc"><strong>HCI 패키지</strong><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81a6-9fc2-f4bc18e4a4d1" class="">사용자 인터페이스, 화면 흐름, 입력/출력 기능을 담당하는 계층으로 React 기반 화면 구성 요소로 구성된다.</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81b3-a819-ea875a72202c" class="bulleted-list"><li style="list-style-type:disc"><strong>PD 패키지</strong><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8155-bac5-e3b1d60c7b0c" class="">재생목록 변환이라는 문제 영역(Problem Domain)의 핵심 로직을 포함한다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8139-81ec-f67a62e54580" class="">파서(Parser), 변환기(Converter), 매칭 엔진(MatchingEngine), 전략(Strategy), 어댑터(Adapter) 등이 포함된다.</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81af-adab-c4601fb68adb" class="bulleted-list"><li style="list-style-type:disc"><strong>DM 패키지</strong><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-816b-9edc-fec71fd2a8e5" class="">변환 기록, 사용자 정보, 로그 데이터를 다루는 계층이다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81cd-bcab-d47596db6932" class="">데이터베이스 스키마 및 CRUD 책임을 갖는 Repository로 구성된다.</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f3-b2eb-d8d48bcab081" class="bulleted-list"><li style="list-style-type:disc"><strong>External API 패키지</strong><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-819d-9633-faf9e84de1ee" class="">Google OAuth, YouTube Data API, Genie HTML 파싱 모듈 등 외부 서비스와 연결되는 모듈들로 구성된다.</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-815a-bb14-e84517cfc9f9" class="bulleted-list"><li style="list-style-type:disc"><strong>Common 패키지(Utility/Logger)</strong><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ec-8c4a-e9b877e0f675" class="">공통적으로 사용되는 로깅, 오류 처리, 캐싱 기능을 제공한다.</p></div></li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ff-a355-eb33602c9a7c" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81ad-8d35-e644b697247e" class="">2. 3계층 아키텍쳐 기반 DM과 HCI 계층 클래스 </h1></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-819b-9421-ec74dcc26aed" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/3%E1%84%80%E1%85%A8%E1%84%8E%E1%85%B3%E1%86%BC_%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5_%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%83%E1%85%A9.png"><img style="width:709.9715576171875px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/3%E1%84%80%E1%85%A8%E1%84%8E%E1%85%B3%E1%86%BC_%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5_%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%83%E1%85%A9.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8157-946b-ed724a9e1d79" class=""><strong>2.1 HCI Layer (Human–Computer Interaction Layer)</strong></h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ca-b46e-d2b43bc656d6" class="">사용자 입력 처리 및 화면 출력 기능 중심.</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-811d-922f-f6be3f89d358" class="bulleted-list"><li style="list-style-type:disc"><strong>LoginView</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8156-887f-d3e5ebf32566" class="bulleted-list"><li style="list-style-type:circle"><strong>역할</strong>: Google OAuth 로그인을 위한 진입 화면.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-812a-8c44-d5069c9338b4" class="bulleted-list"><li style="list-style-type:circle">책임: OAuth 로그인 버튼 제공 및 클릭 이벤트 처리, 사용자 인증 요청</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8144-b64c-df989f1a39e0" class="bulleted-list"><li style="list-style-type:circle">주요 기능: render(), requestLogin()</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8112-9daf-f5480b1caeb6" class="bulleted-list"><li style="list-style-type:circle"><strong>입·출력</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81a4-afed-f5a7f5a30a0f" class="bulleted-list"><li style="list-style-type:square">입력: 사용자의 로그인 요청(버튼 클릭)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81de-8dd5-c642ee3b9016" class="bulleted-list"><li style="list-style-type:square">출력: 인증 완료 후 메인 화면(PlaylistInputView)로 전환</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8111-bbb8-efd9ff96d49c" class="bulleted-list"><li style="list-style-type:disc"><strong>PlaylistInputView</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-815f-b607-d2f551a3041c" class="bulleted-list"><li style="list-style-type:circle">책임: 재생목록 URL 입력</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8176-a6c4-f0bba75dcec0" class="bulleted-list"><li style="list-style-type:circle">기능: validateURL(), submitURL()</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8141-abef-e45bde41a81f" class="bulleted-list"><li style="list-style-type:circle">입·출력<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81b2-888f-cee57d51db5b" class="bulleted-list"><li style="list-style-type:square">입력: 사용자 입력 URL</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8174-9044-cc5832778803" class="bulleted-list"><li style="list-style-type:square">출력: 변환 요청 상태(성공/실패)에 따른 다음 화면 전환</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8114-86b8-e76003a91f0a" class="bulleted-list"><li style="list-style-type:disc"><strong>ConversionStatusView</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-817d-a51d-d5e7b4442a9b" class="bulleted-list"><li style="list-style-type:circle">책임: 변환 진행 상태 표시</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-813a-b35e-f2358f5b3517" class="bulleted-list"><li style="list-style-type:circle">기능: showProgress(), showError()</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8171-9941-f3fcf37938b2" class="bulleted-list"><li style="list-style-type:circle">입·출력<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8198-886a-e9940df4c8f0" class="bulleted-list"><li style="list-style-type:square">입력: 서버에서 전달되는 진행 상황/오류 코드</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-816b-b2c1-e1085a0445fa" class="bulleted-list"><li style="list-style-type:square">출력: 진행률, “잠시만 기다려 주세요”, “오류가 발생했습니다” 등의 메시지</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8150-a0be-f63dfeffff9e" class="bulleted-list"><li style="list-style-type:disc"><strong>ResultView</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81d1-8847-ec1c70c48bfc" class="bulleted-list"><li style="list-style-type:circle">책임: 변환 완료 요약, 링크 표시</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ce-a3ce-faeed8ab4d93" class="bulleted-list"><li style="list-style-type:circle">기능: displayStats(), displayPlaylistURL()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81dc-bf65-c2743cd7b3f3" class="bulleted-list"><li style="list-style-type:disc"><strong>HistoryView/ErrorLogView</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8103-a08e-edb8c15a7d41" class="bulleted-list"><li style="list-style-type:circle">책임: 변환 이력 조회, 오류 내용 표시</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f4-a7d3-ffcfa0263c56" class="bulleted-list"><li style="list-style-type:circle">기능: loadLogs(), displayLog()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-812d-bfb6-fba2472ec77b" class=""><strong>2.2 PD Layer (Problem Domain Layer)</strong></h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81a4-b1b1-ccdf7683b160" class="">재생목록 변환 로직 중심의 핵심 계층.</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-812b-9c45-e5e9a33b261d" class="bulleted-list"><li style="list-style-type:disc"><strong>PlaylistConverter</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8163-abc1-e21f57e6a08a" class="bulleted-list"><li style="list-style-type:circle">책임: 전체 변환 절차 통제 (파싱 → 매칭 → 업로드)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81be-9e26-c2c6d389ccd9" class="bulleted-list"><li style="list-style-type:circle">주요 기능: convert(), parseSongs(), matchSongs(), uploadSongs()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8143-bd49-f398c880e886" class="bulleted-list"><li style="list-style-type:disc"><strong>ParserFactory</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81e1-855f-fe34bbc6de5d" class="bulleted-list"><li style="list-style-type:circle">책임: 플랫폼 유형에 따라 적절한 Parser 생성</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8188-849a-f7d09bd9fdd1" class="bulleted-list"><li style="list-style-type:circle">기능: createParser(platformType)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ab-beca-dc391ab03170" class="bulleted-list"><li style="list-style-type:disc"><strong>PlaylistParser (Interface)</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8175-869f-dea8314b5da7" class="bulleted-list"><li style="list-style-type:circle">책임: HTML/JSON 구조에서 곡 정보 추출</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81bc-a233-dd7935b6de38" class="bulleted-list"><li style="list-style-type:circle">기능: parse()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81cc-b31b-e72871b34471" class="bulleted-list"><li style="list-style-type:disc"><strong>GenieParser / YouTubePlaylistReader</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-818a-9d7b-d224428c3fb2" class="bulleted-list"><li style="list-style-type:circle">책임: 각 플랫폼 구조에 맞게 곡 정보 파싱</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f5-b925-d29d28606b00" class="bulleted-list"><li style="list-style-type:circle">기능: parse()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-819b-895a-d1c93cef6590" class="bulleted-list"><li style="list-style-type:disc"><strong>MatchingEngine</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f2-b23b-fedd1d59cf9a" class="bulleted-list"><li style="list-style-type:circle">책임: 곡 정보 매칭 전략 실행</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f0-a0c8-e97ecdb83376" class="bulleted-list"><li style="list-style-type:circle">기능: applyStrategy()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8120-8df7-c0e9c4ee9e4d" class="bulleted-list"><li style="list-style-type:disc"><strong>MatchStrategy (Interface)</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81d9-92c4-e8645b98b9eb" class="bulleted-list"><li style="list-style-type:circle">책임: 매칭 알고리즘 표준화</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8162-9e12-e11d36a9d0d9" class="bulleted-list"><li style="list-style-type:circle">구현체:<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ca-9a7a-e5f19cc7884d" class="bulleted-list"><li style="list-style-type:square">TitleExactMatch</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81da-ba67-e49cb2ca4008" class="bulleted-list"><li style="list-style-type:square">FuzzyMatch</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8127-864d-e2871f185e08" class="bulleted-list"><li style="list-style-type:square">KoreanNormalizeMatch</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-817f-931a-d91b80e25cfa" class="bulleted-list"><li style="list-style-type:disc"><strong>IPlaylistTargetAPI (Interface)</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81eb-af97-f7bbb39451bd" class="bulleted-list"><li style="list-style-type:circle">책임: 플랫폼별 재생목록 생성 규약 정의</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8144-9f3f-e5b80a5f9693" class="bulleted-list"><li style="list-style-type:circle">구현체:<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81fb-8113-dd4586a8d344" class="bulleted-list"><li style="list-style-type:square">YouTubeAdapter</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-816e-8e36-e0f473a14280" class="bulleted-list"><li style="list-style-type:square">SpotifyAdapter</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8163-9f0f-f6f280502f56" class="bulleted-list"><li style="list-style-type:disc"><strong>YouTubeAPIClient / SpotifyAPIClient</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8178-a682-c2dc7aac826d" class="bulleted-list"><li style="list-style-type:circle">책임: 실제 API 호출 수행</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-815b-be34-ff62053583fd" class="bulleted-list"><li style="list-style-type:circle">기능: createPlaylist(), addItem()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8174-83c0-efd015f07584" class=""><strong>2.3 DM Layer (Data Manipulation Layer)</strong></h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81c5-8b52-c4d10b880630" class="">데이터 저장·조회·로그 기록 계층.</p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-816a-a8e9-e5598fdc5afa" class="bulleted-list"><li style="list-style-type:disc"><strong>UserRepository</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8110-953e-ef8b12fd46c4" class="bulleted-list"><li style="list-style-type:circle"><strong>역할</strong>: 사용자 계정 및 세션 관련 정보 저장/조회.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8152-bdab-cf926ef67313" class="bulleted-list"><li style="list-style-type:circle"><strong>책임</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8146-ae30-e8b1648e51d4" class="bulleted-list"><li style="list-style-type:square">새로운 사용자 등록 (oauth 이메일 기준)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8142-942c-e110a8944546" class="bulleted-list"><li style="list-style-type:square">사용자 ID로 조회</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81df-ab12-fd5aed8e131a" class="bulleted-list"><li style="list-style-type:square">토큰/세션 정보 업데이트</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ce-8bcc-ebd692ed6f9b" class="bulleted-list"><li style="list-style-type:circle">기능: saveUser(), getUser()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8100-b8db-ebebfa3d3e18" class="bulleted-list"><li style="list-style-type:disc"><strong>ConvertLogRepository</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8142-9f92-cbbefcbd0778" class="bulleted-list"><li style="list-style-type:circle">역할: 재생목록 변환 이력 및 오류 로그 관리.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8122-917b-d100b70312b6" class="bulleted-list"><li style="list-style-type:circle">주요 책임<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81bd-858a-cc588a9cc7b6" class="bulleted-list"><li style="list-style-type:square">변환 요청이 끝난 후 성공/실패 통계를 로그로 저장</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81c1-9602-d437a9507170" class="bulleted-list"><li style="list-style-type:square">특정 사용자 ID 기준 변환 이력 목록 조회</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ea-a0b1-f33b5465894a" class="bulleted-list"><li style="list-style-type:square">실패 케이스만 모아 에러 로그 조회</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8143-94b1-f7afb0235d77" class="bulleted-list"><li style="list-style-type:circle">기능: saveLog(), getLogByUser(), getErrorLogs()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8186-986d-d1785f30856b" class="bulleted-list"><li style="list-style-type:disc"><strong>CacheRepository</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8143-804e-e136733792df" class="bulleted-list"><li style="list-style-type:circle">역할: 동일 URL에 대한 중복 변환을 줄이기 위한 캐시 저장소.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-818a-91a8-e3f8c2c64818" class="bulleted-list"><li style="list-style-type:circle">주요 책임<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8119-a69e-eba599236a0f" class="bulleted-list"><li style="list-style-type:square">key(URL)로 변환 결과를 임시 저장</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81fc-81b8-fac689304646" class="bulleted-list"><li style="list-style-type:square">캐시 조회 후 존재할 경우 재사용</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81a0-8577-ccd04e265e46" class="bulleted-list"><li style="list-style-type:circle">기능: getCache(), setCache()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8114-af90-d27241a9d6e4" class="bulleted-list"><li style="list-style-type:disc"><strong>DatabaseConnector</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8141-808f-e52bd8abd6b4" class="bulleted-list"><li style="list-style-type:circle">역할: SQLite/PostgreSQL 등 실제 DB와의 연결 관리.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f3-b154-df4333ffe026" class="bulleted-list"><li style="list-style-type:circle">주요 책임<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-819b-beda-efb29e81f36a" class="bulleted-list"><li style="list-style-type:square">DB 연결 생성 및 해제</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ff-9d7c-faa82137c6cc" class="bulleted-list"><li style="list-style-type:square">SQL 실행(SELECT/INSERT/UPDATE/DELETE)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81a6-a03c-f49b3ef05d4d" class="bulleted-list"><li style="list-style-type:square">트랜잭션 처리(필요 시)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ac-bdfc-f1257f31a1dd" class="bulleted-list"><li style="list-style-type:circle">기능: connect(), executeQuery()</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-818b-a7be-e753eb9680aa" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81bd-92ef-d0d3ad9ab201" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8151-b75b-cd2a9dab939f" class="">3. 3계층 아키텍처 기반 DM계층 데이터베이스 스키마 설계</h1></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81bf-b9a7-f303ece90ef2" class=""><strong>3.1 테이블 정의</strong></h3></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8173-bd55-cb5b9160cb45" class=""><strong>1) users</strong></h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-819d-ac59-f4fd957bfa0b" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e1-801c-f064e75d5a38"><th id="n`KJ" class="simple-table-header-color simple-table-header">컬럼</th><th id="TPI]" class="simple-table-header-color simple-table-header">타입</th><th id="Ft;e" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-812d-9648-c090d17b9eae"><td id="n`KJ" class="">user_id</td><td id="TPI]" class="">INTEGER PK</td><td id="Ft;e" class="">사용자 고유 ID</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e7-aeb2-fc0f68a42f13"><td id="n`KJ" class="">email</td><td id="TPI]" class="">TEXT</td><td id="Ft;e" class="">사용자 이메일</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-810c-86df-cfd2ae364e27"><td id="n`KJ" class="">oauth_token</td><td id="TPI]" class="">TEXT</td><td id="Ft;e" class="">Access Token</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8152-9b6c-ec9c7d6d67d7"><td id="n`KJ" class="">created_at</td><td id="TPI]" class="">DATETIME</td><td id="Ft;e" class="">가입일</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-811f-929a-f412ab27d45e" class=""><strong>2) convert_logs</strong></h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81ff-bbb9-f4b72dc0b0c9" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a0-8ec4-d06899c97b02"><th id="|hFe" class="simple-table-header-color simple-table-header">컬럼</th><th id="PwzV" class="simple-table-header-color simple-table-header">타입</th><th id="Fydp" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8196-ae1d-ec1ac35379e5"><td id="|hFe" class="">log_id</td><td id="PwzV" class="">INTEGER PK</td><td id="Fydp" class="">변환 이력 ID</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815c-bf80-c23c5ec6209e"><td id="|hFe" class="">user_id</td><td id="PwzV" class="">INTEGER FK</td><td id="Fydp" class="">users.user_id 참조</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ca-87e0-ca5f7e36d319"><td id="|hFe" class="">src_playlist</td><td id="PwzV" class="">TEXT</td><td id="Fydp" class="">원본 URL</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a0-8ee9-dc4333fd0392"><td id="|hFe" class="">dest_playlist</td><td id="PwzV" class="">TEXT</td><td id="Fydp" class="">생성된 YouTube 재생목록 ID</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81da-a4d7-cfe7f020e837"><td id="|hFe" class="">success_count</td><td id="PwzV" class="">INTEGER</td><td id="Fydp" class="">성공한 곡 수</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8145-a254-e07e2c78bab8"><td id="|hFe" class="">fail_count</td><td id="PwzV" class="">INTEGER</td><td id="Fydp" class="">실패한 곡 수</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-814f-9535-f687e4a040c2"><td id="|hFe" class="">error_msg</td><td id="PwzV" class="">TEXT</td><td id="Fydp" class="">오류 메시지</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8183-8420-dcd64235787e"><td id="|hFe" class="">created_at</td><td id="PwzV" class="">DATETIME</td><td id="Fydp" class="">변환 날짜</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81a9-8093-eec4574c4eb9" class=""><strong>3) api_logs</strong></h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-811e-a9c4-d20c3fbd3c8f" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8145-853a-c2390362239d"><th id="SBtK" class="simple-table-header-color simple-table-header">컬럼</th><th id="Pm=k" class="simple-table-header-color simple-table-header">타입</th><th id="_k}p" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8125-a775-de2e4ea06a0c"><td id="SBtK" class="">log_id</td><td id="Pm=k" class="">INTEGER PK</td><td id="_k}p" class="">API 로그 ID</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f7-8e50-cb84a72ae969"><td id="SBtK" class="">platform</td><td id="Pm=k" class="">TEXT</td><td id="_k}p" class="">youtube/genie 등</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8164-8c90-e82142e8c504"><td id="SBtK" class="">request</td><td id="Pm=k" class="">TEXT</td><td id="_k}p" class="">요청 내용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81f4-a8e4-f216d2c378cf"><td id="SBtK" class="">response</td><td id="Pm=k" class="">TEXT</td><td id="_k}p" class="">응답 내용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8121-8980-c043f83e82fa"><td id="SBtK" class="">created_at</td><td id="Pm=k" class="">DATETIME</td><td id="_k}p" class="">요청 시간</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81fa-8a1e-deece581b6d6" class=""><strong>3.2 관계(ER 모델 개요)</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81fd-9b28-f7ed1e1d8a75" class="bulleted-list"><li style="list-style-type:disc">user 1 — N convert_logs</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8130-a89d-c5d1694f5705" class="bulleted-list"><li style="list-style-type:disc">convert_logs 1 — N playlist_items</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ba-950f-efa3e43d82f5" class="bulleted-list"><li style="list-style-type:disc">user 1 — N api_logs</li></ul></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-812b-9f6a-efdbb81438f1" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%87%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B3_ERD.png"><img style="width:434.98577880859375px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%87%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B3_ERD.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ef-8590-e1faa69672a6" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81ac-96b8-fb30d8617ca0" class="">4. 3계층 아키텍처를 기반 HCI 계층의 인터페이스 설계</h1></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8169-be29-f74a57ddbaa3" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/HCI_%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%90%E1%85%A5%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B3%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%B5%E1%84%83%E1%85%A9.png"><img style="width:336px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/HCI_%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%90%E1%85%A5%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B3%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%B5%E1%84%83%E1%85%A9.png"/></a><figcaption>HCI  화면 전이도 </figcaption></figure></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81af-bda2-fe20bdf45c8d" class=""><strong>4.1 주요 화면 구성</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f1-b011-cad358bc5098" class="bulleted-list"><li style="list-style-type:disc"><strong>Login Page</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81b9-8e32-f677bc0d57aa" class="bulleted-list"><li style="list-style-type:circle">OAuth 로그인 버튼</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8184-af63-feda383e1d07" class="bulleted-list"><li style="list-style-type:circle">인증 오류 시 메시지 표시</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81fd-8257-efa98788bb86" class="bulleted-list"><li style="list-style-type:disc"><strong>Playlist Input Page</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-816d-9429-dd89d898852e" class="bulleted-list"><li style="list-style-type:circle">재생목록 URL 입력 필드</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f6-bf32-f94c26bf7925" class="bulleted-list"><li style="list-style-type:circle">유효성 검사</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-819d-89a5-e027ee08ad3a" class="bulleted-list"><li style="list-style-type:circle">“변환 시작” 버튼</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8190-b81c-d389af5b3b95" class="bulleted-list"><li style="list-style-type:disc"><strong>Parsing / Conversion Progress Page</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81b9-82cb-db95917deb90" class="bulleted-list"><li style="list-style-type:circle">로딩 애니메이션</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8199-bdc7-f498deac5e72" class="bulleted-list"><li style="list-style-type:circle">진행률(%) 표시</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8119-8e11-ff4973243181" class="bulleted-list"><li style="list-style-type:circle">오류 발생 시 경고 표시</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-816f-8236-ec32f56a1d0d" class="bulleted-list"><li style="list-style-type:disc"><strong>Result Page</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81de-b3d4-ea31914748b5" class="bulleted-list"><li style="list-style-type:circle">성공/실패 개수</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f9-b83c-d335bd856aa5" class="bulleted-list"><li style="list-style-type:circle">처리 시간</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-814e-a4ab-c8d13dbcaeb3" class="bulleted-list"><li style="list-style-type:circle">완성된 YouTube Playlist 링크 제공</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-811e-bd2f-ebdc3b95d1e6" class="bulleted-list"><li style="list-style-type:circle">상세 로그 보기 버튼</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-817a-95a9-c15aa2c80d03" class="bulleted-list"><li style="list-style-type:disc"><strong>History / Error Logs Page</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8141-9253-de092ae9f447" class="bulleted-list"><li style="list-style-type:circle">지난 변환 기록 테이블</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8118-a27a-fd63413d66b2" class="bulleted-list"><li style="list-style-type:circle">오류 로그 테이블</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8100-9565-e59518c80cbd" class="bulleted-list"><li style="list-style-type:circle">CSV 다운로드 기능</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8126-82ea-ecd76f7b24d2" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8124-bbb9-f8cb48b6ab4b" class="">5. 시스템 운영 물리적 아키텍처 정의</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b1-8ece-c5bb56cd9fb6" class="">시스템은 클라이언트–서버 기반 구조이며 다음과 같은 물리적 구성 요소를 가진다.</p></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-818c-ba8b-c1ed54ed8649" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%86%E1%85%AE%E1%86%AF%E1%84%85%E1%85%B5%E1%84%8C%E1%85%A5%E1%86%A8_%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5.png"><img style="width:709.9573364257812px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%86%E1%85%AE%E1%86%AF%E1%84%85%E1%85%B5%E1%84%8C%E1%85%A5%E1%86%A8_%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-811a-bdf8-f0c96617f0f1" class=""><strong>5.1 실행 환경</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8180-b6e0-dee1155832ea" class="bulleted-list"><li style="list-style-type:disc"><strong>Client:</strong> Chrome/Edge 등 웹 브라우저</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-815e-a771-f322a5dfc8e8" class="bulleted-list"><li style="list-style-type:disc"><strong>Frontend Server:</strong> React SPA(Vercel 또는 Netlify)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8184-bc39-f39c58a417ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Backend Server:</strong> Flask API 서버(Gabia Cloud or AWS EC2)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81d1-8ca4-f3d192a3fadb" class="bulleted-list"><li style="list-style-type:disc"><strong>Database:</strong> SQLite(개발), PostgreSQL(운영)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81cb-a9f1-cd0dbb29a247" class="bulleted-list"><li style="list-style-type:disc"><strong>External Service:</strong> Google OAuth, YouTube Data API, Genie HTML 서버</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8127-a131-dc1af1a37fad" class=""><strong>5.2 통신 구조</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-819b-a214-dbfbb870fb28" class="bulleted-list"><li style="list-style-type:disc">Client ↔ Backend: HTTPS, JSON REST API</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8192-b0bb-fe4271cb505b" class="bulleted-list"><li style="list-style-type:disc">Backend ↔ YouTube API: HTTPS, OAuth 인증 기반</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8107-9c53-c53a07c8fefa" class="bulleted-list"><li style="list-style-type:disc">Backend ↔ DB: SQL Query</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-811c-a559-d47832f67579" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8164-a19d-c94fd950ba75" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81ed-a621-dcd629e164ae" class="">6. 배치다이어그램</h1></div><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8136-9262-f0fd242781eb" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%87%E1%85%A2%E1%84%8E%E1%85%B5_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7.png"><img style="width:703.9630126953125px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%87%E1%85%A2%E1%84%8E%E1%85%B5_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8172-b607-fb15cb27573a" class="bulleted-list"><li style="list-style-type:disc"><strong>Node 1: 사용자 브라우저(HCI 계층)</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-812c-a3c3-c3a9e554c39f" class="bulleted-list"><li style="list-style-type:circle">React 앱 로드</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81e3-9a1a-f8a243d4ef14" class="bulleted-list"><li style="list-style-type:circle">API 요청: /login, /convert, /result</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81cb-9cad-c362c6e74637" class="bulleted-list"><li style="list-style-type:disc"><strong>Node 2: Flask 백엔드(PD+DM 계층)</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8145-bdf0-e3367cac5a63" class="bulleted-list"><li style="list-style-type:circle">변환 로직 실행</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8148-ad49-db4f7bb101fa" class="bulleted-list"><li style="list-style-type:circle">Parser 사용</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81b9-8410-c4d5477fc852" class="bulleted-list"><li style="list-style-type:circle">Matching Engine 호출</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8122-b22a-cca02eb72c99" class="bulleted-list"><li style="list-style-type:circle">Repository를 통해 DB 접근</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81db-88ee-e1883f6b2771" class="bulleted-list"><li style="list-style-type:disc"><strong>Node 3: Database 서버</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8102-90d1-fc54375e66ba" class="bulleted-list"><li style="list-style-type:circle">사용자 정보 및 로그 저장</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8186-a670-c32b064cfb3d" class="bulleted-list"><li style="list-style-type:disc"><strong>Node 4: 외부 API 노드</strong><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8195-b9bf-dcb513d6fb2e" class="bulleted-list"><li style="list-style-type:circle">Google OAuth 인증 처리</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-814b-969f-ecb9f2c33884" class="bulleted-list"><li style="list-style-type:circle">YouTube API 재생목록 생성/추가</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-815f-b414-e7503299f75d" class="">7. 클래스의 변수와 메서드들에 대하여 세부 속성과 알고리즘을 정의</h1></div><div style="display:contents" dir="auto"><div id="2cac520c-c0ba-8148-baf2-f444f77f6f12" class="column-list"><div style="display:contents" dir="auto"><div id="2cac520c-c0ba-81f1-94ac-c9ecc7c0ceee" style="width:50%" class="column"><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8167-8900-ed0ff9c63c74" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%89%E1%85%B5%E1%84%8F%E1%85%AF%E1%86%AB%E1%84%89%E1%85%B3_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7.png"><img style="width:513.3380737304688px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%89%E1%85%B5%E1%84%8F%E1%85%AF%E1%86%AB%E1%84%89%E1%85%B3_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7.png"/></a><figcaption>시퀀스 다이어그램</figcaption></figure></div></div></div><div style="display:contents" dir="auto"><div id="2cac520c-c0ba-8107-976b-da2038b01c13" style="width:50%" class="column"><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-8166-8896-ec0e775a29f3" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A2%E1%84%89%E1%85%B3_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7_(PD__DM_%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%89%E1%85%B5%E1%86%B7).png"><img style="width:709.9715576171875px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%84%A4%EA%B3%84%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A2%E1%84%89%E1%85%B3_%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7_(PD__DM_%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%89%E1%85%B5%E1%86%B7).png"/></a><figcaption>클래스 다이어그램</figcaption></figure></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81c7-88bc-e9f3088ad0e6" class=""><strong>7.1 PlaylistConverter</strong></h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8111-93cb-e26e4529a45e" class=""><strong>속성</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8193-9fe3-ee73bf67c921" class="bulleted-list"><li style="list-style-type:disc">parser</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-813e-be84-f103525d6864" class="bulleted-list"><li style="list-style-type:disc">adapter</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8168-8868-c81522336a5a" class="bulleted-list"><li style="list-style-type:disc">matchEngine</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-811b-8274-cd53e070d94e" class="bulleted-list"><li style="list-style-type:disc">rawTracks</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ee-9208-fde3fde12dd7" class="bulleted-list"><li style="list-style-type:disc">matchedTracks</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81c9-a513-ef887e9d1ef1" class=""><strong>메서드</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8125-9d91-cd32d6063e23" class="bulleted-list"><li style="list-style-type:disc">convert(): 전체 변환 흐름 제어</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-812d-85ab-e5537c453661" class="bulleted-list"><li style="list-style-type:disc">parseSongs(): rawTracks 생성</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8125-ba75-f9ce8bbe1027" class="bulleted-list"><li style="list-style-type:disc">matchSongs(): MatchingEngine 호출</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81fb-8aed-d2cfcda42eda" class="bulleted-list"><li style="list-style-type:disc">uploadSongs(): YouTubeAdapter 호출</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8190-a3de-f38b3e673b11" class=""><strong>7.2 MatchingEngine</strong></h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-818a-8ccc-c7c13ae0b46e" class=""><strong>속성</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f7-996a-f8482c416df1" class="bulleted-list"><li style="list-style-type:disc">strategy: MatchStrategy</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-815d-a354-c84bacab3b96" class=""><strong>메서드</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8166-abd0-d894ba4cb035" class="bulleted-list"><li style="list-style-type:disc">applyStrategy(trackA, trackB)</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-812c-b81c-edf1b67a7fde" class=""><strong>알고리즘 예</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81e4-b67d-e18687d59b09" class="bulleted-list"><li style="list-style-type:disc"><strong>FuzzyMatch:</strong> Levenshtein Distance 계산 후 임계값 적용</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81d8-a2cc-fab7c8858ac0" class="bulleted-list"><li style="list-style-type:disc"><strong>KoreanNormalizeMatch:</strong> 자모 분리 후 KS X 1001 매핑 기반 비교</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81d8-8d8f-f5394211a0c8" class="bulleted-list"><li style="list-style-type:disc"><strong>TitleExactMatch:</strong> 완전 일치 비교</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81d2-8ca4-df7da9d59d7c" class=""><strong>7.3 YouTubeAdapter</strong></h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-817a-a3a6-e1995e46a84d" class=""><strong>속성</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f9-8edd-dc366caa3f8d" class="bulleted-list"><li style="list-style-type:disc">apiClient</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81a3-974c-d9ca68a659dc" class="bulleted-list"><li style="list-style-type:disc">accessToken</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ab-bfaa-e92f1e3b1b0c" class=""><strong>메서드</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-816d-9ed5-ff330a8dd991" class="bulleted-list"><li style="list-style-type:disc">createPlaylist()</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-816b-8005-e6fe62fc9dfe" class="bulleted-list"><li style="list-style-type:disc">addTrack(videoId)</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-817f-a16f-e05792149adf" class=""><strong>7.4 GenieParser</strong></h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-811e-8d85-e82d820c694c" class=""><strong>속성</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f3-b81f-e6a4f4c5eb81" class="bulleted-list"><li style="list-style-type:disc">url</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81c6-b378-c6a7df793854" class="bulleted-list"><li style="list-style-type:disc">html</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81e8-8a19-ef8cfdb6d571" class=""><strong>메서드</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81ef-b247-c57cf136a6c0" class="bulleted-list"><li style="list-style-type:disc">parse(): BeautifulSoup 활용하여 곡명/가수 리스트 추출</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-813f-ac7b-e9337b64a42e" class=""><strong>7.5 ConvertLogRepository</strong></h3></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81fd-ae66-c9e555f7a559" class=""><strong>속성</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f8-a3c8-c7897ff20fce" class="bulleted-list"><li style="list-style-type:disc">dbConnector</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b5-8ca1-e46150b0c0cf" class=""><strong>메서드</strong></p></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8166-adfe-dc5cdfc0b7ca" class="bulleted-list"><li style="list-style-type:disc">saveLog(log)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8143-920f-f2be6388394a" class="bulleted-list"><li style="list-style-type:disc">getLogsByUser(userId)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81c8-92b6-e25f93db92e6" class="bulleted-list"><li style="list-style-type:disc">getErrorLogs()</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81eb-881c-c2f64ad18ea2" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8117-9d57-fa2dfaf6a51f" class="">8. 시스템이 운영될 하드웨어, 소프트웨어,통신구성요소에 대한 기술 스펙을 작성한다</h1></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-816e-af08-f7b9cb380ef1" class=""><strong>8.1 소프트웨어 스펙</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81cb-990f-ef60d6140781" class="bulleted-list"><li style="list-style-type:disc">OS: macOS / Windows / Ubuntu</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8159-aeca-ec3543dbe834" class="bulleted-list"><li style="list-style-type:disc">Backend: Python 3.11 + Flask</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8129-af82-f77c28fdec9a" class="bulleted-list"><li style="list-style-type:disc">Frontend: React 18 + Vite</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81c7-9264-fba8536382fb" class="bulleted-list"><li style="list-style-type:disc">DB: SQLite / PostgreSQL</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8125-b1a4-efc715f4cf8a" class="bulleted-list"><li style="list-style-type:disc">API: YouTube Data API v3, OAuth 2.0</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81bc-ae55-de3179a83ddf" class="bulleted-list"><li style="list-style-type:disc">개발도구: VSCode, Postman, GitHub</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81a6-938f-ef043fb0d99b" class="bulleted-list"><li style="list-style-type:disc">배포환경: Gabia Cloud or AWS EC2</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-81f7-9255-ed765f69c11c" class=""><strong>8.2 하드웨어 스펙</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8104-952f-df97a8c75178" class="bulleted-list"><li style="list-style-type:disc">개발용:<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8115-bc32-ddb3ec635890" class="bulleted-list"><li style="list-style-type:circle">CPU: Intel i5 이상 또는 Apple M1</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81a6-9d84-dc6e6da4d27b" class="bulleted-list"><li style="list-style-type:circle">RAM: 8GB 이상(권장 16GB)</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8110-8850-f483fb8145a6" class="bulleted-list"><li style="list-style-type:circle">저장공간: 256GB 이상 SSD</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81b6-93c4-e7c9a2d6ec2d" class="bulleted-list"><li style="list-style-type:disc">서버:<div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-818e-a6eb-ef8b2935eaf1" class="bulleted-list"><li style="list-style-type:circle">CPU: 2 vCPU 이상</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8190-9d7a-d1d312430dd3" class="bulleted-list"><li style="list-style-type:circle">RAM: 4GB 이상</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8181-ac64-ddd616f8dfd0" class="bulleted-list"><li style="list-style-type:circle">Storage: 20GB SSD</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8122-a800-e8050e341344" class=""><strong>8.3 통신 구성</strong></h3></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81a8-9173-fa938f3aee5b" class="bulleted-list"><li style="list-style-type:disc">모든 구간에서 HTTPS 의무 적용</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-819f-aaa0-cb4b1725347c" class="bulleted-list"><li style="list-style-type:disc">OAuth 인증 토큰은 메모리 기반 세션 관리</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-812f-9907-ebf6e9289374" class="bulleted-list"><li style="list-style-type:disc">CORS 정책 적용</li></ul></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,724 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[소프트웨어공학][요구사항 정의서][이민형] (1)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2cac520c-c0ba-808d-9ecb-f0fab94cceef" class="page sans"><header><h1 class="page-title" dir="auto">[소프트웨어공학][요구사항 정의서][이민형] (1)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure id="2cac520c-c0ba-812a-aea3-eb61e162eab7" class="image"><a href="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/348af5cc-e3ec-47ae-ab05-a68d0caaaa65.png"><img style="width:497.1279373368146px" src="%5B%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EA%B3%B5%ED%95%99%5D%5B%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%5D%5B%EC%9D%B4%EB%AF%BC%ED%98%95%5D%20(1)/348af5cc-e3ec-47ae-ab05-a68d0caaaa65.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-811d-8b9d-f0f94bf3acb3" class="">과목: 소프트웨어공학</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8140-928a-caaf49a03028" class="">담당교수님: 손한성 교수님</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-817a-808d-ebd5d0a95895" class="">학과: 게임소프트웨어전공</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-816e-8e27-ef6786d951a8" class="">이름: 이민형</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b4-bd1a-da948f2c9367" class="">학번: 92115174</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81e4-a001-ee0f859f3e59" class="">
+</p></div><div style="display:contents" dir="ltr"><nav id="2cac520c-c0ba-818b-b4f7-d41d3e90df36" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81b9-a9f5-e176afdb0993">1. 개요</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81e7-937d-c742133b29ff">2. 요구사항 </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8179-b11f-ef3122993cc5">2.1 기능적 요구사항</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-815c-99f6-e134b1e572f2">3. 품질 요구사항</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-815f-9b7b-e36b61664d41">3.1 성능</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8182-a222-e50db4039f91">3.2 보안</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-817f-a647-dd1e400c07f9">3.3 신뢰성</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-81c6-928c-f8f320c42a02">3.4 유지보수성</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-8172-ae76-d0c45c9c2569">3.5 확장성</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cac520c-c0ba-81dc-8831-f4075aa91172">3.6 품질 요약</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8151-bd34-c3229773f048">4. 개발 요구사항</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-8157-954e-d9f891ee7689">5. 기타 고려사항</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2cac520c-c0ba-81c3-9ccd-c4a95bde794e">6. 참고문헌 및 부록 </a></div></nav></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-816a-96b8-eeb0140ee21e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-815e-ba89-fdbe339b8a84" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81b9-a9f5-e176afdb0993" class="">1. 개요</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81b9-a92a-e70c3171b53d" class="">1.1 문서의 목적</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81ae-aa0b-e95ae5605c2d" class="">이 문서는 음악 플랫폼간 재생목록을 자동으로 변환하는 웹 서비스 Genie2YT의 요구사항을 정의한다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8189-882d-f9dcec5a8757" class="">이 문서는 개발과정에서의 기능, 비기능, 품질, 인터페이스 요구사항을 명확하게 정의하여 개발자와 이해관계자가 같은 기준으로 시스템을 설계, 구현 할 수 있도록 하는것을 목표로 한다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-812d-b2cd-cf93036a1b88" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8117-b4c8-fb4901b7843a" class="">1.2 프로젝트 개요</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-815e-9678-f47a6f8caa29" class="">Genie2YT는 사용자가 지니뮤직과 같은 국내 음악 플랫폼의 재생목록을 Youtube Music과 같은 다른 플랫폼으로 자동으로 옮길 수 있도록 하는 웹기반 서비스이다.</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8118-9148-f13b41f8af6d" class="">Flask 백엔드와 React 프론트엔드를 사용하며, Google OAuth 2.0 인증을 통해  Youtube 계정과 연동한다. 또한  Youtube Data API를 이용해 새로운 재생목록을 생성하고, 재생 목록 리스트에 맞게 자동으로 추가한다. </p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8166-9bdc-c9f1c0302221" class="">1.3 관련 문서, 용어 및 약어</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8160-8903-cb67d953fbea" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ae-abd3-cc35bf93521d"><th id="r[xj" class="simple-table-header-color simple-table-header" style="width:71.21306610107422px">구분</th><th id="kXYb" class="simple-table-header-color simple-table-header" style="width:556.3408813476562px">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8190-af96-de171a98c9b4"><td id="r[xj" class="" style="width:71.21306610107422px">관련 문서</td><td id="kXYb" class="" style="width:556.3408813476562px"> 프로젝트 관리계획서, 기능점수 산정서</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81cb-b237-cf0a6a43fb06"><td id="r[xj" class="" style="width:71.21306610107422px">용어</td><td id="kXYb" class="" style="width:556.3408813476562px">OAuth (사용자 인증 프로토콜), Quota (API 호출 제한 단위), Playlist (재생목록)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d4-b9ef-ee7b585bdbd2"><td id="r[xj" class="" style="width:71.21306610107422px">약어</td><td id="kXYb" class="" style="width:556.3408813476562px">FR (기능적 요구사항), NFR (비기능적 요구사항), API (Application Programming Interface)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-810d-b253-cd3bf8aa0bf4" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8192-a491-c4d1a27be3cb" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81e7-937d-c742133b29ff" class="">2. 요구사항 </h1></div><div style="display:contents" dir="auto"><h3 id="2cac520c-c0ba-8179-b11f-ef3122993cc5" class="">2.1 기능적 요구사항</h3></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81a9-a4c0-fc13d860de15" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d2-a9ca-d92be762fd21"><th id="aS&gt;T" class="simple-table-header-color simple-table-header">ID</th><th id="Vrrj" class="simple-table-header-color simple-table-header">요구사항</th><th id="SqLh" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-811b-a773-c77f27698dbc"><td id="aS&gt;T" class="">FR-01</td><td id="Vrrj" class="">시스템은 사용자가 Google 계정으로 로그인할 수 있게 해야 한다.</td><td id="SqLh" class="">Google OAuth 2.0 인증 과정을 통해 계정 정보를 연동한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-819d-ada9-d309a43e504e"><td id="aS&gt;T" class="">FR-02</td><td id="Vrrj" class="">시스템은 로그인 시 발급된 인증 토큰을 안전하게 저장하도록 한다.</td><td id="SqLh" class="">Access Token과 Refresh Token은 암호화된 형태로 관리한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e3-b9c5-ca2dd5a0a4f1"><td id="aS&gt;T" class="">FR-03</td><td id="Vrrj" class="">시스템은 사용자가 지니뮤직 재생목록의 URL을 입력할 수 있도록 한다.</td><td id="SqLh" class="">입력된 URL을 Flask 서버로 전달하여 데이터를 파싱한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8119-8444-fd836da8bb71"><td id="aS&gt;T" class="">FR-04</td><td id="Vrrj" class="">시스템은 재생목록에서 곡명과 아티스트 정보를 추출할 수 있어야 한다.</td><td id="SqLh" class="">BeautifulSoup을 이용해 HTML 구조를 분석한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81bd-8e0b-e7ca862ec622"><td id="aS&gt;T" class="">FR-05</td><td id="Vrrj" class="">시스템은 추출된 곡 정보를 JSON 형식으로 변환하도록 한다.</td><td id="SqLh" class="">JSON 데이터는 YouTube API 모듈로 전달된다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813f-9f9c-e4f656817f90"><td id="aS&gt;T" class="">FR-06</td><td id="Vrrj" class="">시스템은 YouTube API를 이용해 새로운 재생목록을 만들 수 있어야 한다.</td><td id="SqLh" class=""><code>playlists.insert</code> 요청을 통해 사용자 계정에 재생목록을 생성한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8120-8421-f7618a7c4210"><td id="aS&gt;T" class="">FR-07</td><td id="Vrrj" class="">시스템은 변환된 곡들을 YouTube 재생목록에 자동으로 추가해야 한다.</td><td id="SqLh" class="">각 곡마다 <code>playlistItems.insert</code> API를 호출한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8151-801b-e58012cbbce2"><td id="aS&gt;T" class="">FR-08</td><td id="Vrrj" class="">시스템은 변환 중 오류가 발생하면 사용자에게 안내 메시지를 보여주어야 한다.</td><td id="SqLh" class="">오류 코드와 원인을 함께 표시한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8129-ab8c-f813bacf7a27"><td id="aS&gt;T" class="">FR-09</td><td id="Vrrj" class="">시스템은 변환이 완료되면 성공/실패 수와 처리 시간을 요약해서 보여줘야 한다.</td><td id="SqLh" class="">결과를 시각적으로 표시해 사용자 이해를 돕는다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fe-84dd-c74f69459a0a"><td id="aS&gt;T" class="">FR-10</td><td id="Vrrj" class="">시스템은 변환 내역을 데이터베이스에 저장하도록 한다.</td><td id="SqLh" class="">변환 날짜, 성공률, 오류 내용을 기록한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-817b-9f31-fb21716227e8"><td id="aS&gt;T" class="">FR-11</td><td id="Vrrj" class="">시스템은 사용자가 이전 변환 기록을 조회할 수 있도록 해야 한다.</td><td id="SqLh" class="">날짜나 재생목록 이름으로 검색할 수 있다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8163-a52c-dcaaabdd3651"><td id="aS&gt;T" class="">FR-12</td><td id="Vrrj" class="">시스템은 API 사용 한도를 초과하면 자동으로 재시도해야 한다.</td><td id="SqLh" class="">일정 시간 간격을 두고 최대 3회까지 재시도한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d7-aa6b-dc6dc53fdf77"><td id="aS&gt;T" class="">FR-13</td><td id="Vrrj" class="">시스템은 변환된 재생목록의 링크를 사용자에게 보여주어야 한다.</td><td id="SqLh" class="">YouTube 재생목록 URL을 반환한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fe-a081-c5b9a68736d3"><td id="aS&gt;T" class="">FR-14</td><td id="Vrrj" class="">시스템은 변환이 끝나면 완료 알림을 표시해야 한다.</td><td id="SqLh" class="">“변환이 완료되었습니다.” 메시지를 출력한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8128-a699-efb8af23c82b"><td id="aS&gt;T" class="">FR-15</td><td id="Vrrj" class="">시스템은 추후 YouTube 재생목록을 지니뮤직 형식으로 변환할 수 있어야 한다.</td><td id="SqLh" class="">지니뮤직의 “여러 곡 한 번에 찾기” 기능에 사용할 수 있는 텍스트 블록을 생성한다.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8112-9541-c754d80ac270" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81d3-8731-cc0c6eacc64b" class="">2.2 비기능적 요구사항</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8140-b27d-ff8d9f6098f2" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8149-9fe3-f62b22b8b7fb"><th id="{Pzi" class="simple-table-header-color simple-table-header">ID</th><th id="q&lt;ej" class="simple-table-header-color simple-table-header">요구사항</th><th id="iayt" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8129-966d-c22cea077e5f"><td id="{Pzi" class="">NFR-01</td><td id="q&lt;ej" class="">시스템은 50곡 기준으로 10초 안에 변환을 마쳐야 한다.</td><td id="iayt" class="">API 요청과 파싱 시간을 포함한 전체 처리 시간이다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c3-be53-eb957645a6e7"><td id="{Pzi" class="">NFR-02</td><td id="q&lt;ej" class="">시스템은 모든 통신 구간에 HTTPS를 적용해야 한다.</td><td id="iayt" class="">인증 및 데이터 전송 과정이 암호화되어야 한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8120-8694-d0c23ec2ae15"><td id="{Pzi" class="">NFR-03</td><td id="q&lt;ej" class="">시스템은 OAuth 토큰과 API 키를 외부에 노출하지 않아야 한다.</td><td id="iayt" class=""><code>.env</code> 파일을 이용해 환경변수로 관리한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c6-9261-cebb11de2bbe"><td id="{Pzi" class="">NFR-04</td><td id="q&lt;ej" class="">시스템은 요청이 실패하면 1초, 2초, 4초 간격으로 최대 3회까지 다시 시도해야 한다.</td><td id="iayt" class="">서버나 네트워크 오류에 대응하기 위함이다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815e-a44e-ecaf19093af8"><td id="{Pzi" class="">NFR-05</td><td id="q&lt;ej" class="">시스템은 오류가 발생하더라도 데이터 손실 없이 복구할 수 있어야 한다.</td><td id="iayt" class="">변환 로그를 데이터베이스에 저장해 복구 가능하게 한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a7-93a5-f8c4b05d7af4"><td id="{Pzi" class="">NFR-06</td><td id="q&lt;ej" class="">시스템은 PC와 모바일 브라우저 모두에서 정상 작동해야 한다.</td><td id="iayt" class="">반응형 웹 화면으로 구성한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8110-af2c-cec166d68bfb"><td id="{Pzi" class="">NFR-07</td><td id="q&lt;ej" class="">시스템은 YouTube API의 일일 사용 한도(10,000 유닛) 내에서 효율적으로 작동해야 한다.</td><td id="iayt" class="">중복 요청을 줄이고 캐시를 적용한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d4-82a1-ce5af736d773"><td id="{Pzi" class="">NFR-08</td><td id="q&lt;ej" class="">시스템은 오류가 발생하면 자동으로 로그 파일을 생성해야 한다.</td><td id="iayt" class="">날짜, 사용자, 오류 내용을 기록한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813b-b61b-d03306e9ad87"><td id="{Pzi" class="">NFR-09</td><td id="q&lt;ej" class="">시스템은 일일 한도를 초과할 경우 사용자에게 알림을 표시해야 한다.</td><td id="iayt" class="">“API 사용 한도 초과” 메시지를 출력한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8194-89c2-ca4e94f818a2"><td id="{Pzi" class="">NFR-10</td><td id="q&lt;ej" class="">시스템은 개인정보보호법과 저작권 정책을 지켜야 한다.</td><td id="iayt" class="">비공개 재생목록이나 타인의 데이터에 접근하지 않는다.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8166-9700-d9416665ea33" class="">2.3 인터페이스 요구사항</p></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-815d-8d6c-e7bac37cbcdc" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8175-a5b9-f35e9d970c61"><th id="AYEE" class="simple-table-header-color simple-table-header">ID</th><th id="gFog" class="simple-table-header-color simple-table-header">요구사항</th><th id="Or;x" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81c2-bf8d-c7888a584d2b"><td id="AYEE" class="">IF-01</td><td id="gFog" class="">시스템은 Google OAuth 2.0 인증 서버와 연결되어야 한다.</td><td id="Or;x" class="">클라이언트 ID와 리디렉션 주소를 등록해 인증 과정을 진행한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8190-af48-cb42549cf08b"><td id="AYEE" class="">IF-02</td><td id="gFog" class="">시스템은 YouTube Data API v3와 연동되어야 한다.</td><td id="Or;x" class="">재생목록 생성, 검색, 항목 추가를 위한 API를 사용한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-817b-9abd-dd2508674e94"><td id="AYEE" class="">IF-03</td><td id="gFog" class="">시스템은 Flask 서버와 React 프론트엔드가 데이터를 주고받을 수 있어야 한다.</td><td id="Or;x" class="">JSON 형식으로 요청과 응답을 처리한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d4-9fe9-c801ec2096fa"><td id="AYEE" class="">IF-04</td><td id="gFog" class="">시스템은 데이터베이스와 연결되어야 한다.</td><td id="Or;x" class="">SQLite를 기본으로 사용하고, 필요 시 PostgreSQL로 확장한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a6-8c9f-c327d6da207e"><td id="AYEE" class="">IF-05</td><td id="gFog" class="">시스템은 지니뮤직 웹 페이지에서 곡 정보를 가져올 수 있어야 한다.</td><td id="Or;x" class="">BeautifulSoup를 사용한다.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-815c-99f6-e134b1e572f2" class="">3. 품질 요구사항</h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-811f-97a5-e02face487c5" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-815f-9b7b-e36b61664d41" class="">3.1 성능</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8122-b08c-eb107f17de75" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813a-9b0d-fd5d761e7602"><th id=";&lt;NT" class="simple-table-header-color simple-table-header">품질요구 ID</th><th id="xOoV" class="simple-table-header-color simple-table-header">요구사항</th><th id="]{~V" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8107-8dfa-ecd3246b5fa1"><td id=";&lt;NT" class="">QP-01</td><td id="xOoV" class="">시스템은 50곡 기준으로 10초 안에 변환을 끝내야 한다.</td><td id="]{~V" class="">변환 속도에는 YouTube API 호출과 곡 정보 분석 과정이 포함된다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b7-9e6b-dbb538bce019"><td id=";&lt;NT" class="">QP-02</td><td id="xOoV" class="">시스템은 여러 사용자가 동시에 변환을 요청해도 정상적으로 작동해야 한다.</td><td id="]{~V" class="">서버는 요청이 몰려도 멈추거나 지연되지 않아야 한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8171-8417-e37c6e97979e"><td id=";&lt;NT" class="">QP-03</td><td id="xOoV" class="">시스템은 같은 요청이 반복될 경우, 이전 데이터를 활용해 처리 속도를 높여야 한다.</td><td id="]{~V" class="">캐시 기능을 사용하여 불필요한 중복 요청을 줄인다.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8182-a222-e50db4039f91" class="">3.2 보안</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-811e-bd1b-c63013a7fa19" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81db-bd2f-e9e126a63223"><th id="T}o^" class="simple-table-header-color simple-table-header">품질요구 ID</th><th id="V`Rc" class="simple-table-header-color simple-table-header">요구사항</th><th id="Npz=" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8173-afe7-d09837dd974a"><td id="T}o^" class="">QS-01</td><td id="V`Rc" class="">모든 데이터는 HTTPS 방식으로 주고받아야 한다.</td><td id="Npz=" class="">로그인 정보와 재생목록 데이터가 외부에 노출되지 않게 한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8180-8b05-cafc75515155"><td id="T}o^" class="">QS-02</td><td id="V`Rc" class="">인증 토큰과 API 키는 외부에서 볼 수 없도록 저장해야 한다.</td><td id="Npz=" class="">환경변수나 보안 폴더를 이용해 관리한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8191-8100-c8cc98575aaa"><td id="T}o^" class="">QS-03</td><td id="V`Rc" class="">타인의 재생목록이나 개인 정보에는 접근하지 않아야 한다.</td><td id="Npz=" class="">비공개 데이터는 수집 대상에서 제외한다.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-817f-a647-dd1e400c07f9" class="">3.3 신뢰성</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-811d-8f7e-dc39092fd518" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8180-9cd8-d7be563c99af"><th id="xIN^" class="simple-table-header-color simple-table-header">품질요구 ID</th><th id="vexV" class="simple-table-header-color simple-table-header">요구사항</th><th id="p^l;" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-812e-8256-d681182a36aa"><td id="xIN^" class="">QR-01</td><td id="vexV" class="">시스템은 요청이 실패하면 1초, 2초, 4초 간격으로 다시 시도해야 한다.</td><td id="p^l;" class="">일시적인 오류나 서버 문제에 대비한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81fc-b8a4-fc3c70f9b2e1"><td id="xIN^" class="">QR-02</td><td id="vexV" class="">오류가 발생하면 자동으로 로그를 남겨야 한다.</td><td id="p^l;" class="">언제, 어떤 오류가 발생했는지 확인할 수 있어야 한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ee-b827-eea166b62c25"><td id="xIN^" class="">QR-03</td><td id="vexV" class="">서버가 꺼지거나 오류가 나도 변환 기록은 남아 있어야 한다.</td><td id="p^l;" class="">변환 내역을 데이터베이스에 저장해 복구할 수 있도록 한다.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-81c6-928c-f8f320c42a02" class="">3.4 유지보수성</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-812e-b310-d9d93b7c5552" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-811f-a062-f98fc8fc0481"><th id="kWm}" class="simple-table-header-color simple-table-header">품질요구 ID</th><th id="jhjT" class="simple-table-header-color simple-table-header">요구사항</th><th id="p}@J" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8191-80bf-edcde1bc1b59"><td id="kWm}" class="">QM-01</td><td id="jhjT" class="">시스템은 기능별로 코드를 나누어 관리해야 한다.</td><td id="p}@J" class="">Flask와 React 구조를 각각 역할에 맞게 분리한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8188-81fe-f692cccc0e46"><td id="kWm}" class="">QM-02</td><td id="jhjT" class="">API 주소나 설정은 코드 수정 없이 쉽게 바꿀 수 있어야 한다.</td><td id="p}@J" class="">설정 파일로 따로 관리해 수정이 간편하게 한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8166-8671-f0ef05e766ba"><td id="kWm}" class="">QM-03</td><td id="jhjT" class="">코드는 버전별로 관리되어야 한다.</td><td id="p}@J" class="">GitHub를 이용해 main, dev, feature 브랜치로 관리한다.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-8172-ae76-d0c45c9c2569" class="">3.5 확장성</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81e2-be82-c7cd432098f2" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-817c-a1ff-d3ece1003297"><th id="`Ly=" class="simple-table-header-color simple-table-header">품질요구 ID</th><th id="SKv]" class="simple-table-header-color simple-table-header">요구사항</th><th id="Qnzm" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ed-b710-f18147c45120"><td id="`Ly=" class="">QE-01</td><td id="SKv]" class="">시스템은 새로운 음악 플랫폼이 추가되어도 쉽게 확장할 수 있어야 한다.</td><td id="Qnzm" class="">Spotify나 Deezer와 같은 플랫폼도 연결할 수 있도록 구조를 설계한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8196-82d9-ff77d27cdc82"><td id="`Ly=" class="">QE-02</td><td id="SKv]" class="">외부 API의 주소나 인증 방식이 바뀌어도 설정만 바꾸면 작동해야 한다.</td><td id="Qnzm" class="">설정 파일을 수정해 대응할 수 있도록 한다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-811e-8ec8-f9ccb96a51aa"><td id="`Ly=" class="">QE-03</td><td id="SKv]" class="">데이터베이스는 이용자 수가 늘어나도 안정적으로 작동해야 한다.</td><td id="Qnzm" class="">초기에는 SQLite를 쓰지만, 필요 시 PostgreSQL로 옮길 수 있도록 한다.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h2 id="2cac520c-c0ba-81dc-8831-f4075aa91172" class="">3.6 품질 요약</h2></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-81f0-9c68-c4d030453b10" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-810a-8be6-c1bf8fc06d00"><th id="CBAr" class="simple-table-header-color simple-table-header">품질요소</th><th id="k;iv" class="simple-table-header-color simple-table-header">핵심 목표</th><th id="FikI" class="simple-table-header-color simple-table-header">확인 방법</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8178-9599-c1fbb93c8405"><td id="CBAr" class="">성능</td><td id="k;iv" class="">변환 속도 10초 이내, 여러 사용자의 요청 처리 가능</td><td id="FikI" class="">실제 변환 테스트 결과 확인</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-8156-b822-e44f8bc0d1c9"><td id="CBAr" class="">보안</td><td id="k;iv" class="">HTTPS 적용, 인증 정보 안전하게 관리</td><td id="FikI" class="">보안 설정 및 로그 점검</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81d2-8a1e-fe1d72b43d5f"><td id="CBAr" class="">신뢰성</td><td id="k;iv" class="">오류 시 자동 재시도 및 로그 기록</td><td id="FikI" class="">오류 발생 시 로그 확인</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-815c-a9b4-c491fda379b8"><td id="CBAr" class="">유지보수성</td><td id="k;iv" class="">기능 단위로 코드 분리, 설정 파일 관리</td><td id="FikI" class="">코드 구조와 Git 이력 확인</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81a0-a4ed-dc32ff82de6c"><td id="CBAr" class="">확장성</td><td id="k;iv" class="">다른 플랫폼 추가와 데이터 확장 가능</td><td id="FikI" class="">새로운 API 연동 테스트</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8193-b5c5-dd39be60d06d" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8151-bd34-c3229773f048" class="">4. 개발 요구사항</h1></div><div style="display:contents" dir="ltr"><table id="2cac520c-c0ba-8101-adc7-ca4b5f0ea372" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81e9-815e-c5d2f8e8bdb9"><th id="LId]" class="simple-table-header-color simple-table-header">구분</th><th id="Yfox" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-812a-89db-fa3dd0bae1a1"><td id="LId]" class="">개발 환경</td><td id="Yfox" class="">Flask와 React를 사용한 개발이 가능한 환경</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-811b-b917-ecbe1a13e020"><td id="LId]" class="">언어 및 프레임워크</td><td id="Yfox" class="">Python 3.11 (Flask), JavaScript (React 18)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-813b-8525-deb0d056c694"><td id="LId]" class="">데이터베이스</td><td id="Yfox" class="">SQLite (테스트), PostgreSQL (운영)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-812b-8ee9-c0d058f67bac"><td id="LId]" class="">배포 환경</td><td id="Yfox" class="">가비아 클라우드 </td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81ea-83ee-dcd939907ba9"><td id="LId]" class="">테스트 도구</td><td id="Yfox" class="">Postman</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cac520c-c0ba-81b8-b11b-c06c7dd99758"><td id="LId]" class="">버전 관리</td><td id="Yfox" class="">GitHub Flow </td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-8157-954e-d9f891ee7689" class="">5. 기타 고려사항</h1></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-816d-aba2-f2d5b01cc152" class="bulleted-list"><li style="list-style-type:disc">Google API 정책 변경 시 시스템이 영향을 받을 수 있다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-8165-af28-d18bb86d0034" class="bulleted-list"><li style="list-style-type:disc">YouTube API 사용 한도 초과 시 쿼터 증설이나 대체 API 사용이 필요하다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-81f3-9923-d5f328ab7859" class="bulleted-list"><li style="list-style-type:disc">지니뮤직 웹 구조가 변경되면 파싱 로직을 수정해야 한다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cac520c-c0ba-810e-a825-dd3e14c8b62e" class="bulleted-list"><li style="list-style-type:disc">사용자 정보와 로그 데이터는 민감 정보가 포함되지 않도록 주의한다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8157-872e-fea7972e3af0" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2cac520c-c0ba-81c3-9ccd-c4a95bde794e" class="">6. 참고문헌 및 부록 </h1></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-81d8-9782-c444765ee8e1" class=""><a href="https://developers.google.com/identity/protocols/oauth2">Using OAuth 2.0 to Access Google APIs</a> | <strong>Google Developers </strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-811d-96bd-e6a48dfaee88" class=""><a href="https://developers.google.com/youtube/v3/getting-started">YouTube Data API v3 – Overview</a> | <strong>Google Developers </strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-810a-be24-c47b68d50cd3" class=""><a href="https://developers.google.com/youtube/v3/determine_quota_cost">YouTube Data API – Quota Costs</a> | <strong>Google Developers </strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-814d-8547-f4f14a8edd84" class=""><a href="https://github.com/sigma67/spotify_to_ytmusic">spotify_to_ytmusic (Open Source Repository)</a>| <strong>GitHub – sigma67.</strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8114-9bf9-c8e941740eb5" class=""><a href="https://schang2.tistory.com/10">지니 재생목록을 유튜브 뮤직으로 옮겨보자!</a> | Tistory 블로그 – 창2, 2020 </p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-815c-b805-c1c5cad93e5b" class=""><a href="https://medium.com/pythoneers/from-spotify-to-youtube-music-how-i-wrote-a-simple-tool-in-python-to-migrate-my-playlists-705e878a7cf0">From Spotify to YouTube Music: How I Wrote a Simple Tool in Python.</a> | <strong>Medium – The Pythoneers, 2022</strong></p></div><div style="display:contents" dir="auto"><p id="2cac520c-c0ba-8110-bb05-f466fc040476" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
